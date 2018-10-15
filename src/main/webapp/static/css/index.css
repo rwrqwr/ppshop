@@ -1,6 +1,41 @@
 body{
 	background-color: #f4f4f4;
+	
 }
+a{
+	text-decoration:none;
+}
+li{
+	list-style: none;
+}
+hr{
+    width: 1200px;
+}
+address{
+	float: right;
+}
+
+.rig{
+	float: right;
+}
+.pat-img-text{
+	top: 20px;
+	left: 40px;
+	z-index: 1;
+	color: #ffa500;
+	position: absolute;
+}
+.le{
+	float: left;
+	position: relative;
+}
+.line{
+	border-right:1px solid rgb(0,0,0);
+	border-bottom:1px solid rgb(0,0,0);
+}
+
+
+
 
 .theader{
 	background-color: #ffffff;
@@ -36,9 +71,6 @@ body{
     position: relative;
 }
 
-hr{
-    width: 960px;
-}
 
 .searchbox .col-lg-6{
     width: 588px;
@@ -56,17 +88,20 @@ hr{
 
 .topmain{
 	height: 10px;
-	background-color: #ff5000;
+	background-color: rgb(255, 223, 224);
 }
 
 .main{
 	margin: 0 auto;
 	border: 0;
-	width: 960px;
+	width: 1200px;
 	height: auto;
 }
+.menu{
+	height: 350px;
+}
 .navi{
-	width: 200px;
+	width: 220px;
 	float: left;
 	border: 1px solid #ff5000;
 	border-top: none;
@@ -89,11 +124,85 @@ hr{
 }
 .slider{
 	width: 760px;
-	float: right;
+	float: left;
+}
+.pat-eat{
+	margin-top: 40px;
+	height: 507px;
+	font-size: 16px;
+}
+.pat-borderleft{
+	width: 328px;
+	height: 477px;
+}
+.pat-borderin{
+	width: 872px;
+	border-top: 2px solid hsla(147, 45%, 32%, 0.48);
+	background-color: rgb(255,255,255);
+	position: relative;
+}
+.pat-eat-menu ul{
+	margin-bottom:0px ; 
+}
+.pat-eat-menu ul li{
+	cursor: pointer;
+	border-left: 2px solid hsla(147, 45%, 32%, 0.48);
+	margin-left: -4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 33px;
+	display: inline-block;
 }
 
-
-
+.eight-img ul li {
+    border-bottom: 1px solid #e7e7e7;
+    border-right: 1px solid #e7e7e7;
+    background-color: rgb(255,255,255);
+    width: 218px;
+    padding: 10px;
+    height: 231px;
+}
+.eight-img img{
+	height: 136px;
+	width: 136px;
+}
+.eight-img a{
+	color: #000000;
+	text-decoration: none;
+}
+.eight-img-text{
+	text-align: center;
+}
+.eight-img-intext{
+	margin-bottom: 15px;
+	position: relative;
+	top: 25px;
+}
+.pat-pat{
+	margin-top: 40px;
+	font-size: 16px;
+}
+.pat-menu{
+	height: 300px;
+	width: 1200px;
+}
+.pat-menu li{
+	width: 240px;
+	height: 300px;  
+	border-right: 1px solid #e7e7e7;
+	border-bottom: 1px solid #e7e7e7;
+}
+.five-img-intext{
+	position: relative;
+	top: 50px;
+}
+.footer{
+	margin: 0 auto;
+	border: 0;
+	width: 1200px;
+	height: auto;
+}
+/*轮播图*/
 ul { padding: 0;}
 .banner { position: relative; overflow: auto; text-align: center;}
 .banner li { list-style: none; }
@@ -123,3 +232,4 @@ ul { padding: 0;}
 #b04 .arrow { position: absolute; top: 167px;}
 #b04 #al { left: 15px;}
 #b04 #ar { right: 15px;}
+

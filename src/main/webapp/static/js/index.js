@@ -11,6 +11,17 @@ $(document).ready(function(e) {
     });
 });
 
+var vm = new Vue({
+  el: '#rrapp',
+  data: {
+    showList:1,
+    showList2:0,
+  }
+})
 
-
-
+function changeTab(numb){
+	vm.showList = numb;
+};
+function changeTab1(numb){
+	vm.showList1 = numb;
+};
