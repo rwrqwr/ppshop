@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="login">
-        <jsp:forward page="WEB-INF/user/login.html"></jsp:forward>
+        <a href="/user/login">degn</a>
       </div>
       <hr>
     </div>
@@ -449,7 +449,7 @@
     <address>
       <strong>Twitter, Inc.</strong><br>
       计算机1165 费晟豪 10210416522
-      <abbr title="e-mail">E:</abbr> 595177332@qq.com
+      <abbr title="e-mail">E:</abbr>
     </address>
   </div>
   </div>
