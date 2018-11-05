@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="login">
-        <a href="/user/login">degn</a>
+        <a href="/page/user/login">degn</a>
       </div>
       <hr>
     </div>

@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * Created by USER on 2018/10/28.
  */
-@RequestMapping("/")
+@RequestMapping("/page")
 @Controller
 public class PageController {
     
@@ -23,7 +23,7 @@ public class PageController {
     @RequestMapping(value = "{pageName1}/{pageName2}", method = RequestMethod.GET)
     public ModelAndView toPage(@PathVariable("pageName1") String pageName1, @PathVariable("pageName2") String pageName2) {
         ModelAndView mv = new ModelAndView(pageName1+"/"+pageName2);
-        System.out.println(12312);
+        System.out.println("ru========");
         return mv;
     }
 

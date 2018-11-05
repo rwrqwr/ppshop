@@ -29,10 +29,10 @@ public class UserDaoTest {
     @Test
     public void insertTest(){
         User u = new User();
-        u.setUserName("f3");
+        u.setUserName("f4");
         u.setUserPassword("123");
-        u.setUserTel("12322111234");
-        u.setUserEmail("414122332@qq.com");
+        u.setUserTel("123541224");
+        u.setUserEmail("4141fas1@qq.com");
         int status = userDao.insertUser(u);
         System.out.println(status);
     }
