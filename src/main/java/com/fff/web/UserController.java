@@ -33,13 +33,13 @@ public class UserController {
         if(user.getUserPassword().equals(password)){
             return "/user/success";
         }
-        return "/user/login";
+        return "user/login";
     }
 
     /**
      * @Author USER
-     * @Description //
-     * @Date 23:10 2018/11/2
+     * @Description //添加用户
+     * @Date 19:29 2018/11/5
      * @Param [user]
      * @return java.lang.String
      **/
@@ -50,5 +50,6 @@ public class UserController {
             return "/user/success";
         return "user/logon";
     }
+
 
 }

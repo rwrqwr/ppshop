@@ -6,10 +6,20 @@ package com.fff.entity;
 public class Address {
     private int userID;
     private String addressAd;
-    private String addressStatus;
+    private int addressStatus;
     private String telPhone;
     private String addressId;
     private String receiverName;
+
+    public Address() {
+    }
+
+    public Address(String addressAd, int addressStatus, String telPhone, String receiverName) {
+        this.addressAd = addressAd;
+        this.addressStatus = addressStatus;
+        this.telPhone = telPhone;
+        this.receiverName = receiverName;
+    }
 
     public int getUserID() {
         return userID;
@@ -27,11 +37,11 @@ public class Address {
         this.addressAd = addressAd;
     }
 
-    public String getAddressStatus() {
+    public int getAddressStatus() {
         return addressStatus;
     }
 
-    public void setAddressStatus(String addressStatus) {
+    public void setAddressStatus(int addressStatus) {
         this.addressStatus = addressStatus;
     }
 

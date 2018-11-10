@@ -20,35 +20,40 @@
     </div>
 
     <div class="main">
-        <form class="form-horizontal" action="/user/adduser"  method="post">
+        <form class="form-horizontal" action="/user/adduser" method="post">
             <div class="form-group">
                 <label for="inputTel" class="col-sm-2 control-label">电话</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputTel" name="userTel" required="required" placeholder="tel">
+                    <input type="text" class="form-control" id="inputTel" name="userTel" required="required"
+                           placeholder="tel">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputName" class="col-sm-2 control-label">昵称</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputName" name="userName" required="required" placeholder="name">
+                    <input type="text" class="form-control" id="inputName" name="userName" required="required"
+                           placeholder="name">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword1" class="col-sm-2 control-label">密码</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword1" name="userPassword" required="required" placeholder="Password">
+                    <input type="password" class="form-control" id="inputPassword1" name="userPassword"
+                           required="required" placeholder="Password">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword2" class="col-sm-2 control-label">确认密码</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword2" name="password2" required="required" placeholder="Password">
+                    <input type="password" class="form-control" id="inputPassword2" name="password2" required="required"
+                           placeholder="Password">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputEmail" class="col-sm-2 control-label">邮箱</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail" name="userEmail" required="required" placeholder="email">
+                    <input type="email" class="form-control" id="inputEmail" name="userEmail" required="required"
+                           placeholder="email">
                 </div>
             </div>
             <div class="form-group">
