@@ -1,15 +1,15 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: USER
-  Date: 2018/11/6
-  Time: 14:15
-  To change this template use File | Settings | File Templates.
+  Date: 2018/10/30
+  Time: 15:05
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Registered</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,18 +45,21 @@
 <!-- header -->
 <div class="agileits_header">
     <div class="container">
+
         <div class="agile-login">
             <ul>
                 <li><a href="registered"> 注册 </a></li>
                 <li><a href="login">登录</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="contact.html">Help</a></li>
             </ul>
         </div>
         <div class="product_list_header">
             <form action="#" method="post" class="last">
                 <input type="hidden" name="cmd" value="_cart">
                 <input type="hidden" name="display" value="1">
-                <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+                <button class="w3view-cart" type="submit" name="submit" value="">
+                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                </button>
             </form>
         </div>
         <div class="clearfix"> </div>
@@ -211,35 +214,33 @@
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Login Page</li>
+            <li class="active">Register Page</li>
         </ol>
     </div>
 </div>
 <!-- //breadcrumbs -->
-<!-- login -->
-<div class="login">
+<!-- register -->
+<div class="register">
     <div class="container">
-        <h2>Login Form</h2>
-
-        <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-            <form action="/user/checklogin">
-                <input type="email" placeholder="Email Address" required=" " >
-                <input type="password" placeholder="Password" required=" " >
-                <div class="forgot">
-                    <a href="#">Forgot Password?</a>
-                </div>
-                <input type="submit" value="Login">
+        <h2>Register Here</h2>
+        <div class="login-form-grids">
+            <form action="/user/adduser" method="post" onsubmit= "return formCheck() ">
+                <input type="text" placeholder="昵称" required="required" name="userName" >
+                <input type="text" placeholder="电话号码" required=" " name="userTel">
+                <input type="email" placeholder="邮箱" required=" " name="userEmail" >
+                <input type="password" id="pass1" placeholder="密码" required=" " name="userPassword">
+                <input type="password" id="pass2" placeholder="在输入一次密码" required=" " >
+                <input type="submit" value="Register">
             </form>
         </div>
-        <h4>For New People</h4>
-        <p><a href="registered.html">Register Here</a> (Or) go back to <a href="index.html">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+        <div class="register-home">
+            <a href="index.html">Home</a>
+        </div>
     </div>
 </div>
-<!-- //login -->
+<!-- //register -->
 <!-- //footer -->
 <div class="footer">
-
-
     <div class="footer-copy">
 
         <div class="container">
@@ -248,6 +249,17 @@
     </div>
 
 </div>
+<script type="text/javascript">
+    function formCheck(){
+        var pwd1 = document.getElementById("pass1").value;
+        var pwd2 = document.getElementById("pass2").value;
+        if(pwd1!=pwd2){
+            alert("两次输入的密码不一致！");
+            return false;
+        }
+        return true;
+    }
+</script>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../static/js/bootstrap.min.js"></script>

@@ -19,6 +19,16 @@ public class UserController {
     UserService userService;
 
 
+    @RequestMapping("login")
+    public String login(){
+        return "user/login";
+    }
+
+    @RequestMapping("registered")
+    public String registered(){
+        return "user/registered";
+    }
+
     /**
      * @Author USER
      * @Description //检测电话与密码是否正确 用于登录
@@ -48,7 +58,7 @@ public class UserController {
         int stat = userService.addUser(user);
         if (stat == 1)
             return "/user/success";
-        return "user/logon";
+        return "user/registered";
     }
 
 

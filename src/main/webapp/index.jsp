@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="login">
-        <a href="/page/user/login">degn</a>
+        <a href="user/login">degn</a>
       </div>
       <hr>
     </div>

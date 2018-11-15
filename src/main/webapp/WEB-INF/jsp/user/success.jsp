@@ -12,8 +12,6 @@
     <title>Title</title>
 </head>
 <body>
-    <c:forEach items="">
-
-    </c:forEach>
+    sssss
 </body>
 </html>
