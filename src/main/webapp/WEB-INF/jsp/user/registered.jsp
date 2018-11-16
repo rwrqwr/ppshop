@@ -18,7 +18,7 @@
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
     <link href="../../../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="../../../static/css/user/login.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="../../../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- font-awesome icons -->
     <link href="../../../static/css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
@@ -100,7 +100,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html" class="act">Home</a></li>
+                    <li class="active"><a href="../../../index1.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Groceries<b class="caret"></b></a>

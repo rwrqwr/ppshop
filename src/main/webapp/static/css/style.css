@@ -414,7 +414,7 @@ ul.multi-column-dropdown h6 {
     padding: .5em 2.5em .5em 1em;
     border: 1px solid #fe9126;
     margin: .35em 0 0;
-    background: url(../../imgs/card.png) no-repeat 116px 9px;
+    background: url(../imgs/card.png) no-repeat 116px 9px;
 }
 #PPMiniCart form {
     width: 590px !important;
@@ -586,7 +586,7 @@ i.gray-star {
 	height: 32px;
 	border: none;
 	text-indent: 100%;
-	background: url(../../imgs/arrow.png) no-repeat 0px 0px;
+	background: url(../imgs/arrow.png) no-repeat 0px 0px;
 }
 #toTopHover {
 	width: 32px;
@@ -1033,7 +1033,7 @@ a.w3_agile_vimeo:hover{
 }
 .checkbox input + i:after {
     content: '';
-    background: url("../../imgs/check.png") no-repeat 1px 2px;
+    background: url("../imgs/check.png") no-repeat 1px 2px;
     top: 0px;
     left: 2px;
     width: 16px;
@@ -1103,7 +1103,7 @@ td.invert-image a img {
 	position:relative;
 }
 .close1,.close2,.close3 {
-    background: url('../../imgs/close_1.png') no-repeat 0px 0px;
+    background: url('../imgs/close_1.png') no-repeat 0px 0px;
     cursor: pointer;
     width: 28px;
     height: 28px;
@@ -1298,7 +1298,7 @@ ul.faq {
 
 .starRating:not(old) > label {
     float: right;
-    background: url(../../imgs/star.png);
+    background: url(../imgs/star.png);
     background-size: contain;
     margin-right: 2px;
 }
@@ -1308,7 +1308,7 @@ ul.faq {
   display         : block;
   width           : 16px;
   height          : 16px;
-  background      : url(../../imgs/star1.png);
+  background      : url(../imgs/star1.png);
   background-size : contain;
   opacity         : 0;
   transition      : opacity 0.2s linear;
@@ -1693,14 +1693,14 @@ h3.w3_agile_header:after,h2.w3_agile_header:after{
     text-decoration: none;
     height: 30px;
     width: 25px;
-    background: url("../../imgs/icon1.png")no-repeat center center;
+    background: url("../imgs/icon1.png")no-repeat center center;
 }
 .callbacks_nav:active {
   opacity: 1.0;
 }
 .callbacks_nav.next {
     right: 7%;
-    background: url("../../imgs/icon2.png")no-repeat center center;
+    background: url("../imgs/icon2.png")no-repeat center center;
 }
 #slider3-pager a ,#slider4-pager a {
   display: inline-block;
@@ -1808,7 +1808,7 @@ a.callbacks1_s3.active,a.callbacks1_s3:focus{
 /*--//slider end here--*/
 /*-- about-slid --*/
 .about-slid{
-	background: url(../../imgs/22.jpg)no-repeat 0px center fixed;
+	background: url(../imgs/22.jpg)no-repeat 0px center fixed;
 	background-size: cover;
 	text-align: center;
 	padding: 6em 0;
