@@ -1,0 +1,40 @@
+.per-main-ul{
+    height: 500px;
+    float: left;
+    margin-top: 50px;
+}
+.per-main-ul ul li{
+    color: #0f0f0f;
+    margin: 40px 0px;
+    list-style-type: none;
+    font-size: 1em;
+}
+.per-main-display{
+    margin-top: 40px;
+}
+.per-main-display ul li{
+    border-bottom:1px solid #999;
+    height: 65px;
+    list-style-type: none;
+    margin: 20px 0px;
+}
+.per-main-display ul li{
+    font-size: 18px;
+}
+.per-main-display ul li .detcontext span{
+    font-size: 21px;
+    font-family: '微软雅黑','Hiragino Sans GB', 'Microsoft Yahei',  Arial, sans-serif;
+}
+.per-main-display ul li .detcontext .detail{
+    font-size: 23px;
+    font-weight:700;
+    font-family: KaiTi, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif
+}
+.per-main-display .span-btn{
+    font-size: 18px;
+    top: 20px;
+}
+.per-main-display .span-btn button:hover{
+    color: #cccccc;
+}
+

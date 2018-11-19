@@ -129,6 +129,10 @@ button.btn.btn-default.search:hover {
 .agile-login ul li {
     display: inline-block;
     padding: 0em 1em;
+    font-size: 1em;
+    text-transform: capitalize;
+    color: #fff;
+    text-decoration: none;
 }
 .agile-login ul li a {
     font-size: 1em;
@@ -205,6 +209,7 @@ button.w3view-cart:focus{
     color: #fff;
     font-size: 16px;
     font-weight: 500;
+    padding: 15px 45px;
 }
 .logo-nav-left1 ul li.active a.act{
 	color:#fff !important;
@@ -245,7 +250,7 @@ ul.multi-column-dropdown h6 {
 }
 .multi-column-dropdown li {
     list-style-type: none;
-    margin: 14px 0;
+    padding: 14px;
 }
 .multi-column-dropdown li a {
     display: block;
@@ -254,6 +259,14 @@ ul.multi-column-dropdown h6 {
     color: #999 !important;
     white-space: normal;
 	font-weight:500 !important;
+}
+.multi-column-dropdown li:hover{
+    text-decoration: none;
+    background: #fe9126;
+    border:  0px solid transparent;
+}
+.multi-column-dropdown li:hover a{
+    color: #FFF !important;
 }
 .dropdown-menu.columns-3 {
     min-width: 190px;

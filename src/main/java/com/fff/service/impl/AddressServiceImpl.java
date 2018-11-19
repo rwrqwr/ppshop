@@ -31,4 +31,9 @@ public class AddressServiceImpl implements AddressService {
     public int updateAddress(String addressId, String userTel) {
         return addressDao.updateAddress(addressId, userTel);
     }
+
+    @Override
+    public int deleteAddress(String addressId) {
+        return addressDao.deleteAddress(addressId);
+    }
 }

@@ -37,4 +37,6 @@ public interface AddressService {
      * @return int
      **/
     int updateAddress(String addressId,String userTel);
+
+    int deleteAddress(String addressId);
 }

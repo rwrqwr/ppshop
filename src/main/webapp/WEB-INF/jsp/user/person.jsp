@@ -1,21 +1,23 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.fff.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: USER
-  Date: 2018/10/30
-  Time: 15:05
+  Date: 2018/11/6
+  Time: 14:15
+  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registered</title>
+    <title>Login</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link rel="stylesheet" type="text/css" href="../../../static/css/user/person.css">
     <!-- //for-mobile-apps -->
     <link href="../../../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="../../../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -46,6 +48,10 @@
 <div class="agileits_header">
     <div class="container">
 
+        <%
+            User user = (User) request.getSession().getAttribute("user");
+            if(user == null){
+        %>
         <div class="agile-login">
             <ul>
                 <li><a href="registered"> 注册 </a></li>
@@ -53,6 +59,20 @@
                 <li><a href="contact.html">Help</a></li>
             </ul>
         </div>
+        <%
+        }else{
+        %>
+        <div class="agile-login">
+            <ul>
+                <li>欢迎,${sessionScope.user.userName}</li>
+                <li><a href="person">个人中心</a></li>
+            </ul>
+        </div>
+        <%
+            }
+        %>
+
+
         <div class="product_list_header">
             <form action="#" method="post" class="last">
                 <input type="hidden" name="cmd" value="_cart">
@@ -204,52 +224,54 @@
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href="../../../index1.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Register Page</li>
+            <li class="active">个人中心</li>
         </ol>
     </div>
 </div>
 <!-- //breadcrumbs -->
-<!-- register -->
-<div class="register">
-    <div class="container">
-        <h2>Register Here</h2>
-        <div class="login-form-grids">
-            <form action="/user/adduser" method="post" onsubmit= "return formCheck() ">
-                <input type="text" placeholder="昵称" required="required" name="userName" >
-                <input type="text" placeholder="电话号码" required=" " name="userTel">
-                <input type="email" placeholder="邮箱" required=" " name="userEmail" >
-                <input type="password" id="pass1" placeholder="密码" required=" " name="userPassword">
-                <input type="password" id="pass2" placeholder="在输入一次密码" required=" " >
-                <input type="submit" value="Register">
-            </form>
+<!-- login -->
+
+<div class="person-main container">
+    <div class="row">
+        <div class="per-main-ul col-md-2">
+            <ul>
+                <li id="li0" onmouseover="change(this)">收货地址</li>
+                <li id="li1" onmouseover="change(this)">购物车</li>
+                <li id="li2" onmouseover="change(this)">订单</li>
+            </ul>
         </div>
-        <div class="register-home">
-            <a href="index.html">Home</a>
+
+        <div class="per-main-display col-md-9">
+            <ul>
+                <c:forEach items="${addressList}" var="detail">
+                    <li>
+                        <div class="col-md-9 detcontext">
+                            <span class="detail">收货地址：${detail.addressAd}</span></br>
+                            <span>收货人姓名：</span>${detail.receiverName}&nbsp;&nbsp;
+                            <span>收货人电话：</span>${detail.telPhone}
+                        </div>
+                        <div class="span-btn col-md-2">
+                            <a href="deladdress?addressId=${detail.addressId}" ><button class="btn btn-default" type="submit">删除地址</button></a>
+                        </div>
+                    </li>
+                </c:forEach>
+            </ul>
+
         </div>
     </div>
+
 </div>
-<!-- //register -->
+
+<!-- //login -->
 <!-- //footer -->
 <div class="footer">
     <div class="footer-copy">
-
         <div class="container">
             <p>fsh© 10210416522 计算机1165</p>
         </div>
     </div>
 
 </div>
-<script type="text/javascript">
-    function formCheck(){
-        var pwd1 = document.getElementById("pass1").value;
-        var pwd2 = document.getElementById("pass2").value;
-        if(pwd1!=pwd2){
-            alert("两次输入的密码不一致！");
-            return false;
-        }
-        return true;
-    }
-</script>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../static/js/bootstrap.min.js"></script>
@@ -296,6 +318,18 @@
     });
 </script>
 <!-- //main slider-banner -->
-
+<script>
+    function change(e) {
+        e.style.display="";
+        $()
+        $('#li0').show();
+        switch (e)
+        {
+            case "li0":
+            case "li1":
+            case "li2":
+        }
+    }
+</script>
 </body>
 </html>

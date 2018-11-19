@@ -36,4 +36,6 @@ public interface AddressDao {
      * @return int
      **/
     int updateAddress(@Param("addressId")String addressId,@Param("userTel")String userTel);
+
+    int deleteAddress(String addressId);
 }

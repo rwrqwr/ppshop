@@ -1,12 +1,19 @@
 package com.fff.web;
 
+import com.fff.entity.Address;
 import com.fff.entity.User;
+import com.fff.service.AddressService;
 import com.fff.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by USER on 2018/10/29.
@@ -18,6 +25,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    AddressService addressService;
 
     @RequestMapping("login")
     public String login(){
@@ -29,6 +38,20 @@ public class UserController {
         return "user/registered";
     }
 
+    @RequestMapping("person")
+    public String person(Model model,HttpSession session){
+        User user = (User) session.getAttribute("user");
+        List<Address> list = addressService.queryByUserTel(user.getUserTel());
+        System.out.println("person======");
+        model.addAttribute("addressList",list);
+        return "user/person";
+    }
+
+    @RequestMapping("out")
+    public String out(HttpSession session){
+        session.removeAttribute("user");
+        return "redirect:/index1.jsp";
+    }
     /**
      * @Author USER
      * @Description //检测电话与密码是否正确 用于登录
@@ -37,11 +60,12 @@ public class UserController {
      * @return java.lang.String
      **/
     @RequestMapping("/checklogin")
-    public String checklogin(@RequestParam("tel")String tel,@RequestParam("password") String password){
+    public String checklogin(@RequestParam("tel")String tel, @RequestParam("password") String password, HttpSession session){
         System.out.println(tel+"       "+password);
         User user = userService.checkLogin(tel);
-        if(user.getUserPassword().equals(password)){
-            return "/user/success";
+        if(user !=null && user.getUserPassword().equals(password)){
+            session.setAttribute("user",user);
+            return "redirect:/index1.jsp";
         }
         return "user/login";
     }
@@ -57,9 +81,17 @@ public class UserController {
     public String addUser(@ModelAttribute("user")User user){
         int stat = userService.addUser(user);
         if (stat == 1)
-            return "/user/success";
+            return "redirect:/index1.jsp";
         return "user/registered";
     }
 
+    @RequestMapping("/deladdress")
+    public String delAddres(String addressId){
+        int stat = addressService.deleteAddress(addressId);
+        if(stat == 1){
+            System.out.println("success========");
+        }
+        return "redirect:/user/person";
+    }
 
 }

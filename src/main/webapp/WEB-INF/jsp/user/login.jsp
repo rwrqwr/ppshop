@@ -66,7 +66,7 @@
 <div class="logo_products">
     <div class="container">
         <div class="w3ls_logo_products_left">
-            <h1><a href="index.html">宠物商店</a></h1>
+            <h1><a href="../../../index1.jsp">宠物商店</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
@@ -100,105 +100,95 @@
                     <li class="active"><a href="../../../index1.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Groceries<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">可爱的宠物<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
                             <div class="row">
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
-                                        <h6>All Groceries</h6>
-                                        <li><a href="groceries.html">Dals & Pulses</a></li>
-                                        <li><a href="groceries.html">Almonds</a></li>
-                                        <li><a href="groceries.html">Cashews</a></li>
-                                        <li><a href="groceries.html">Dry Fruit</a></li>
-                                        <li><a href="groceries.html"> Mukhwas </a></li>
-                                        <li><a href="groceries.html">Rice & Rice Products</a></li>
+                                        <h6>所有种类</h6>
+                                        <li><a href="groceries.html">猫</a></li>
+                                        <li><a href="groceries.html">狗</a></li>
+                                        <li><a href="groceries.html">鱼类</a></li>
+                                        <li><a href="groceries.html">两栖</a></li>
+                                        <li><a href="groceries.html">奇奇怪怪类</a></li>
                                     </ul>
                                 </div>
-
                             </div>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Household<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">宠物用具<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
                             <div class="row">
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
                                         <h6>All Household</h6>
-                                        <li><a href="household.html">Cookware</a></li>
-                                        <li><a href="household.html">Dust Pans</a></li>
-                                        <li><a href="household.html">Scrubbers</a></li>
-                                        <li><a href="household.html">Dust Cloth</a></li>
-                                        <li><a href="household.html"> Mops </a></li>
-                                        <li><a href="household.html">Kitchenware</a></li>
+                                        <li><a href="household.html">食盆</a></li>
+                                        <li><a href="household.html">奶瓶</a></li>
+                                        <li><a href="household.html">饮水器</a></li>
+                                        <li><a href="household.html">储粮桶</a></li>
+                                        <li><a href="household.html">航空箱</a></li>
+                                        <li><a href="household.html">宠物包</a></li>
                                     </ul>
                                 </div>
-
-
                             </div>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Personal Care<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">给宠物的吃的<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
                             <div class="row">
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
                                         <h6>Baby Care</h6>
-                                        <li><a href="personalcare.html">Baby Soap</a></li>
-                                        <li><a href="personalcare.html">Baby Care Accessories</a></li>
-                                        <li><a href="personalcare.html">Baby Oil & Shampoos</a></li>
-                                        <li><a href="personalcare.html">Baby Creams & Lotion</a></li>
-                                        <li><a href="personalcare.html"> Baby Powder</a></li>
-                                        <li><a href="personalcare.html">Diapers & Wipes</a></li>
+                                        <li><a href="personalcare.html">全犬粮</a></li>
+                                        <li><a href="personalcare.html">幼犬粮</a></li>
+                                        <li><a href="personalcare.html">成犬粮</a></li>
+                                        <li><a href="personalcare.html">老犬粮</a></li>
+                                        <li><a href="personalcare.html">罐头</a></li>
+                                        <li><a href="personalcare.html">饼干</a></li>
                                     </ul>
                                 </div>
-
                             </div>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Packaged Foods<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">服饰<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
                             <div class="row">
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
                                         <h6>All Accessories</h6>
-                                        <li><a href="packagedfoods.html">Baby Food</a></li>
-                                        <li><a href="packagedfoods.html">Dessert Items</a></li>
-                                        <li><a href="packagedfoods.html">Biscuits</a></li>
-                                        <li><a href="packagedfoods.html">Breakfast Cereals</a></li>
-                                        <li><a href="packagedfoods.html"> Canned Food </a></li>
-                                        <li><a href="packagedfoods.html">Chocolates & Sweets</a></li>
+                                        <li><a href="packagedfoods.html">御寒棉服</a></li>
+                                        <li><a href="packagedfoods.html">时尚卫衣</a></li>
+                                        <li><a href="packagedfoods.html">潮流四脚</a></li>
+                                        <li><a href="packagedfoods.html">针织毛衣</a></li>
+                                        <li><a href="packagedfoods.html">四季雨衣</a></li>
                                     </ul>
                                 </div>
-
 
                             </div>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">窝垫<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
                             <div class="row">
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
                                         <h6>Tea & Coeffe</h6>
-                                        <li><a href="beverages.html">Green Tea</a></li>
-                                        <li><a href="beverages.html">Ground Coffee</a></li>
-                                        <li><a href="beverages.html">Herbal Tea</a></li>
-                                        <li><a href="beverages.html">Instant Coffee</a></li>
-                                        <li><a href="beverages.html"> Tea </a></li>
-                                        <li><a href="beverages.html">Tea Bags</a></li>
+                                        <li><a href="beverages.html">圆窝</a></li>
+                                        <li><a href="beverages.html">方窝</a></li>
+                                        <li><a href="beverages.html">封闭窝</a></li>
+                                        <li><a href="beverages.html">智能窝</a></li>
+                                        <li><a href="beverages.html">舒适毯子</a></li>
+                                        <li><a href="beverages.html">全可拆洗椭圆窝</a></li>
                                     </ul>
                                 </div>
 
                             </div>
                         </ul>
                     </li>
-                    <li><a href="gourmet.html">Gourmet</a></li>
-                    <li><a href="offers.html">Offers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -210,7 +200,7 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li><a href="../../../index1.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
             <li class="active">Login Page</li>
         </ol>
     </div>
@@ -222,9 +212,9 @@
         <h2>Login Form</h2>
 
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-            <form action="/user/checklogin">
-                <input type="email" placeholder="Email Address" required=" " >
-                <input type="password" placeholder="Password" required=" " >
+            <form action="/user/checklogin" method="post">
+                <input type="text" placeholder="tel" required=" " name="tel">
+                <input type="password" placeholder="Password" required=" " name="password">
                 <div class="forgot">
                     <a href="#">Forgot Password?</a>
                 </div>

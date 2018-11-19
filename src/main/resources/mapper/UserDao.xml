@@ -18,7 +18,8 @@
     <select id="queryByTel" resultType="com.fff.entity.User">
         SELECT
             user_name,
-            user_password
+            user_password,
+            user_tel
         FROM user_info
         WHERE user_tel = #{userTel};
     </select>

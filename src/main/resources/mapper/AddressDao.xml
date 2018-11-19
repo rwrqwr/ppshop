@@ -20,19 +20,19 @@
                               ELSE address_status
                               END);
     </update>
-
+    <delete id="deleteAddress">
+        DELETE FROM address_info WHERE address_id = #{addressId};
+    </delete>
 
     <select id="queryByUserTel" resultType="com.fff.entity.Address">
         SELECT
-            address_id,
-            address_ad,
-            address_status,
-            tel_phone,
-            receiver_name
-        FROM address_info
-        WHERE user_id = (SELECT user_id
-                         FROM user_info
-                         WHERE user_tel = #{userTel});
+        address_id,
+        address_ad,
+        address_status,
+        tel_phone,
+        receiver_name
+        FROM address_info INNER JOIN user_info ON address_info.user_id = user_info.user_id
+        WHERE user_tel = #{userTel};
     </select>
 
 
