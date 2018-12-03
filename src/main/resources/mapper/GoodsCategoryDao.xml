@@ -8,4 +8,7 @@
     <select id="queryCategory" resultType="com.fff.entity.GoodsCategory">
         SELECT category_name FROM goods_category;
     </select>
+    <select id="queryBigcate" resultType="com.fff.entity.GoodsCategory">
+        SELECT DISTINCT bigcate_name FROM goods_category ;
+    </select>
 </mapper>

@@ -11,4 +11,5 @@ public interface GoodsBrandDao {
 
     List<GoodsBrand> queryGoodBand();
 
+
 }

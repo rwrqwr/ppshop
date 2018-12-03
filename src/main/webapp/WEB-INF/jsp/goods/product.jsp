@@ -236,7 +236,13 @@
             <div class="categories">
                 <h2>Categories</h2>
                 <ul class="cate">
+                    <c:forEach items="bigCate" var="big">
+                        <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>${big.bigcateName}</a></li>
 
+                    </c:forEach>
+                    <c:forEach items="${categoryList}" var="cate">
+
+                    </c:forEach>
 
 
                     <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fruits And Vegetables</a></li>

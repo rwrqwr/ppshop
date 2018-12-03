@@ -8,6 +8,8 @@ import com.fff.entity.GoodsCategory;
 import com.fff.entity.GoodsSpu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -29,15 +31,18 @@ public class GoodsController {
     GoodsCategoryDao goodsCategoryDao;
 
     @RequestMapping("product")
-    public String re(){
+    public String re() {
         return "goods/product";
     }
 
-    @RequestMapping(value = "")
-    public String name(String name){
+    @RequestMapping(value = "{name}")
+    public String name(@PathVariable String name, Model model) {
         List<GoodsBrand> goodsBrandList = goodsBrandDao.queryGoodBand();
         List<GoodsCategory> goodsCategories = goodsCategoryDao.queryCategory();
-
+        List<GoodsCategory> bigCate = goodsCategoryDao.queryBigcate();
+        model.addAttribute("brandList");
+        model.addAttribute("categoryList");
+        model.addAttribute("bigCate");
 
         return "goods/product";
     }

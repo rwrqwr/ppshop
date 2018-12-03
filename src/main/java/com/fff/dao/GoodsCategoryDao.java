@@ -11,5 +11,6 @@ public interface GoodsCategoryDao {
 
     List<GoodsCategory> queryCategory();
 
+    List<GoodsCategory> queryBigcate();
 
 }

@@ -6,7 +6,18 @@ package com.fff.entity;
 public class GoodsCategory {
 
     private String id;
+
     private String categoryName;
+
+    private String bigcateName;
+
+    public String getBigcateName() {
+        return bigcateName;
+    }
+
+    public void setBigcateName(String bigcateName) {
+        this.bigcateName = bigcateName;
+    }
 
     public String getId() {
         return id;

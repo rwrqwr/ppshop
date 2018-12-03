@@ -145,7 +145,7 @@
                             <div class="row">
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
-                                        <h6>All Household</h6>
+                                        <h6>外用</h6>
                                         <li><a href="household.html">食盆</a></li>
                                         <li><a href="household.html">奶瓶</a></li>
                                         <li><a href="household.html">饮水器</a></li>
@@ -163,7 +163,7 @@
                             <div class="row">
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
-                                        <h6>Baby Care</h6>
+                                        <h6>吃的</h6>
                                         <li><a href="personalcare.html">全犬粮</a></li>
                                         <li><a href="personalcare.html">幼犬粮</a></li>
                                         <li><a href="personalcare.html">成犬粮</a></li>
@@ -181,7 +181,7 @@
                             <div class="row">
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
-                                        <h6>All Accessories</h6>
+                                        <h6>衣服</h6>
                                         <li><a href="packagedfoods.html">御寒棉服</a></li>
                                         <li><a href="packagedfoods.html">时尚卫衣</a></li>
                                         <li><a href="packagedfoods.html">潮流四脚</a></li>
@@ -199,7 +199,7 @@
                             <div class="row">
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
-                                        <h6>Tea & Coeffe</h6>
+                                        <h6>住房</h6>
                                         <li><a href="beverages.html">圆窝</a></li>
                                         <li><a href="beverages.html">方窝</a></li>
                                         <li><a href="beverages.html">封闭窝</a></li>
