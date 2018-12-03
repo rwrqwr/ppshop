@@ -8,6 +8,7 @@
     margin: 40px 0px;
     list-style-type: none;
     font-size: 1em;
+    cursor: pointer;
 }
 .per-main-display{
     margin-top: 40px;
@@ -34,7 +35,12 @@
     font-size: 18px;
     top: 20px;
 }
-.per-main-display .span-btn button:hover{
+.per-main-display button:hover{
     color: #cccccc;
 }
+.per-main-display .login-form-grids input{
+    margin: 10px !important;
+}
+.per-main-display .login-form-grids button{
 
+}

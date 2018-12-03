@@ -146,7 +146,7 @@
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
                                         <h6>All Household</h6>
-                                        <li><a href="household.html">食盆</a></li>
+                                        <li><a href="">食盆</a></li>
                                         <li><a href="household.html">奶瓶</a></li>
                                         <li><a href="household.html">饮水器</a></li>
                                         <li><a href="household.html">储粮桶</a></li>
@@ -234,30 +234,54 @@
 <div class="person-main container">
     <div class="row">
         <div class="per-main-ul col-md-2">
-            <ul>
-                <li id="li0" onmouseover="change(this)">收货地址</li>
-                <li id="li1" onmouseover="change(this)">购物车</li>
-                <li id="li2" onmouseover="change(this)">订单</li>
+            <ul class="nav nav-pills nav-stacked">
+                <li id="li0">收货地址</li>
+                <li id="li1">购物车</li>
+                <li id="li2">订单</li>
             </ul>
         </div>
 
-        <div class="per-main-display col-md-9">
+        <div id="des0" class="per-main-display col-md-10">
+            <button type="button" class="display-btn btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">添加地址</button>
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content login-form-grids animated wow slideInUp">
+                        <form method="get" action="addaddress">
+                            <input type="text" placeholder="收货地址" required="required" name="addressAd">
+                            <input type="text" placeholder="收货人电话" required="required" name="telPhone">
+                            <input type="text" placeholder="收货人姓名" required="required" name="receiverName">
+                            <button class="btn btn-default" type="submit">添加</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
             <ul>
                 <c:forEach items="${addressList}" var="detail">
                     <li>
                         <div class="col-md-9 detcontext">
-                            <span class="detail">收货地址：${detail.addressAd}</span></br>
+                            <span class="detail">收货地址：${detail.addressAd}</span>
+                            </br>
                             <span>收货人姓名：</span>${detail.receiverName}&nbsp;&nbsp;
                             <span>收货人电话：</span>${detail.telPhone}
                         </div>
-                        <div class="span-btn col-md-2">
+                        <div class="span-btn col-md-3">
                             <a href="deladdress?addressId=${detail.addressId}" ><button class="btn btn-default" type="submit">删除地址</button></a>
+                            <a href="todefault?addressId=${detail.addressId}"><button class="btn btn-default" type="submit">设为默认</button></a>
                         </div>
                     </li>
                 </c:forEach>
             </ul>
+            </div>
+        </div>
+        <div id="des1" class="per-main-display col-md-10">
 
         </div>
+        <div id="des2" class="per-main-display col-md-10">
+
+        </div>
+
+
     </div>
 
 </div>
@@ -319,17 +343,29 @@
 </script>
 <!-- //main slider-banner -->
 <script>
-    function change(e) {
-        e.style.display="";
-        $()
-        $('#li0').show();
-        switch (e)
-        {
-            case "li0":
-            case "li1":
-            case "li2":
-        }
-    }
+    jQuery(document).ready(function() {
+        $('#li0').click(
+            function () {
+               $('#des0').show();
+               $('#des1').hide();
+               $('#des2').hide();
+            }
+        )
+        $('#li1').click(
+            function () {
+                $('#des0').hide();
+                $('#des1').show();
+                $('#des2').hide();
+            }
+        )
+        $('#li2').click(
+            function () {
+                $('#des0').hide();
+                $('#des1').hide();
+                $('#des2').show();
+            }
+        )
+    });
 </script>
 </body>
 </html>

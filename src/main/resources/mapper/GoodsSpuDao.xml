@@ -7,4 +7,11 @@
     <select id="queryAllSpu" resultType="com.fff.entity.GoodsSpu">
         SELECT id,spu_no,goods_name,price,category_name,brand_name FROM goods_spu;
     </select>
+    <select id="queryByCategory" resultType="com.fff.entity.GoodsSpu">
+        SELECT goods_category.id,spu_no,goods_name,price FROM goods_spu
+            RIGHT JOIN goods_category ON goods_spu.category_id = goods_category.id
+        WHERE goods_category.category_name = #{categoryName};
+    </select>
+
+    <select id="queryByBrand" resultType="com.fff.entity.GoodsSpu"></select>
 </mapper>

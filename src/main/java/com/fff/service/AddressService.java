@@ -1,8 +1,6 @@
 package com.fff.service;
 
-import com.fff.dao.AddressDao;
 import com.fff.entity.Address;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -27,7 +25,7 @@ public interface AddressService {
      * @Param [address, userTel]
      * @return int
      **/
-    int addAddress(Address address,String userTel);
+    int addAddress(Address address,String userId);
 
     /**
      * @Author fsh
@@ -36,7 +34,7 @@ public interface AddressService {
      * @Param [addressId, userTel]
      * @return int
      **/
-    int updateAddress(String addressId,String userTel);
+    int updateAddress(String addressId,String userId);
 
     int deleteAddress(String addressId);
 }

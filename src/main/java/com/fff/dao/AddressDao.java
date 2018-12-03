@@ -26,7 +26,7 @@ public interface AddressDao {
      * @Param [address, userTel]
      * @return int
      **/
-    int addAddress(@Param("address") Address address,@Param("userTel") String userTel);
+    int addAddress(@Param("address") Address address,@Param("userId") String userId);
 
     /**
      * @Author fsh
@@ -35,7 +35,7 @@ public interface AddressDao {
      * @Param [address, userTel]
      * @return int
      **/
-    int updateAddress(@Param("addressId")String addressId,@Param("userTel")String userTel);
+    int updateAddress(@Param("addressId")String addressId,@Param("userId")String userId);
 
     int deleteAddress(String addressId);
 }

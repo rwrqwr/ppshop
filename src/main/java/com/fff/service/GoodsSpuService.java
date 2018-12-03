@@ -1,18 +1,20 @@
-package com.fff.dao;
+package com.fff.service;
 
 import com.fff.entity.GoodsSpu;
 
 import java.util.List;
 
 /**
- * Created by fsh on 2018/11/14.
+ * Created by fsh on 2018/12/3.
  */
-public interface GoodsSpuDao {
+public interface GoodsSpuService {
 
-    List<GoodsSpu> queryAllSpu();
+
+    List<GoodsSpu> queryAll();
 
     List<GoodsSpu> queryByCategory(String categoryName);
 
     List<GoodsSpu> queryByBrand(String brandName);
+
 
 }

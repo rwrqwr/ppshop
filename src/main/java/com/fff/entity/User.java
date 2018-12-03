@@ -4,17 +4,17 @@ package com.fff.entity;
  * Created by USER on 2018/10/27.
  */
 public class User {
-    private int userId;
+    private String userId;
     private String userName;
     private String userPassword;
     private String userEmail;
     private String userTel;
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

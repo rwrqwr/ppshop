@@ -5,17 +5,15 @@
 <mapper namespace="com.fff.dao.AddressDao">
     <insert id="addAddress">
         INSERT INTO address_info (address_ad, user_id, address_status, tel_phone, receiver_name)
-        VALUES (#{address.addressAd}, (SELECT user_id
-                                       FROM user_info
-                                       WHERE user_tel = #{userTel}), #{address.addressStatus}, #{address.telPhone},
+        VALUES (#{address.addressAd},#{userId}, #{address.addressStatus}, #{address.telPhone},
                 #{address.receiverName});
     </insert>
 
     <update id="updateAddress">
         UPDATE address_info
-        SET address_status = (CASE WHEN address_id = #{addressId} AND user_id = (SELECT user_id FROM user_info WHERE user_tel=#{userTel})
+        SET address_status = (CASE WHEN address_id = #{addressId} AND user_id = #{userId}
                                   THEN 1
-                              WHEN user_id = (SELECT user_id FROM user_info WHERE user_tel=#{userTel}) AND address_status = 1
+                              WHEN user_id = #{userId} AND address_status = 1
                                   THEN 0
                               ELSE address_status
                               END);

@@ -94,4 +94,18 @@ public class UserController {
         return "redirect:/user/person";
     }
 
+    @RequestMapping("/addaddress")
+    public String addaddress(Address address,HttpSession session){
+        User user = (User)session.getAttribute("user");
+        int stat = addressService.addAddress(address,user.getUserId());
+        return "redirect:/user/person";
+    }
+
+    @RequestMapping("/todefault")
+    public String todefault(String addressId,HttpSession session){
+        User user = (User)session.getAttribute("user");
+        addressService.updateAddress(addressId,user.getUserId());
+        return "redirect:/user/person";
+    }
+
 }

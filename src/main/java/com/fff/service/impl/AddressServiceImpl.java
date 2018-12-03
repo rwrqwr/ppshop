@@ -19,17 +19,23 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<Address> queryByUserTel(String userTel) {
-        return addressDao.queryByUserTel(userTel);
+        List<Address> addressList = addressDao.queryByUserTel(userTel);
+        for (Address address : addressList) {
+            if (address.getAddressStatus() == 1) {
+                address.setAddressAd(address.getAddressAd()+" (默认)");
+            }
+        }
+        return addressList;
     }
 
     @Override
-    public int addAddress(Address address, String userTel) {
-        return addressDao.addAddress(address,userTel);
+    public int addAddress(Address address, String userId) {
+        return addressDao.addAddress(address,userId);
     }
 
     @Override
-    public int updateAddress(String addressId, String userTel) {
-        return addressDao.updateAddress(addressId, userTel);
+    public int updateAddress(String addressId, String userId) {
+        return addressDao.updateAddress(addressId, userId);
     }
 
     @Override

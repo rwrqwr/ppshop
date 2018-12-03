@@ -129,7 +129,7 @@
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
                                         <h6>所有种类</h6>
-                                        <li><a href="groceries.html">猫</a></li>
+                                        <li><a href="/goods/product">猫</a></li>
                                         <li><a href="groceries.html">狗</a></li>
                                         <li><a href="groceries.html">鱼类</a></li>
                                         <li><a href="groceries.html">两栖</a></li>
