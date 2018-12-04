@@ -1,5 +1,6 @@
 package com.fff.dao;
 
+import com.fff.entity.Bigcate;
 import com.fff.entity.GoodsCategory;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public interface GoodsCategoryDao {
 
     List<GoodsCategory> queryCategory();
 
-    List<GoodsCategory> queryBigcate();
+    List<Bigcate> queryBigcate();
 
+    List<GoodsCategory> queryDeyilCategory(String idBid);
 }

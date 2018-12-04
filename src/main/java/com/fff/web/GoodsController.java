@@ -3,9 +3,12 @@ package com.fff.web;
 import com.fff.dao.GoodsBrandDao;
 import com.fff.dao.GoodsCategoryDao;
 import com.fff.dao.GoodsSpuDao;
+import com.fff.entity.Bigcate;
 import com.fff.entity.GoodsBrand;
 import com.fff.entity.GoodsCategory;
 import com.fff.entity.GoodsSpu;
+import com.fff.service.GoodsCategoryService;
+import com.fff.service.GoodsSpuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,27 +25,32 @@ import java.util.List;
 public class GoodsController {
 
     @Autowired
-    GoodsSpuDao goodsSpuDao;
+    GoodsSpuService goodsSpuService;
 
     @Autowired
-    GoodsBrandDao goodsBrandDao;
+    GoodsCategoryService goodsCategoryService;
 
-    @Autowired
-    GoodsCategoryDao goodsCategoryDao;
+//    @RequestMapping("product")
+//    public String re() {
+//        return "goods/product";
+//    }
 
-    @RequestMapping("product")
-    public String re() {
+    @RequestMapping("{name}")
+    public String name(@PathVariable("name") String name, Model model) {
+        System.out.println("========"+name);
+
+        List<GoodsSpu> goodsSpus = goodsSpuService.queryByCategory(name);
+        List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
+        System.out.println(goodsSpus.size()+"goodsspusize======");
+        System.out.println(bigcates.size()+"bigsize======");
+        model.addAttribute("goodsSpus",goodsSpus);
+        model.addAttribute("bigcates",bigcates);
         return "goods/product";
     }
 
-    @RequestMapping(value = "{name}")
-    public String name(@PathVariable String name, Model model) {
-        List<GoodsBrand> goodsBrandList = goodsBrandDao.queryGoodBand();
-        List<GoodsCategory> goodsCategories = goodsCategoryDao.queryCategory();
-        List<GoodsCategory> bigCate = goodsCategoryDao.queryBigcate();
-        model.addAttribute("brandList");
-        model.addAttribute("categoryList");
-        model.addAttribute("bigCate");
+
+    @RequestMapping("shoppingcate")
+    public String shoppingcat(){
 
         return "goods/product";
     }

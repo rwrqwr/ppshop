@@ -4,12 +4,14 @@ import com.fff.dao.GoodsSpuDao;
 import com.fff.entity.GoodsSpu;
 import com.fff.service.GoodsSpuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by fsh on 2018/12/3.
  */
+@Service
 public class GoodsSpuServiceImpl implements GoodsSpuService {
 
     @Autowired

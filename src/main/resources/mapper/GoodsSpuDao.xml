@@ -10,8 +10,10 @@
     <select id="queryByCategory" resultType="com.fff.entity.GoodsSpu">
         SELECT goods_category.id,spu_no,goods_name,price FROM goods_spu
             RIGHT JOIN goods_category ON goods_spu.category_id = goods_category.id
-        WHERE goods_category.category_name = #{categoryName};
+        WHERE goods_category.category_ename = #{categoryName};
     </select>
 
-    <select id="queryByBrand" resultType="com.fff.entity.GoodsSpu"></select>
+    <select id="queryByBrand" resultType="com.fff.entity.GoodsSpu">
+
+    </select>
 </mapper>

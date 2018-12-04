@@ -9,6 +9,8 @@ public class GoodsCategory {
 
     private String categoryName;
 
+    private String categoryEname;
+
     private String bigcateName;
 
     public String getBigcateName() {
@@ -25,6 +27,14 @@ public class GoodsCategory {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCategoryEname() {
+        return categoryEname;
+    }
+
+    public void setCategoryEname(String categoryEname) {
+        this.categoryEname = categoryEname;
     }
 
     public String getCategoryName() {

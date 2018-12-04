@@ -17,4 +17,5 @@ public interface GoodsSpuService {
     List<GoodsSpu> queryByBrand(String brandName);
 
 
+
 }

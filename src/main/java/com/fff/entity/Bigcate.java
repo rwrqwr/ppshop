@@ -7,23 +7,33 @@ import java.util.List;
  */
 public class Bigcate {
 
-    private int id;
+    private String idBig;
 
-    private List<GoodsBrand> goodsBrandList;
+    private String bigcateName;
 
-    public int getId() {
-        return id;
+    private List<GoodsCategory> categoryList;
+
+    public String getIdBig() {
+        return idBig;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdBig(String idBig) {
+        this.idBig = idBig;
     }
 
-    public List<GoodsBrand> getGoodsBrandList() {
-        return goodsBrandList;
+    public String getBigcateName() {
+        return bigcateName;
     }
 
-    public void setGoodsBrandList(List<GoodsBrand> goodsBrandList) {
-        this.goodsBrandList = goodsBrandList;
+    public void setBigcateName(String bigcateName) {
+        this.bigcateName = bigcateName;
+    }
+
+    public List<GoodsCategory> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<GoodsCategory> categoryList) {
+        this.categoryList = categoryList;
     }
 }

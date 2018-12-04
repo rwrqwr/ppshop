@@ -8,7 +8,10 @@
     <select id="queryCategory" resultType="com.fff.entity.GoodsCategory">
         SELECT category_name FROM goods_category;
     </select>
-    <select id="queryBigcate" resultType="com.fff.entity.GoodsCategory">
-        SELECT DISTINCT bigcate_name FROM goods_category ;
+    <select id="queryBigcate" resultType="com.fff.entity.Bigcate">
+        SELECT DISTINCT id_big,bigcate_name FROM goods_category ;
+    </select>
+    <select id="queryDeyilCategory" resultType="com.fff.entity.GoodsCategory">
+        SELECT id,category_name,category_ename FROM goods_category WHERE id_big = #{idBig};
     </select>
 </mapper>

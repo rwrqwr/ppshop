@@ -429,7 +429,7 @@ ul.multi-column-dropdown h6 {
     margin: .35em 0 0;
     background: url(../imgs/card.png) no-repeat 116px 9px;
 }
-#PPMiniCart form {
+/*#PPMiniCart form {
     width: 590px !important;
 	padding: 10px 20px 40px !important;
 	max-height:450px !important;
@@ -477,7 +477,7 @@ ul.multi-column-dropdown h6 {
 #PPMiniCart .minicart-footer {
     position: relative;
 	width: 80%;
-}
+}*/
 /*-- //cart --*/
 .column div.agile_top_brand_left_grid {
 	position: relative;
