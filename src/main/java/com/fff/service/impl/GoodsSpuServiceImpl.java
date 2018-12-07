@@ -32,4 +32,9 @@ public class GoodsSpuServiceImpl implements GoodsSpuService {
     public List<GoodsSpu> queryByBrand(String brandName) {
         return goodsSpuDao.queryByBrand(brandName);
     }
+
+    @Override
+    public GoodsSpu queryOneSpuByNo(String spuNo) {
+        return goodsSpuDao.queryOneSpuByNo(spuNo);
+    }
 }

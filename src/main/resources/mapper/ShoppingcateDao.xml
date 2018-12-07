@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fff.dao.ShoppingcateDao">
+    <insert id="insertNew">
+        insert into shoppingcate (user_id,spu_id,quantity,status) values (#{shoppingcate.userId},#{shoppingcate.spuId},#{shoppingcate.quanity},0);
+    </insert>
+    <update id="updateQu">
+        UPDATE shoppingcate SET quantity = quantity+#{quanity} where user_id = #{userId} and spu_id = #{spuNo}
+    </update>
+
+    <select id="queryByUserid" resultType="com.fff.entity.Shoppingcate">
+        SELECT goods_spu.goods_name,goods_spu.price,quantity from shoppingcate
+            LEFT JOIN goods_spu ON goods_spu.spu_no = shoppingcate.spu_id WHERE user_id = #{userId}
+    </select>
+    <select id="queryOne" resultType="com.fff.entity.Shoppingcate">
+        SELECT * FROM shoppingcate WHERE user_id = #{userId} and spu_id = #{spuNo}
+    </select>
+    <select id="queryByUser" resultType="com.fff.entity.Shoppingcate">
+        SELECT goods_spu.goods_name,goods_spu.price,quantity,spu_id from shoppingcate
+            LEFT JOIN goods_spu ON goods_spu.spu_no = shoppingcate.spu_id WHERE user_id = #{userId}
+    </select>
+</mapper>

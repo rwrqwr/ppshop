@@ -46,21 +46,44 @@
 <div class="agileits_header">
     <div class="container">
 
+        <%
+            User user = (User) request.getSession().getAttribute("user");
+            if(user == null){
+        %>
         <div class="agile-login">
             <ul>
-                <li><a href="registered"> 注册 </a></li>
-                <li><a href="login">登录</a></li>
+                <li><a href="/user/registered"> 注册 </a></li>
+                <li><a href="/user/login">登录</a></li>
                 <li><a href="contact.html">Help</a></li>
             </ul>
         </div>
+        <%
+        }else{
+        %>
+        <div class="agile-login">
+            <ul>
+                <li>欢迎,${sessionScope.user.userName}</li>
+                <li><a href="/user/person">个人中心</a></li>
+                <li><a href="/user/out">退出</a></li>
+            </ul>
+        </div>
+        <%
+            }
+        %>
+
+
         <div class="product_list_header">
-            <form action="#" method="post" class="last">
+            <%--<form action="#" method="post" class="last">
                 <input type="hidden" name="cmd" value="_cart">
-                <input type="hidden" name="display" value="1">
-                <button class="w3view-cart" type="submit" name="submit" value="">
-                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                <input type="hidden" name="display" value="1">--%>
+            <a href="/goods/cate">
+                <button class="w3view-cart" name="submit" value="">
+                    <i class="fa fa-cart-arrow-down" aria-hidden="true">
+
+                    </i>
                 </button>
-            </form>
+            </a>
+            <%--</form>--%>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -272,7 +295,7 @@
 </script>
 <!-- //here ends scrolling icon -->
 <script src="../../../static/js/minicart.min.js"></script>
-<script>
+<%--<script>
     // Mini Cart
     paypal.minicart.render({
         action: '#'
@@ -281,7 +304,7 @@
     if (~window.location.search.indexOf('reset=true')) {
         paypal.minicart.reset();
     }
-</script>
+</script>--%>
 <!-- main slider-banner -->
 <script src="../../../static/js/skdslider.min.js"></script>
 <link href="../../../static/css/skdslider.css" rel="stylesheet">

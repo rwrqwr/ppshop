@@ -13,6 +13,8 @@ public interface GoodsSpuDao {
 
     List<GoodsSpu> queryByCategory(String categoryName);
 
-    List<GoodsSpu> queryByBrand(String brandName);
+    List<GoodsSpu> queryByBrand(String brandId);
+
+    GoodsSpu queryOneSpuByNo(String spuNo);
 
 }

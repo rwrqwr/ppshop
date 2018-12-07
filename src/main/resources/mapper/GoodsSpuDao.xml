@@ -14,6 +14,10 @@
     </select>
 
     <select id="queryByBrand" resultType="com.fff.entity.GoodsSpu">
-
+        SELECT * FROM goods_spu WHERE brand_id = #{brandId}
+    </select>
+    <select id="queryOneSpuByNo" resultType="com.fff.entity.GoodsSpu">
+        select *
+        from goods_spu WHERE spu_no = #{spuNo};
     </select>
 </mapper>

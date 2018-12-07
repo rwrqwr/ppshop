@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>购物车</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -54,8 +54,8 @@
         %>
         <div class="agile-login">
             <ul>
-                <li><a href="/user/registered"> 注册 </a></li>
-                <li><a href="/user/login">登录</a></li>
+                <li><a href="registered"> 注册 </a></li>
+                <li><a href="login">登录</a></li>
                 <li><a href="contact.html">Help</a></li>
             </ul>
         </div>
@@ -65,8 +65,7 @@
         <div class="agile-login">
             <ul>
                 <li>欢迎,${sessionScope.user.userName}</li>
-                <li><a href="/user/person">个人中心</a></li>
-                <li><a href="/user/out">退出</a></li>
+                <li><a href="person">个人中心</a></li>
             </ul>
         </div>
         <%
@@ -75,17 +74,15 @@
 
 
         <div class="product_list_header">
-            <%--<form action="#" method="post" class="last">
+            <form action="#" method="post" class="last">
                 <input type="hidden" name="cmd" value="_cart">
-                <input type="hidden" name="display" value="1">--%>
-            <a href="/goods/cate">
+                <input type="hidden" name="display" value="1">
                 <button class="w3view-cart" name="submit" value="">
                     <i class="fa fa-cart-arrow-down" aria-hidden="true">
-
+                        <a href=""></a>
                     </i>
                 </button>
-            </a>
-            <%--</form>--%>
+            </form>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -137,8 +134,8 @@
                                         <li><a href="/goods/cat">猫</a></li>
                                         <li><a href="/goods/dog">狗</a></li>
                                         <li><a href="/goods/fish">鱼类</a></li>
-                                        <li><a href="/goods/amphibian">两栖</a></li>
-                                        <li><a href="/goods/other">奇奇怪怪类</a></li>
+                                        <li><a href="groceries.html">两栖</a></li>
+                                        <li><a href="groceries.html">奇奇怪怪类</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -151,10 +148,10 @@
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
                                         <h6>All Household</h6>
-                                        <li><a href="/goods/foodbowl">食盆</a></li>
-                                        <li><a href="/goods/bottle">奶瓶</a></li>
-                                        <li><a href="/goods/drinking">饮水器</a></li>
-                                        <li><a href="/goods/grainstoragbarrel">储粮桶</a></li>
+                                        <li><a href="household.html">食盆</a></li>
+                                        <li><a href="household.html">奶瓶</a></li>
+                                        <li><a href="household.html">饮水器</a></li>
+                                        <li><a href="household.html">储粮桶</a></li>
                                         <li><a href="household.html">航空箱</a></li>
                                         <li><a href="household.html">宠物包</a></li>
                                     </ul>
@@ -239,159 +236,74 @@
     <div class="container" style="margin-bottom: 40px">
         <div class="col-md-4 products-left">
             <div class="categories">
-                <h2>Categories</h2>
-                <ul class="cate">
 
-                <c:forEach items="${bigcates}" var="bigcate">
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>${bigcate.bigcateName}</a></li>
-                    <ul>
-                        <c:forEach items="${bigcate.categoryList}" var="datil">
-                            <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>${datil.categoryName}</a></li>
-                        </c:forEach>
-                    </ul>
-                </c:forEach>
-
-                <%--<li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fruits And Vegetables</a></li>
-                <ul>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Cuts & Sprouts</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Flowers</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fresh Herbs & Seasonings</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fresh Vegetables</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>International Vegetables</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Organic Fruits & Vegetables</a></li>
-                </ul>
-                <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Grocery & Staples</a></li>
-                <ul>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Dals & Pulses</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Dry Fruits</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Edible Oils & Ghee</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Flours & Sooji</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Masalas & Spices</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Organic Staples</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Rice & Rice Products</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Salt, Sugar & Jaggery</a></li>
-                </ul>
-                <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>PersonalCare</a></li>
-                <ul>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Baby Care</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Cosmetics</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Deos & Perfumes</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Skin Care</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sanitary Needs</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Oral Care</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Personal Hygiene</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Shaving Needs</a></li>
-                </ul>
-            </ul>--%>
             </div>
         </div>
         <div class="col-md-8 products-right">
 
-            <c:forEach items="${goodsSpus}" var="spu">
-
-                <div class="col-md-4 top_brand_left">
-                    <div class="hover14 column">
-                        <div class="agile_top_brand_left_grid">
-                            <div class="agile_top_brand_left_grid_pos">
-                                <img src="../../../static/imgs/temp/offer.png" alt=" " class="img-responsive">
-                            </div>
-                            <div class="agile_top_brand_left_grid1">
-                                <figure>
-                                    <div class="snipcart-item block">
-                                        <div class="snipcart-thumb">
-                                            <a href="single.html"><img title=" " alt=" " src="../../../static/imgs/temp/pf4.png"></a>
-                                            <p>${spu.goodsName}</p>
-                                            <h4>${spu.price}</h4>
-                                        </div>
-                                        <div class="snipcart-details top_brand_主页_details">
-                                            <form action="/goods/shoppingcate" method="post">
-                                                <fieldset>
-                                                    <input type="hidden" name="cmd" value="_cart">
-                                                    <input type="hidden" name="add" value="1">
-                                                    <input type="hidden" name="spuNo" value="${spu.spuNo}">
-                                                    <input type="hidden" name="item_name" value="${spu.goodsName}">
-                                                    <input type="hidden" name="amount" value="${spu.price}">
-                                                    <input type="hidden" name="quanity" value="1">
-                                                    <input type="hidden" name="discount_amount" value="">
-                                                    <input type="hidden" name="currency_code" value="USD">
-                                                    <input type="hidden" name="return" value=" ">
-                                                    <input type="hidden" name="cancel_return" value=" ">
-                                                    <input type="submit" name="submit" value="加入购物车" class="button">
-                                                </fieldset>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </c:forEach>
+        </div>
+    </div>
+    <!--- products --->
+    <!-- //footer -->
+    <div class="footer">
+        <div class="footer-copy">
+            <div class="container">
+                <p>fsh© 10210416522 计算机1165</p>
+            </div>
+        </div>
 
     </div>
-</div>
-<!--- products --->
-<!-- //footer -->
-<div class="footer">
-    <div class="footer-copy">
+    <div class="footer-botm">
         <div class="container">
-            <p>fsh© 10210416522 计算机1165</p>
+            <div class="w3layouts-foot">
+                <ul>
+                    <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div class="payment-w3ls">
+                <img src="../../../static/imgs/temp/card.png" alt=" " class="img-responsive">
+            </div>
+            <div class="clearfix"> </div>
         </div>
     </div>
+    <!-- //footer -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../../static/js/bootstrap.min.js"></script>
+    <!-- top-header and slider -->
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /*
+             var defaults = {
+             containerID: 'toTop', // fading element id
+             containerHoverID: 'toTopHover', // fading element hover id
+             scrollSpeed: 1200,
+             easingType: 'linear'
+             };
+             */
 
-</div>
-<div class="footer-botm">
-    <div class="container">
-        <div class="w3layouts-foot">
-            <ul>
-                <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-            </ul>
-        </div>
-        <div class="payment-w3ls">
-            <img src="../../../static/imgs/temp/card.png" alt=" " class="img-responsive">
-        </div>
-        <div class="clearfix"> </div>
-    </div>
-</div>
-<!-- //footer -->
-<!-- Bootstrap Core JavaScript -->
-<script src="../../../static/js/bootstrap.min.js"></script>
-<!-- top-header and slider -->
-<!-- here stars scrolling icon -->
-<script type="text/javascript">
-    $(document).ready(function() {
-        /*
-         var defaults = {
-         containerID: 'toTop', // fading element id
-         containerHoverID: 'toTopHover', // fading element hover id
-         scrollSpeed: 1200,
-         easingType: 'linear'
-         };
-         */
+            $().UItoTop({ easingType: 'easeOutQuart' });
 
-        $().UItoTop({ easingType: 'easeOutQuart' });
-
-    });
-</script>
-<!-- //here ends scrolling icon -->
-<script src="../../../static/js/minicart.min.js"></script>
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <script src="../../../static/js/minicart.min.js"></script>
     <%--将来实现--%>
-<%--<script>
-    // Mini Cart
-    paypal.minicart.render({
-        action: '/goods/shoppingcate'
-    });
-    var items = paypal.minicart.cart.items();
-    sessionStorage.setItem('items', items);
-    if (~window.location.search.indexOf('reset=true')) {
-        paypal.minicart.reset();
+    <%--<script>
+        // Mini Cart
+        paypal.minicart.render({
+            action: '/goods/shoppingcate'
+        });
+        var items = paypal.minicart.cart.items();
+        sessionStorage.setItem('items', items);
+        if (~window.location.search.indexOf('reset=true')) {
+            paypal.minicart.reset();
 
-    }
-</script>--%>
+        }
+    </script>--%>
     <%--<script>
         $(document).ready(function () {
             $('#test').click(function () {
@@ -400,20 +312,20 @@
             })
         })
     </script>--%>
-<!-- main slider-banner -->
-<script src="../../../static/js/skdslider.min.js"></script>
-<link href="../../../static/css/skdslider.css" rel="stylesheet">
-<script type="text/javascript">
-    jQuery(document).ready(function(){
-        jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
+    <!-- main slider-banner -->
+    <script src="../../../static/js/skdslider.min.js"></script>
+    <link href="../../../static/css/skdslider.css" rel="stylesheet">
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
 
-        jQuery('#responsive').change(function(){
-            $('#responsive_wrapper').width(jQuery(this).val());
+            jQuery('#responsive').change(function(){
+                $('#responsive_wrapper').width(jQuery(this).val());
+            });
+
         });
-
-    });
-</script>
-<!-- //main slider-banner -->
+    </script>
+    <!-- //main slider-banner -->
 </div>
 </body>
 </html>

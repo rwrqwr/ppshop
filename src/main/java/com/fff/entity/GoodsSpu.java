@@ -1,5 +1,7 @@
 package com.fff.entity;
 
+import java.math.BigDecimal;
+
 /**
  * Created by fsh on 2018/11/14.
  */
@@ -11,7 +13,7 @@ public class GoodsSpu {
 
     private String goodsName;
 
-    private String price;
+    private BigDecimal price;
 
     private String cateGoryId;
 
@@ -41,11 +43,11 @@ public class GoodsSpu {
         this.goodsName = goodsName;
     }
 
-    public String getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

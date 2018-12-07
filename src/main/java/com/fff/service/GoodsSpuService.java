@@ -16,6 +16,6 @@ public interface GoodsSpuService {
 
     List<GoodsSpu> queryByBrand(String brandName);
 
-
+    GoodsSpu queryOneSpuByNo(String spuNo);
 
 }

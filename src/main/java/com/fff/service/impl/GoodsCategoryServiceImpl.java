@@ -22,9 +22,6 @@ public class GoodsCategoryServiceImpl implements GoodsCategoryService {
     public List<Bigcate> queryBigcate() {
 
         List<Bigcate> bigcates =  goodsCategoryDao.queryBigcate();
-        for (Bigcate b: bigcates) {
-            System.out.println(b.getIdBig()+"---------------------");
-        }
         getdetil(bigcates);
         return bigcates;
     }

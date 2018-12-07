@@ -74,13 +74,17 @@
 
 
         <div class="product_list_header">
-            <form action="#" method="post" class="last">
+            <%--<form action="#" method="post" class="last">
                 <input type="hidden" name="cmd" value="_cart">
-                <input type="hidden" name="display" value="1">
-                <button class="w3view-cart" type="submit" name="submit" value="">
-                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                <input type="hidden" name="display" value="1">--%>
+            <a href="/goods/cate">
+                <button class="w3view-cart" name="submit" value="">
+                    <i class="fa fa-cart-arrow-down" aria-hidden="true">
+
+                    </i>
                 </button>
-            </form>
+            </a>
+            <%--</form>--%>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -130,7 +134,7 @@
                                     <ul class="multi-column-dropdown">
                                         <h6>所有种类</h6>
                                         <li><a href="/goods/cat">猫</a></li>
-                                        <li><a href="groceries.html">狗</a></li>
+                                        <li><a href="/goods/dog">狗</a></li>
                                         <li><a href="groceries.html">鱼类</a></li>
                                         <li><a href="groceries.html">两栖</a></li>
                                         <li><a href="groceries.html">奇奇怪怪类</a></li>

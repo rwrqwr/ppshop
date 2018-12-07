@@ -1,8 +1,10 @@
 package com.fff.web;
 
 import com.fff.entity.Address;
+import com.fff.entity.Shoppingcate;
 import com.fff.entity.User;
 import com.fff.service.AddressService;
+import com.fff.service.ShoppingcateService;
 import com.fff.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by USER on 2018/10/29.
@@ -27,6 +30,9 @@ public class UserController {
 
     @Autowired
     AddressService addressService;
+
+    @Autowired
+    ShoppingcateService shoppingcateService;
 
     @RequestMapping("login")
     public String login(){
@@ -50,6 +56,7 @@ public class UserController {
     @RequestMapping("out")
     public String out(HttpSession session){
         session.removeAttribute("user");
+        session.removeAttribute("shoppingcate");
         return "redirect:/index1.jsp";
     }
     /**
@@ -65,6 +72,14 @@ public class UserController {
         User user = userService.checkLogin(tel);
         if(user !=null && user.getUserPassword().equals(password)){
             session.setAttribute("user",user);
+            Map<String,Shoppingcate> shoppingcateMap = shoppingcateService.queryByUser(user.getUserId());
+            if (shoppingcateMap == null){
+                System.out.println("usershop为空");
+            }
+            session.setAttribute("shoppingcate",shoppingcateMap);
+            if (session.getAttribute("shoppingcate") == null){
+                System.out.println("kongkongm=======");
+            }
             return "redirect:/index1.jsp";
         }
         return "user/login";
