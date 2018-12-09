@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.fff.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: USER
@@ -124,106 +125,25 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="../../../index1.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Groceries<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>All Groceries</h6>
-                                        <li><a href="groceries.html">Dals & Pulses</a></li>
-                                        <li><a href="groceries.html">Almonds</a></li>
-                                        <li><a href="groceries.html">Cashews</a></li>
-                                        <li><a href="groceries.html">Dry Fruit</a></li>
-                                        <li><a href="groceries.html"> Mukhwas </a></li>
-                                        <li><a href="groceries.html">Rice & Rice Products</a></li>
-                                    </ul>
+                    <c:forEach items="${bigcates}" var="bigcate">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${bigcate.bigcateName}<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <div class="row">
+                                    <div class="multi-gd-img">
+                                        <ul class="multi-column-dropdown">
+                                            <h6>${bigcate.bigcateName}</h6>
+                                            <c:forEach items="${bigcate.categoryList}" var="cate">
+                                                <li><a href="/goods/${cate.categoryEname}">${cate.categoryName}</a></li>
+                                            </c:forEach>
+
+                                        </ul>
+                                    </div>
                                 </div>
+                            </ul>
+                        </li>
+                    </c:forEach>
 
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Household<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>All Household</h6>
-                                        <li><a href="household.html">Cookware</a></li>
-                                        <li><a href="household.html">Dust Pans</a></li>
-                                        <li><a href="household.html">Scrubbers</a></li>
-                                        <li><a href="household.html">Dust Cloth</a></li>
-                                        <li><a href="household.html"> Mops </a></li>
-                                        <li><a href="household.html">Kitchenware</a></li>
-                                    </ul>
-                                </div>
-
-
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Personal Care<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Baby Care</h6>
-                                        <li><a href="personalcare.html">Baby Soap</a></li>
-                                        <li><a href="personalcare.html">Baby Care Accessories</a></li>
-                                        <li><a href="personalcare.html">Baby Oil & Shampoos</a></li>
-                                        <li><a href="personalcare.html">Baby Creams & Lotion</a></li>
-                                        <li><a href="personalcare.html"> Baby Powder</a></li>
-                                        <li><a href="personalcare.html">Diapers & Wipes</a></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Packaged Foods<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>All Accessories</h6>
-                                        <li><a href="packagedfoods.html">Baby Food</a></li>
-                                        <li><a href="packagedfoods.html">Dessert Items</a></li>
-                                        <li><a href="packagedfoods.html">Biscuits</a></li>
-                                        <li><a href="packagedfoods.html">Breakfast Cereals</a></li>
-                                        <li><a href="packagedfoods.html"> Canned Food </a></li>
-                                        <li><a href="packagedfoods.html">Chocolates & Sweets</a></li>
-                                    </ul>
-                                </div>
-
-
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Tea & Coeffe</h6>
-                                        <li><a href="beverages.html">Green Tea</a></li>
-                                        <li><a href="beverages.html">Ground Coffee</a></li>
-                                        <li><a href="beverages.html">Herbal Tea</a></li>
-                                        <li><a href="beverages.html">Instant Coffee</a></li>
-                                        <li><a href="beverages.html"> Tea </a></li>
-                                        <li><a href="beverages.html">Tea Bags</a></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </ul>
-                    </li>
-                    <li><a href="gourmet.html">Gourmet</a></li>
-                    <li><a href="offers.html">Offers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -243,51 +163,40 @@
 <!-- //breadcrumbs -->
 <div class="products">
     <div class="container">
+
         <div class="agileinfo_single">
 
             <div class="col-md-4 agileinfo_single_left">
-                <img id="example" src="images/si1.jpg" alt=" " class="img-responsive">
+                <img id="example" src="../../../static/imgs/temp/si1.jpg" alt=" " class="img-responsive">
             </div>
             <div class="col-md-8 agileinfo_single_right">
-                <h2>KHARAMORRA Khakra - Hariyali</h2>
-                <div class="rating1">
-						<span class="starRating">
-							<input id="rating5" type="radio" name="rating" value="5">
-							<label for="rating5">5</label>
-							<input id="rating4" type="radio" name="rating" value="4">
-							<label for="rating4">4</label>
-							<input id="rating3" type="radio" name="rating" value="3" checked="">
-							<label for="rating3">3</label>
-							<input id="rating2" type="radio" name="rating" value="2">
-							<label for="rating2">2</label>
-							<input id="rating1" type="radio" name="rating" value="1">
-							<label for="rating1">1</label>
-						</span>
-                </div>
+                <h2>${spu.goodsName}</h2>
                 <div class="w3agile_description">
-                    <h4>Description :</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                        officia deserunt mollit anim id est laborum.Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur.</p>
+                    <h4>库存 : &nbsp;&nbsp;${spu.spuQuanity}</h4>
+                </div>
+
+                <div class="w3agile_description">
+                    <h4>描述 :</h4>
+                    <p>${spu.description}</p>
                 </div>
                 <div class="snipcart-item block">
                     <div class="snipcart-thumb agileinfo_single_right_snipcart">
-                        <h4 class="m-sing">$21.00 <span>$25.00</span></h4>
+                        <h4 class="m-sing">${spu.price} <span>$25.00</span></h4>
                     </div>
                     <div class="snipcart-details agileinfo_single_right_details">
-                        <form action="#" method="post">
+                        <form action="/goods/shoppingcate" method="post">
                             <fieldset>
                                 <input type="hidden" name="cmd" value="_cart">
                                 <input type="hidden" name="add" value="1">
-                                <input type="hidden" name="business" value=" ">
-                                <input type="hidden" name="item_name" value="pulao basmati rice">
-                                <input type="hidden" name="amount" value="21.00">
-                                <input type="hidden" name="discount_amount" value="1.00">
+                                <input type="hidden" name="spuNo" value="${spu.spuNo}">
+                                <input type="hidden" name="item_name" value="${spu.goodsName}">
+                                <input type="hidden" name="amount" value="${spu.price}">
+                                <input type="hidden" name="quanity" value="1">
+                                <input type="hidden" name="discount_amount" value="">
                                 <input type="hidden" name="currency_code" value="USD">
                                 <input type="hidden" name="return" value=" ">
                                 <input type="hidden" name="cancel_return" value=" ">
-                                <input type="submit" name="submit" value="Add to cart" class="button">
+                                <input type="submit" name="submit" value="加入购物车" class="button">
                             </fieldset>
                         </form>
                     </div>
@@ -484,56 +393,9 @@
 <!-- //new -->
 <!-- //footer -->
 <div class="footer">
-    <div class="container">
-        <div class="w3_footer_grids">
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Contact</h3>
-
-                <ul class="address">
-                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Information</h3>
-                <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contact.html">Contact Us</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="short-codes.html">Short Codes</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.html">FAQ's</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Special Products</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Category</h3>
-                <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Packaged Foods</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="beverages.html">Beverages</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 w3_footer_grid">
-                <h3>Profile</h3>
-                <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Store</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="checkout.html">购物车</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="登录.html">登录</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.html">注册</a></li>
-                </ul>
-
-
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>
-
     <div class="footer-copy">
-
         <div class="container">
-            <p>Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="fsh">fsh</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+            <p>fsh© 10210416522 计算机1165</p>
         </div>
     </div>
 

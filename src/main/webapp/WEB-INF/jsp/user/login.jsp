@@ -1,4 +1,5 @@
-<%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.fff.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: USER
   Date: 2018/11/6
@@ -54,6 +55,7 @@
             <ul>
                 <li><a href="/user/registered"> 注册 </a></li>
                 <li><a href="/user/login">登录</a></li>
+                <li><a href="contact.html">Help</a></li>
                 <li><a href="contact.html">Help</a></li>
             </ul>
         </div>
@@ -125,7 +127,25 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="../../../index1.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
-                    <li class="dropdown">
+                    <c:forEach items="${bigcates}" var="bigcate">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${bigcate.bigcateName}<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <div class="row">
+                                    <div class="multi-gd-img">
+                                        <ul class="multi-column-dropdown">
+                                            <h6>${bigcate.bigcateName}</h6>
+                                            <c:forEach items="${bigcate.categoryList}" var="cate">
+                                                <li><a href="/goods/${cate.categoryEname}">${cate.categoryName}</a></li>
+                                            </c:forEach>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                    </c:forEach>
+                    <%--<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">可爱的宠物<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
                             <div class="row">
@@ -214,7 +234,7 @@
 
                             </div>
                         </ul>
-                    </li>
+                    </li>--%>
                 </ul>
             </div>
         </nav>
@@ -227,7 +247,7 @@
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href="../../../index1.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Login Page</li>
+            <li class="active">商品</li>
         </ol>
     </div>
 </div>

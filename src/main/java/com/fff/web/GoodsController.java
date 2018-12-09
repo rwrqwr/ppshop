@@ -55,8 +55,8 @@ public class GoodsController {
         urlname = name;
         List<GoodsSpu> goodsSpus = goodsSpuService.queryByCategory(name);
         List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
-        model.addAttribute("goodsSpus",goodsSpus);
         model.addAttribute("bigcates",bigcates);
+        model.addAttribute("goodsSpus",goodsSpus);
         return "goods/product";
     }
 
@@ -130,6 +130,15 @@ public class GoodsController {
         session.setAttribute("shoppingcate",shoppingcateMap);
         //System.out.println(user.getUserId()+"=====userid");
         return "redirect:/goods/"+urlname;
+    }
+
+    @RequestMapping("single")
+    public String getSingle(String spuNo,Model model){
+
+        GoodsSpu goodsSpu = goodsSpuService.queryOneSpuByNo(spuNo);
+        model.addAttribute("spu",goodsSpu);
+
+        return "/goods/single";
     }
 
 

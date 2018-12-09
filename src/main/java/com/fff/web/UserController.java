@@ -1,9 +1,11 @@
 package com.fff.web;
 
 import com.fff.entity.Address;
+import com.fff.entity.Bigcate;
 import com.fff.entity.Shoppingcate;
 import com.fff.entity.User;
 import com.fff.service.AddressService;
+import com.fff.service.GoodsCategoryService;
 import com.fff.service.ShoppingcateService;
 import com.fff.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,9 @@ public class UserController {
     @Autowired
     ShoppingcateService shoppingcateService;
 
+    @Autowired
+    GoodsCategoryService goodsCategoryService;
+
     @RequestMapping("login")
     public String login(){
         return "user/login";
@@ -48,6 +53,8 @@ public class UserController {
     public String person(Model model,HttpSession session){
         User user = (User) session.getAttribute("user");
         List<Address> list = addressService.queryByUserTel(user.getUserTel());
+        List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
+        model.addAttribute("bigcates",bigcates);
         System.out.println("person======");
         model.addAttribute("addressList",list);
         return "user/person";

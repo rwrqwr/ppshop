@@ -19,6 +19,10 @@ public class GoodsSpu {
 
     private String brandId;
 
+    private String description;
+
+    private Integer spuQuanity;
+
     public String getId() {
         return id;
     }
@@ -65,5 +69,21 @@ public class GoodsSpu {
 
     public void setBrandId(String brandId) {
         this.brandId = brandId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getSpuQuanity() {
+        return spuQuanity;
+    }
+
+    public void setSpuQuanity(Integer spuQuanity) {
+        this.spuQuanity = spuQuanity;
     }
 }

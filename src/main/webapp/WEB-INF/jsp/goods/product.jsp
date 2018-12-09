@@ -127,96 +127,25 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="../../../index1.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">可爱的宠物<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>所有种类</h6>
-                                        <li><a href="/goods/cat">猫</a></li>
-                                        <li><a href="/goods/dog">狗</a></li>
-                                        <li><a href="/goods/fish">鱼类</a></li>
-                                        <li><a href="/goods/amphibian">两栖</a></li>
-                                        <li><a href="/goods/other">奇奇怪怪类</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">宠物用具<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>All Household</h6>
-                                        <li><a href="/goods/foodbowl">食盆</a></li>
-                                        <li><a href="/goods/bottle">奶瓶</a></li>
-                                        <li><a href="/goods/drinking">饮水器</a></li>
-                                        <li><a href="/goods/grainstoragbarrel">储粮桶</a></li>
-                                        <li><a href="household.html">航空箱</a></li>
-                                        <li><a href="household.html">宠物包</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">给宠物的吃的<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Baby Care</h6>
-                                        <li><a href="personalcare.html">全犬粮</a></li>
-                                        <li><a href="personalcare.html">幼犬粮</a></li>
-                                        <li><a href="personalcare.html">成犬粮</a></li>
-                                        <li><a href="personalcare.html">老犬粮</a></li>
-                                        <li><a href="personalcare.html">罐头</a></li>
-                                        <li><a href="personalcare.html">饼干</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">服饰<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>All Accessories</h6>
-                                        <li><a href="packagedfoods.html">御寒棉服</a></li>
-                                        <li><a href="packagedfoods.html">时尚卫衣</a></li>
-                                        <li><a href="packagedfoods.html">潮流四脚</a></li>
-                                        <li><a href="packagedfoods.html">针织毛衣</a></li>
-                                        <li><a href="packagedfoods.html">四季雨衣</a></li>
-                                    </ul>
-                                </div>
+                    <c:forEach items="${bigcates}" var="bigcate">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${bigcate.bigcateName}<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <div class="row">
+                                    <div class="multi-gd-img">
+                                        <ul class="multi-column-dropdown">
+                                            <h6>${bigcate.bigcateName}</h6>
+                                            <c:forEach items="${bigcate.categoryList}" var="cate">
+                                                <li><a href="/goods/${cate.categoryEname}">${cate.categoryName}</a></li>
+                                            </c:forEach>
 
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">窝垫<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Tea & Coeffe</h6>
-                                        <li><a href="beverages.html">圆窝</a></li>
-                                        <li><a href="beverages.html">方窝</a></li>
-                                        <li><a href="beverages.html">封闭窝</a></li>
-                                        <li><a href="beverages.html">智能窝</a></li>
-                                        <li><a href="beverages.html">舒适毯子</a></li>
-                                        <li><a href="beverages.html">全可拆洗椭圆窝</a></li>
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>
+                            </ul>
+                        </li>
+                    </c:forEach>
 
-                            </div>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -251,38 +180,6 @@
                     </ul>
                 </c:forEach>
 
-                <%--<li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fruits And Vegetables</a></li>
-                <ul>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Cuts & Sprouts</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Flowers</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fresh Herbs & Seasonings</a></li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Fresh Vegetables</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>International Vegetables</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Organic Fruits & Vegetables</a></li>
-                </ul>
-                <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Grocery & Staples</a></li>
-                <ul>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Dals & Pulses</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Dry Fruits</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Edible Oils & Ghee</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Flours & Sooji</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Masalas & Spices</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Organic Staples</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Rice & Rice Products</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Salt, Sugar & Jaggery</a></li>
-                </ul>
-                <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>PersonalCare</a></li>
-                <ul>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Baby Care</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Cosmetics</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Deos & Perfumes</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Skin Care</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sanitary Needs</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Oral Care</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Personal Hygiene</a> </li>
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>Shaving Needs</a></li>
-                </ul>
-            </ul>--%>
             </div>
         </div>
         <div class="col-md-8 products-right">
@@ -299,7 +196,7 @@
                                 <figure>
                                     <div class="snipcart-item block">
                                         <div class="snipcart-thumb">
-                                            <a href="single.html"><img title=" " alt=" " src="../../../static/imgs/temp/pf4.png"></a>
+                                            <a href="/goods/single?spuNo=${spu.spuNo}"><img title=" " alt=" " src="../../../static/imgs/temp/pf4.png"></a>
                                             <p>${spu.goodsName}</p>
                                             <h4>${spu.price}</h4>
                                         </div>

@@ -124,7 +124,27 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="../../../index1.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
-                    <li class="dropdown">
+
+                    <c:forEach items="${bigcates}" var="bigcate">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${bigcate.bigcateName}<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <div class="row">
+                                    <div class="multi-gd-img">
+                                        <ul class="multi-column-dropdown">
+                                            <h6>${bigcate.bigcateName}</h6>
+                                            <c:forEach items="${bigcate.categoryList}" var="cate">
+                                                <li><a href="/goods/${cate.categoryEname}">${cate.categoryName}</a></li>
+                                            </c:forEach>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                    </c:forEach>
+
+                    <%--<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">可爱的宠物<b class="caret"></b></a>
                         <ul class="dropdown-menu multi-column columns-3">
                             <div class="row">
@@ -134,8 +154,8 @@
                                         <li><a href="/goods/cat">猫</a></li>
                                         <li><a href="/goods/dog">狗</a></li>
                                         <li><a href="/goods/fish">鱼类</a></li>
-                                        <li><a href="groceries.html">两栖</a></li>
-                                        <li><a href="groceries.html">奇奇怪怪类</a></li>
+                                        <li><a href="/goods/amphibian">两栖</a></li>
+                                        <li><a href="/goods/other">奇奇怪怪类</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -148,12 +168,12 @@
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
                                         <h6>All Household</h6>
-                                        <li><a href="household.html">食盆</a></li>
-                                        <li><a href="household.html">奶瓶</a></li>
-                                        <li><a href="household.html">饮水器</a></li>
-                                        <li><a href="household.html">储粮桶</a></li>
-                                        <li><a href="household.html">航空箱</a></li>
-                                        <li><a href="household.html">宠物包</a></li>
+                                        <li><a href="/goods/foodbowl">食盆</a></li>
+                                        <li><a href="/goods/bottle">奶瓶</a></li>
+                                        <li><a href="/goods/drinking">饮水器</a></li>
+                                        <li><a href="/goods/grainstoragbarrel">储粮桶</a></li>
+                                        <li><a href="/goods/flightcase">航空箱</a></li>
+                                        <li><a href="/goods/petbag">宠物包</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -166,12 +186,12 @@
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
                                         <h6>Baby Care</h6>
-                                        <li><a href="personalcare.html">全犬粮</a></li>
-                                        <li><a href="personalcare.html">幼犬粮</a></li>
-                                        <li><a href="personalcare.html">成犬粮</a></li>
-                                        <li><a href="personalcare.html">老犬粮</a></li>
-                                        <li><a href="personalcare.html">罐头</a></li>
-                                        <li><a href="personalcare.html">饼干</a></li>
+                                        <li><a href="/goods/wholedogfood">全犬粮</a></li>
+                                        <li><a href="/goods/puppiesfood">幼犬粮</a></li>
+                                        <li><a href="/goods/adultdogfood">成犬粮</a></li>
+                                        <li><a href="/goods/olddogfood">老犬粮</a></li>
+                                        <li><a href="/goods/can">罐头</a></li>
+                                        <li><a href="/goods/biscuits">饼干</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -184,7 +204,7 @@
                                 <div class="multi-gd-img">
                                     <ul class="multi-column-dropdown">
                                         <h6>All Accessories</h6>
-                                        <li><a href="packagedfoods.html">御寒棉服</a></li>
+                                        <li><a href="/goods/marmcottonclothing">御寒棉服</a></li>
                                         <li><a href="packagedfoods.html">时尚卫衣</a></li>
                                         <li><a href="packagedfoods.html">潮流四脚</a></li>
                                         <li><a href="packagedfoods.html">针织毛衣</a></li>
@@ -213,7 +233,7 @@
 
                             </div>
                         </ul>
-                    </li>
+                    </li>--%>
                 </ul>
             </div>
         </nav>
