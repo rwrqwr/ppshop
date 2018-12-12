@@ -92,7 +92,7 @@
 <div class="logo_products">
     <div class="container">
         <div class="w3ls_logo_products_left">
-            <h1><a href="../../../index1.jsp">宠物商店</a></h1>
+            <h1><a href="../index.jsp">宠物商店</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
@@ -123,7 +123,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../../../index1.jsp" class="act">主页</a></li>
+                    <li class="active"><a href="../index.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">可爱的宠物<b class="caret"></b></a>
@@ -226,7 +226,7 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="../../../index1.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li><a href="../index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
             <li class="active">Register Page</li>
         </ol>
     </div>

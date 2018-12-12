@@ -17,7 +17,7 @@ public class Shoppingcate {
 
     private String goodsName;
 
-    private int quanity;
+    private int quantity;
 
     private int status;
 
@@ -61,12 +61,12 @@ public class Shoppingcate {
         this.spuId = spuId;
     }
 
-    public int getQuanity() {
-        return quanity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public int getStatus() {

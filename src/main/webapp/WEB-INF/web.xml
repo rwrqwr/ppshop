@@ -27,8 +27,4 @@
   </servlet-mapping>
 
   
-  <welcome-file-list>
-    <welcome-file>index1.jsp</welcome-file>
-  </welcome-file-list>
-  
 </web-app>

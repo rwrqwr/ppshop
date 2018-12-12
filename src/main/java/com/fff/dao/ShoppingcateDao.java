@@ -22,6 +22,14 @@ public interface ShoppingcateDao {
     @MapKey("spuId")
     Map<String, Shoppingcate> queryByUser(String userId);
 
-    int updateQu(@Param("userId") String userId,@Param("spuNo") String spuNo,@Param("quanity") Integer quanity);
+    int updateQu(@Param("userId") String userId,@Param("spuNo") String spuNo,@Param("quantity") Integer quantity);
+
+    int delete(String shoppingId);
+
+    int updateById(String shoppingId, Integer quantity);
+
+    int queryQuantity(String shoppingId);
+
+    int queryQuantityByUserId(String userId,String spuNo);
 
 }

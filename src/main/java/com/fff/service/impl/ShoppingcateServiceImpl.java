@@ -41,8 +41,28 @@ public class ShoppingcateServiceImpl implements ShoppingcateService {
     }
 
     @Override
-    public int updateQu(String userId, String spuNo,Integer quanity) {
-        return shoppingcateDao.updateQu(userId,spuNo,quanity);
+    public int updateQu(String userId, String spuNo,Integer quantity) {
+        return shoppingcateDao.updateQu(userId,spuNo,quantity);
+    }
+
+    @Override
+    public int updateById(String shoppingId, Integer quantity) {
+        return shoppingcateDao.updateById(shoppingId,quantity);
+    }
+
+    @Override
+    public int delete(String shoppingId) {
+        return shoppingcateDao.delete(shoppingId);
+    }
+
+    @Override
+    public int queryQuantity(String shoppingId) {
+        return shoppingcateDao.queryQuantity(shoppingId);
+    }
+
+    @Override
+    public int queryQuantityByUserId(String userId, String spuNo) {
+        return shoppingcateDao.queryQuantityByUserId(userId,spuNo);
     }
 
 }

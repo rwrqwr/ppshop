@@ -71,11 +71,7 @@
             }
         %>
 
-
         <div class="product_list_header">
-            <%--<form action="#" method="post" class="last">
-                <input type="hidden" name="cmd" value="_cart">
-                <input type="hidden" name="display" value="1">--%>
             <a href="/goods/cate">
                 <button class="w3view-cart" name="submit" value="">
                     <i class="fa fa-cart-arrow-down" aria-hidden="true">
@@ -83,7 +79,6 @@
                     </i>
                 </button>
             </a>
-            <%--</form>--%>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -92,7 +87,7 @@
 <div class="logo_products">
     <div class="container">
         <div class="w3ls_logo_products_left">
-            <h1><a href="../../../index1.jsp">宠物商店</a></h1>
+            <h1><a href="/">宠物商店</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
@@ -123,7 +118,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../../../index1.jsp" class="act">主页</a></li>
+                    <li class="active"><a href="/" class="act">主页</a></li>
                     <!-- Mega Menu -->
                     <c:forEach items="${bigcates}" var="bigcate">
                         <li class="dropdown">
@@ -155,7 +150,7 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.html"><span class="glyphicon glyphicon-主页" aria-hidden="true"></span>主页</a></li>
+            <li><a href="/"><span class="glyphicon glyphicon-主页" aria-hidden="true"></span>主页</a></li>
             <li class="active">Singlepage</li>
         </ol>
     </div>
@@ -172,7 +167,7 @@
             <div class="col-md-8 agileinfo_single_right">
                 <h2>${spu.goodsName}</h2>
                 <div class="w3agile_description">
-                    <h4>库存 : &nbsp;&nbsp;${spu.spuQuanity}</h4>
+                    <h4>库存 : &nbsp;&nbsp;${spu.spuQuantity}</h4>
                 </div>
 
                 <div class="w3agile_description">
@@ -184,19 +179,15 @@
                         <h4 class="m-sing">${spu.price} <span>$25.00</span></h4>
                     </div>
                     <div class="snipcart-details agileinfo_single_right_details">
-                        <form action="/goods/shoppingcate" method="post">
+                        <form >
                             <fieldset>
-                                <input type="hidden" name="cmd" value="_cart">
-                                <input type="hidden" name="add" value="1">
-                                <input type="hidden" name="spuNo" value="${spu.spuNo}">
+                                <input id="spuNo" type="hidden" name="spuNo" value="${spu.spuNo}">
                                 <input type="hidden" name="item_name" value="${spu.goodsName}">
                                 <input type="hidden" name="amount" value="${spu.price}">
-                                <input type="hidden" name="quanity" value="1">
+                                <%--<input id="spuQ" type="hidden" name="quanity" value="1">--%>
                                 <input type="hidden" name="discount_amount" value="">
-                                <input type="hidden" name="currency_code" value="USD">
-                                <input type="hidden" name="return" value=" ">
-                                <input type="hidden" name="cancel_return" value=" ">
-                                <input type="submit" name="submit" value="加入购物车" class="button">
+                                <input id="spuQ" type="number" name="quantity" min="1" value="">
+                                <input type="button" name="submit" value="加入购物车" class="button" onclick="check()" style="margin-top:20px">
                             </fieldset>
                         </form>
                     </div>
@@ -436,29 +427,7 @@
 
     });
 </script>
-<!-- //here ends scrolling icon -->
-<script src="../../../static/js/minicart.min.js"></script>
-<%--将来实现--%>
-<%--<script>
-    // Mini Cart
-    paypal.minicart.render({
-        action: '/goods/shoppingcate'
-    });
-    var items = paypal.minicart.cart.items();
-    sessionStorage.setItem('items', items);
-    if (~window.location.search.indexOf('reset=true')) {
-        paypal.minicart.reset();
 
-    }
-</script>--%>
-<%--<script>
-    $(document).ready(function () {
-        $('#test').click(function () {
-            //alert("fad");
-            alert(items[0].get("item_name"));
-        })
-    })
-</script>--%>
 <!-- main slider-banner -->
 <script src="../../../static/js/skdslider.min.js"></script>
 <link href="../../../static/css/skdslider.css" rel="stylesheet">
@@ -473,6 +442,34 @@
     });
 </script>
 <!-- //main slider-banner -->
+<script type="text/javascript">
+    function check() {
+        var spuQ =  document.getElementById("spuQ").value;
+        if (spuQ > ${spu.spuQuantity}){
+            alert('库存不够');
+            document.getElementById("spuQ").value="";
+            return;
+        }
+        aj();
+    }
+    function aj() {
+        var spuNo =  document.getElementById("spuNo").value;
+        var spuQ =  document.getElementById("spuQ").value;
+        $.ajax({
+            type:'post',
+            url:"/ajax/singleadd",
+            data:{
+                spuNo : spuNo,
+                spuQ : spuQ
+            },
+            datatype:'json',
+            success:function(data){
+                alert('添加成功')
+            }
+        });
+        document.getElementById("spuQ").value="";
+    }
+</script>
 
 </body>
 </html>

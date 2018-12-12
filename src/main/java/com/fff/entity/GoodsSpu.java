@@ -21,7 +21,7 @@ public class GoodsSpu {
 
     private String description;
 
-    private Integer spuQuanity;
+    private Integer spuQuantity;
 
     public String getId() {
         return id;
@@ -79,11 +79,11 @@ public class GoodsSpu {
         this.description = description;
     }
 
-    public Integer getSpuQuanity() {
-        return spuQuanity;
+    public Integer getSpuQuantity() {
+        return spuQuantity;
     }
 
-    public void setSpuQuanity(Integer spuQuanity) {
-        this.spuQuanity = spuQuanity;
+    public void setSpuQuantity(Integer spuQuantity) {
+        this.spuQuantity = spuQuantity;
     }
 }

@@ -7,7 +7,9 @@ import com.fff.entity.*;
 import com.fff.service.GoodsCategoryService;
 import com.fff.service.GoodsSpuService;
 import com.fff.service.ShoppingcateService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.ibatis.annotations.Param;
+import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,10 +44,16 @@ public class GoodsController {
 //    }
 
 
-    String urlname = "";
+    private String urlname = "";
 
     @RequestMapping("cate")
-    public String tocate(){
+    public String tocate(Model model,HttpSession session){
+
+        List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
+        model.addAttribute("bigcates",bigcates);
+        User user = (User) session.getAttribute("user");
+        List<Shoppingcate> shoppingcateList = shoppingcateService.queryByUserid(user.getUserId());
+        model.addAttribute(shoppingcateList);
         return "goods/cate";
     }
 
@@ -61,8 +69,8 @@ public class GoodsController {
     }
 
 
-    @RequestMapping("/shoppingcate")
-    public String shoppingcat(@RequestParam("spuNo")String spuNo,@RequestParam("quanity")Integer quanity,HttpSession session){
+    /*@RequestMapping("/shoppingcate")
+    public String shoppingcat(@RequestParam("spuNo")String spuNo,@RequestParam("quantity")Integer quantity,HttpSession session){
 
         Map<String,Shoppingcate> shoppingcateMap = (Map<String, Shoppingcate>) session.getAttribute("shoppingcate");
 
@@ -81,24 +89,24 @@ public class GoodsController {
                 Shoppingcate s = new Shoppingcate();
                 s.setGoodsName(spu.getGoodsName());
                 s.setPrice(spu.getPrice());
-                s.setQuanity(quanity);
+                s.setquantity(quantity);
                 s.setSpuId(spuNo);
                 s.setStatus(0);
                 shoppingcateMap.put(spuNo,s);
-                /*System.out.println(s.getGoodsName()+"goodsnaem+==========");*/
+                *//*System.out.println(s.getGoodsName()+"goodsnaem+==========");*//*
             }else {         //如果存在就加一
 
-                /*System.out.println("在这里add1");*/
-                shoppingcat.setQuanity(shoppingcat.getQuanity()+quanity);
+                *//*System.out.println("在这里add1");*//*
+                shoppingcat.setquantity(shoppingcat.getquantity()+quantity);
             }
             //加入session
             session.setAttribute("shoppingcate",shoppingcateMap);
-/*
+*//*
 
             for (int i = 0; i < shoppingcateMap.size() ; i++) {
                 System.out.println(shoppingcateMap.get(spuNo)+"map====");
             }
-*/
+*//*
 
             return "redirect:/goods/"+urlname;
         }
@@ -115,27 +123,29 @@ public class GoodsController {
             Shoppingcate s = new Shoppingcate();
             s.setGoodsName(spu.getGoodsName());
             s.setPrice(spu.getPrice());
-            s.setQuanity(quanity);
+            s.setquantity(quantity);
             s.setSpuId(spuNo);
             s.setUserId(user.getUserId());
             s.setStatus(0);
             shoppingcateMap.put(spuNo,s);
             shoppingcateService.insertNew(s);
         }else {         //如果存在就加一
-            shoppingcateService.updateQu(user.getUserId(),spuNo,quanity);
+            shoppingcateService.updateQu(user.getUserId(),spuNo,quantity);
             System.out.println("=====+++++1");
-            shoppingcat.setQuanity(shoppingcat.getQuanity()+quanity);
+            shoppingcat.setquantity(shoppingcat.getquantity()+quantity);
         }
         //加入session
         session.setAttribute("shoppingcate",shoppingcateMap);
         //System.out.println(user.getUserId()+"=====userid");
         return "redirect:/goods/"+urlname;
-    }
+    }*/
 
     @RequestMapping("single")
     public String getSingle(String spuNo,Model model){
 
         GoodsSpu goodsSpu = goodsSpuService.queryOneSpuByNo(spuNo);
+        List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
+        model.addAttribute("bigcates",bigcates);
         model.addAttribute("spu",goodsSpu);
 
         return "/goods/single";

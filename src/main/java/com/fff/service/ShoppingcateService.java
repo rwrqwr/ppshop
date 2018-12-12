@@ -19,6 +19,13 @@ public interface ShoppingcateService {
 
     Map<String,Shoppingcate> queryByUser(String userId);
 
-    int updateQu(String userId,String spuNo,Integer quanity);
+    int updateQu(String userId,String spuNo,Integer quantity);
 
+    int updateById(String shoppingId,Integer quantity);
+
+    int delete(String shoppingId);
+
+    int queryQuantity(String shoppingId);
+
+    int queryQuantityByUserId(String userId, String spuNo);
 }

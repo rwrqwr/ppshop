@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="v-on" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="com.fff.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: USER
@@ -17,7 +18,7 @@
     <meta name="keywords" content="" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <link rel="stylesheet" type="text/css" href="../../../static/css/user/person.css">
+    <link rel="stylesheet" type="text/css" href="../../../static/css/goods/cate.css">
     <!-- //for-mobile-apps -->
     <link href="../../../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="../../../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -91,7 +92,7 @@
 <div class="logo_products">
     <div class="container">
         <div class="w3ls_logo_products_left">
-            <h1><a href="../../../index1.jsp">宠物商店</a></h1>
+            <h1><a href="../index.jsp">宠物商店</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
@@ -122,7 +123,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../../../index1.jsp" class="act">主页</a></li>
+                    <li class="active"><a href="/" class="act">主页</a></li>
                     <!-- Mega Menu -->
 
                     <c:forEach items="${bigcates}" var="bigcate">
@@ -144,96 +145,7 @@
                         </li>
                     </c:forEach>
 
-                    <%--<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">可爱的宠物<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>所有种类</h6>
-                                        <li><a href="/goods/cat">猫</a></li>
-                                        <li><a href="/goods/dog">狗</a></li>
-                                        <li><a href="/goods/fish">鱼类</a></li>
-                                        <li><a href="/goods/amphibian">两栖</a></li>
-                                        <li><a href="/goods/other">奇奇怪怪类</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">宠物用具<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>All Household</h6>
-                                        <li><a href="/goods/foodbowl">食盆</a></li>
-                                        <li><a href="/goods/bottle">奶瓶</a></li>
-                                        <li><a href="/goods/drinking">饮水器</a></li>
-                                        <li><a href="/goods/grainstoragbarrel">储粮桶</a></li>
-                                        <li><a href="/goods/flightcase">航空箱</a></li>
-                                        <li><a href="/goods/petbag">宠物包</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">给宠物的吃的<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Baby Care</h6>
-                                        <li><a href="/goods/wholedogfood">全犬粮</a></li>
-                                        <li><a href="/goods/puppiesfood">幼犬粮</a></li>
-                                        <li><a href="/goods/adultdogfood">成犬粮</a></li>
-                                        <li><a href="/goods/olddogfood">老犬粮</a></li>
-                                        <li><a href="/goods/can">罐头</a></li>
-                                        <li><a href="/goods/biscuits">饼干</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">服饰<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>All Accessories</h6>
-                                        <li><a href="/goods/marmcottonclothing">御寒棉服</a></li>
-                                        <li><a href="packagedfoods.html">时尚卫衣</a></li>
-                                        <li><a href="packagedfoods.html">潮流四脚</a></li>
-                                        <li><a href="packagedfoods.html">针织毛衣</a></li>
-                                        <li><a href="packagedfoods.html">四季雨衣</a></li>
-                                    </ul>
-                                </div>
 
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">窝垫<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>Tea & Coeffe</h6>
-                                        <li><a href="beverages.html">圆窝</a></li>
-                                        <li><a href="beverages.html">方窝</a></li>
-                                        <li><a href="beverages.html">封闭窝</a></li>
-                                        <li><a href="beverages.html">智能窝</a></li>
-                                        <li><a href="beverages.html">舒适毯子</a></li>
-                                        <li><a href="beverages.html">全可拆洗椭圆窝</a></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </ul>
-                    </li>--%>
                 </ul>
             </div>
         </nav>
@@ -253,14 +165,54 @@
 <!-- //breadcrumbs -->
 <!--- products --->
 <div class="products">
-    <div class="container" style="margin-bottom: 40px">
-        <div class="col-md-4 products-left">
-            <div class="categories">
-
-            </div>
-        </div>
-        <div class="col-md-8 products-right">
-
+    <div id="cart" class="product_b" style="padding:0;background: #fff;">
+        <table id="goods_table" class="shoplist margincenter">
+            <tr class="trnone"></tr>
+            <tr class="toptr">
+                <td width="40">
+                    <input type="checkbox" id="checkA" v-on:click="checkAll($event.currentTarget)"/><label for="checkA"></label>
+                </td>
+                <td width="100">全选</td>
+                <td width="540">商品信息</td>
+                <td width="100">单价</td>
+                <td width="160">数量</td>
+                <td width="100">小计</td>
+                <td width="100">操作</td>
+            </tr>
+            <tr class="trnone"></tr>
+            <tr v-for="(item,index) in list">
+                <td>
+                    <input type="checkbox" :id="'check'+index" name="checkboxs" v-model="checkeds[index]" />
+                    <label :for="'check'+index"></label>
+                </td>
+                <td>
+                    <img :src="'路径前缀/'+item.subimage1Filename" />
+                </td>
+                <td style="text-align:left;">
+                    <p>{{item.spuName}}</p>
+                    <p>规格：{{item.specifications}}</p>
+                </td>
+                <td>￥{{item.spuPrice}}</td>
+                <td class="adddel">
+                    <em v-on:click="minius(index)">-</em>
+                    <input type="number" v-model.number="item.quantity" v-on:change="change(index)" />
+                    <em v-on:click="add(index)">+</em>
+                </td>
+                <td>￥{{item.spuPrice * item.quantity}}</td>
+                <td>
+                    <button v-on:click="del(index)">删除</button>
+                </td>
+            </tr>
+            <tr class="trbottom">
+                <td colspan="2">已选（{{checkNum}}）</td>
+                <td colspan="5">
+                    <i>商品合计金额：</i>
+                    <em>￥{{sum.toFixed(2)}}</em>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button>下单</button>
+                </td>
+            </tr>
+        </table>
+    </div>
         </div>
     </div>
     <!--- products --->
@@ -310,28 +262,7 @@
         });
     </script>
     <!-- //here ends scrolling icon -->
-    <script src="../../../static/js/minicart.min.js"></script>
-    <%--将来实现--%>
-    <%--<script>
-        // Mini Cart
-        paypal.minicart.render({
-            action: '/goods/shoppingcate'
-        });
-        var items = paypal.minicart.cart.items();
-        sessionStorage.setItem('items', items);
-        if (~window.location.search.indexOf('reset=true')) {
-            paypal.minicart.reset();
 
-        }
-    </script>--%>
-    <%--<script>
-        $(document).ready(function () {
-            $('#test').click(function () {
-                //alert("fad");
-                alert(items[0].get("item_name"));
-            })
-        })
-    </script>--%>
     <!-- main slider-banner -->
     <script src="../../../static/js/skdslider.min.js"></script>
     <link href="../../../static/css/skdslider.css" rel="stylesheet">
@@ -346,6 +277,115 @@
         });
     </script>
     <!-- //main slider-banner -->
+    <script src="../../../static/js/vue.js"></script>
+    <%--<script src="../../../static/js/goods/disp.js"></script>--%>
+    <script>
+        var cart; //Vue对象
+        function createVue(list) {
+            cart = new Vue({
+                el: '#cart',
+                data() {
+                    return {
+                        list: list,
+                        checkeds: new Array(list.length)
+                    }
+                },
+                computed: {
+                    sum: function () {
+                        let sum = 0;
+                        for (let i in this.list) {
+                            if (this.checkeds[i])
+                                sum += this.list[i].spuPrice * this.list[i].quantity;
+                        }
+                        return sum;
+                    },
+                    checkNum: function () {
+                        let num = 0;
+                        for (let i in this.checkeds) {
+                            if (this.checkeds[i]) {
+                                num++;
+                            }
+                        }
+                        return num;
+                    }
+                },
+                methods: {
+                    del: function (index) {
+                        $.ajax({
+                            data : {
+                                temp : list[index].shoppingId
+                            },
+                            datatype : 'json',
+                            method : 'post',
+                            url : '/ajax/del'
+                        });
+                        this.list.splice(index, 1);
+                        this.checkeds.splice(index,1); //同时删除对应的选中状态标识
+                    },
+                    add: function (index) {
+                        $.ajax({
+                            data : {
+                                temp : list[index].shoppingId
+                            },
+                            datatype : 'json',
+                            method : 'post',
+                            url : '/ajax/add'
+                        });
+                        this.list[index].quantity++;
+                    },
+                    minius: function (index) {
+                        $.ajax({
+                            data : {
+                                temp : list[index].shoppingId
+                            },
+                            datatype : 'json',
+                            method : 'post',
+                            url : '/ajax/reduce'
+                        });
+                        if (this.list[index].quantity > 1) {
+                            this.list[index].quantity--;
+                        }
+                    },
+                    change: function (index) {
+                        $.ajax({
+                            data : {
+                                temp : list[index].shoppingId,
+                                quan : list[index].quantity
+                            },
+                            datatype : 'json',
+                            method : 'post',
+                            url : '/ajax/change'
+                        });
+                    },
+                    checkAll: function (event) {
+                        if (event.checked) {
+                            for (let i = 0; i < this.checkeds.length; i++) {
+                                Vue.set(this.checkeds, i, true);
+                            }
+                        } else {
+                            for (let i = 0; i < this.checkeds.length; i++) {
+                                Vue.set(this.checkeds, i, false);
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        window.onload =	function () {
+            let list = [
+                <c:forEach items="${shoppingcateList}" var="sh">
+                {
+                    spuName : '${sh.goodsName}',
+                    spuPrice : ${sh.price},
+                    quantity : ${sh.quantity},
+                    shoppingId : ${sh.shoppingId}
+                },
+                </c:forEach>
+            ];
+
+            createVue(list);
+        }
+    </script>
 </div>
 </body>
 </html>

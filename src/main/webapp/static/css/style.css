@@ -3399,3 +3399,46 @@ td.invert-image a img {
     font-size: 13px;
 }
 }
+
+.tab thead{
+    background-color: #999;
+    color: #fff;
+}
+.tab thead th{
+    padding: 10px 0;
+    font-weight: normal;
+}
+.tab td{
+    text-align: center;
+    padding: 10px 0;
+}
+.goods{
+    width: 40%;
+    position: relative;
+}
+.goods-left{
+    width: 20%;
+    float: left;
+}
+.goods-right {
+    width: 78%;
+    float: right;
+    text-align: left;
+}
+.goods-right .tip{
+    color: #999;
+    position: absolute;
+    bottom: 10px;
+    font-size: 12px;
+}
+.num input{
+    width: 50px;
+    text-align: center;
+}
+.num a{
+    color: #333;
+    text-decoration: none;
+}
+.del{
+    cursor: pointer;
+}

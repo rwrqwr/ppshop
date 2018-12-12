@@ -64,7 +64,7 @@ public class UserController {
     public String out(HttpSession session){
         session.removeAttribute("user");
         session.removeAttribute("shoppingcate");
-        return "redirect:/index1.jsp";
+        return "redirect:/";
     }
     /**
      * @Author USER
@@ -80,14 +80,10 @@ public class UserController {
         if(user !=null && user.getUserPassword().equals(password)){
             session.setAttribute("user",user);
             Map<String,Shoppingcate> shoppingcateMap = shoppingcateService.queryByUser(user.getUserId());
-            if (shoppingcateMap == null){
-                System.out.println("usershop为空");
-            }
+
             session.setAttribute("shoppingcate",shoppingcateMap);
-            if (session.getAttribute("shoppingcate") == null){
-                System.out.println("kongkongm=======");
-            }
-            return "redirect:/index1.jsp";
+
+            return "redirect:/";
         }
         return "user/login";
     }
@@ -103,7 +99,7 @@ public class UserController {
     public String addUser(@ModelAttribute("user")User user){
         int stat = userService.addUser(user);
         if (stat == 1)
-            return "redirect:/index1.jsp";
+            return "redirect:/";
         return "user/registered";
     }
 

@@ -56,7 +56,6 @@
                 <li><a href="/user/registered"> 注册 </a></li>
                 <li><a href="/user/login">登录</a></li>
                 <li><a href="contact.html">Help</a></li>
-                <li><a href="contact.html">Help</a></li>
             </ul>
         </div>
         <%
@@ -75,9 +74,6 @@
 
 
         <div class="product_list_header">
-            <%--<form action="#" method="post" class="last">
-                <input type="hidden" name="cmd" value="_cart">
-                <input type="hidden" name="display" value="1">--%>
             <a href="/goods/cate">
                 <button class="w3view-cart" name="submit" value="">
                     <i class="fa fa-cart-arrow-down" aria-hidden="true">
@@ -85,7 +81,6 @@
                     </i>
                 </button>
             </a>
-            <%--</form>--%>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -94,7 +89,7 @@
 <div class="logo_products">
     <div class="container">
         <div class="w3ls_logo_products_left">
-            <h1><a href="../../../index1.jsp">宠物商店</a></h1>
+            <h1><a href="../index.jsp">宠物商店</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
@@ -125,7 +120,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../../../index1.jsp" class="act">主页</a></li>
+                    <li class="active"><a href="../index.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
                     <c:forEach items="${bigcates}" var="bigcate">
                         <li class="dropdown">
@@ -246,7 +241,7 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="../../../index1.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li><a href="../index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
             <li class="active">商品</li>
         </ol>
     </div>

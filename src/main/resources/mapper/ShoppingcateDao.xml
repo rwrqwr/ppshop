@@ -4,15 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fff.dao.ShoppingcateDao">
     <insert id="insertNew">
-        insert into shoppingcate (user_id,spu_id,quantity,status) values (#{shoppingcate.userId},#{shoppingcate.spuId},#{shoppingcate.quanity},0);
+        insert into shoppingcate (user_id,spu_id,quantity,status) values (#{shoppingcate.userId},#{shoppingcate.spuId},#{shoppingcate.quantity},0);
     </insert>
     <update id="updateQu">
-        UPDATE shoppingcate SET quantity = quantity+#{quanity} where user_id = #{userId} and spu_id = #{spuNo}
+        UPDATE shoppingcate SET quantity = #{quantity} where user_id = #{userId} and spu_id = #{spuNo}
     </update>
+    <update id="updateById">
+        UPDATE shoppingcate SET quantity = #{quantity} where shopping_id = #{shoppingId}
+    </update>
+    <delete id="delete">
+        DELETE FROM shoppingcate WHERE shopping_id = #{shoppingId}
+    </delete>
 
     <select id="queryByUserid" resultType="com.fff.entity.Shoppingcate">
-        SELECT goods_spu.goods_name,goods_spu.price,quantity from shoppingcate
-            LEFT JOIN goods_spu ON goods_spu.spu_no = shoppingcate.spu_id WHERE user_id = #{userId}
+        SELECT shoppingcate.spu_id,shoppingcate.shopping_id,goods_spu.goods_name,goods_spu.price,quantity from shoppingcate
+            LEFT JOIN goods_spu ON goods_spu.spu_no = shoppingcate.spu_id WHERE user_id = #{userId} and shoppingcate.status = 0
     </select>
     <select id="queryOne" resultType="com.fff.entity.Shoppingcate">
         SELECT * FROM shoppingcate WHERE user_id = #{userId} and spu_id = #{spuNo}
@@ -20,5 +26,12 @@
     <select id="queryByUser" resultType="com.fff.entity.Shoppingcate">
         SELECT goods_spu.goods_name,goods_spu.price,quantity,spu_id from shoppingcate
             LEFT JOIN goods_spu ON goods_spu.spu_no = shoppingcate.spu_id WHERE user_id = #{userId}
+    </select>
+
+    <select id="queryQuantity" resultType="java.lang.Integer">
+        SELECT quantity FROM shoppingcate WHERE shopping_id = #{shoppingId} and status = 0
+    </select>
+    <select id="queryQuantityByUserId" resultType="java.lang.Integer">
+        SELECT quantity FROM shoppingcate WHERE user_id = #{userId} and spu_id = #{spuId} and status = 0
     </select>
 </mapper>
