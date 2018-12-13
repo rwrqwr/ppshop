@@ -1,26 +1,22 @@
 package com.fff.web;
 
-import com.fff.dao.GoodsBrandDao;
-import com.fff.dao.GoodsCategoryDao;
-import com.fff.dao.GoodsSpuDao;
+
 import com.fff.entity.*;
 import com.fff.service.GoodsCategoryService;
 import com.fff.service.GoodsSpuService;
 import com.fff.service.ShoppingcateService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import org.apache.ibatis.annotations.Param;
-import org.junit.Before;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * Created by fsh on 2018/11/15.
@@ -47,19 +43,26 @@ public class GoodsController {
     private String urlname = "";
 
     @RequestMapping("cate")
-    public String tocate(Model model,HttpSession session){
+    public String basetocate(Model model,HttpSession session){
 
         List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
         model.addAttribute("bigcates",bigcates);
         User user = (User) session.getAttribute("user");
-        List<Shoppingcate> shoppingcateList = shoppingcateService.queryByUserid(user.getUserId());
+        if(user != null){
+            List<Shoppingcate> shoppingcateList = shoppingcateService.queryByUserid(user.getUserId());
+            model.addAttribute(shoppingcateList);
+            return "goods/cate";
+        }
+        List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
+
         model.addAttribute(shoppingcateList);
+
         return "goods/cate";
     }
 
 
     @RequestMapping("{name}")
-    public String name(@PathVariable("name") String name, Model model) {
+    public String basename(@PathVariable("name") String name, Model model) {
         urlname = name;
         List<GoodsSpu> goodsSpus = goodsSpuService.queryByCategory(name);
         List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
@@ -141,7 +144,7 @@ public class GoodsController {
     }*/
 
     @RequestMapping("single")
-    public String getSingle(String spuNo,Model model){
+    public String basegetSingle(String spuNo,Model model){
 
         GoodsSpu goodsSpu = goodsSpuService.queryOneSpuByNo(spuNo);
         List<Bigcate> bigcates = goodsCategoryService.queryBigcate();

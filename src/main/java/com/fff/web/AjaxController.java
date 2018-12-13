@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,13 +73,21 @@ public class AjaxController {
         }
 
         /*用户没有登录*/
-        Map<String,Shoppingcate> shoppingcateMap = (Map<String, Shoppingcate>) session.getAttribute("shoppingcate");
-        if (shoppingcateMap == null){
-            shoppingcateMap = new HashMap<>();
+        List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
+        if (shoppingcateList == null){
+            shoppingcateList = new ArrayList<>();
         }
         //如果购物车中没有所选商品 根据商品no从spu表中查找 并且转为shoppingcate存入购物车
-        Shoppingcate shoppingcat = shoppingcateMap.get(spuNo);
-        if (shoppingcat == null){
+        Boolean flag = false;
+        int i = 0;
+        for (Shoppingcate shoppingcate : shoppingcateList){
+            if (spuNo.equals(shoppingcate.getSpuId())){
+                    flag = true;
+                    break;
+            }
+            i++;
+        }
+        if (!flag){
             GoodsSpu spu = goodsSpuService.queryOneSpuByNo(spuNo);
             Shoppingcate s = new Shoppingcate();
             s.setGoodsName(spu.getGoodsName());
@@ -86,13 +95,13 @@ public class AjaxController {
             s.setQuantity(spuQ);
             s.setSpuId(spuNo);
             s.setStatus(0);
-            shoppingcateMap.put(spuNo,s);
+            shoppingcateList.add(s);
 
         }else {         //如果存在就加一
-            shoppingcat.setQuantity(shoppingcat.getQuantity()+spuQ);
+            shoppingcateList.get(i).setQuantity(shoppingcateList.get(i).getQuantity()+spuQ);
         }
         //加入session
-        session.setAttribute("shoppingcate",shoppingcateMap);
+        session.setAttribute("shoppingcate",shoppingcateList);
 
         return map;
     }
@@ -100,42 +109,68 @@ public class AjaxController {
     @ResponseBody
     @RequestMapping("del")
     public Map del (@RequestParam Map<String,Object> map, HttpSession session){
-
-        String shoppingId = (String)map.get("temp");
-        shoppingcateService.delete(shoppingId);
-
+        if (session.getAttribute("user") != null){
+            String shoppingId = (String)map.get("temp");
+            shoppingcateService.delete(shoppingId);
+            return map;
+        }
+        Integer index = (Integer) map.get("index");
+        List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
+        shoppingcateList.remove(index);
+        session.setAttribute("shoppingcate",shoppingcateList);
         return map;
     }
 
     @ResponseBody
     @RequestMapping("addQuantity")
-    public Map addQuantity(@RequestParam Map<String,Object> map){
-
-        String shoppingId = (String)map.get("temp");
-        Integer temp = shoppingcateService.queryQuantity(shoppingId);
-        shoppingcateService.updateById(shoppingId,temp+1);
+    public Map addQuantity(@RequestParam Map<String,Object> map,HttpSession session){
+        if (session.getAttribute("user") != null ){
+            String shoppingId = (String)map.get("temp");
+            Integer temp = shoppingcateService.queryQuantity(shoppingId);
+            shoppingcateService.updateById(shoppingId,temp+1);
+            return map;
+        }
+        Integer index = (Integer) map.get("index");
+        List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
+        shoppingcateList.get(index).setQuantity(shoppingcateList.get(index).getQuantity()+1);
+        session.setAttribute("shoppingcate",shoppingcateList);
         return map;
     }
 
     @ResponseBody
     @RequestMapping("reduce")
-    public Map reduce(@RequestParam Map<String,Object> map){
+    public Map reduce(@RequestParam Map<String,Object> map,HttpSession session){
 
-        String shoppingId = (String)map.get("temp");
-        Integer temp = shoppingcateService.queryQuantity(shoppingId);
-        shoppingcateService.updateById(shoppingId,temp-1);
-
+        if (session.getAttribute("user") != null){
+            String shoppingId = (String)map.get("temp");
+            Integer temp = shoppingcateService.queryQuantity(shoppingId);
+            shoppingcateService.updateById(shoppingId,temp-1);
+            return map;
+        }
+        Integer index = (Integer) map.get("index");
+        List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
+        shoppingcateList.get(index).setQuantity(shoppingcateList.get(index).getQuantity()-1);
+        session.setAttribute("shoppingcate",shoppingcateList);
         return map;
     }
 
     @ResponseBody
     @RequestMapping("change")
-    public Map change(@RequestParam Map<String,Object> map){
+    public Map change(@RequestParam Map<String,Object> map , HttpSession session){
 
         String shoppingId = (String)map.get("temp");
         Integer quan = Integer.parseInt((String)map.get("quan"));
+        if(session.getAttribute("user") != null){
 
-        shoppingcateService.updateById(shoppingId,quan);
+
+            shoppingcateService.updateById(shoppingId,quan);
+
+            return map;
+        }
+        Integer index = (Integer) map.get("index");
+        List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
+        shoppingcateList.get(index).setQuantity(quan);
+        session.setAttribute("shoppingcate",shoppingcateList);
 
         return map;
     }

@@ -23,6 +23,18 @@
      -->
     <mvc:default-servlet-handler/>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/person/**"/>
+            <bean class="com.fff.interceptor.loginInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+            <bean class="com.fff.interceptor.adminInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
     <!-- 3.配置jsp 显示ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

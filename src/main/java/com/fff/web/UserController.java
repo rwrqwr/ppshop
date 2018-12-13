@@ -8,6 +8,7 @@ import com.fff.service.AddressService;
 import com.fff.service.GoodsCategoryService;
 import com.fff.service.ShoppingcateService;
 import com.fff.service.UserService;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -40,12 +41,16 @@ public class UserController {
     GoodsCategoryService goodsCategoryService;
 
     @RequestMapping("login")
-    public String login(){
+    public String login(Model model){
+        List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
+        model.addAttribute("bigcates",bigcates);
         return "user/login";
     }
 
     @RequestMapping("registered")
-    public String registered(){
+    public String registered(Model model) {
+        List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
+        model.addAttribute("bigcates",bigcates);
         return "user/registered";
     }
 
@@ -79,9 +84,27 @@ public class UserController {
         User user = userService.checkLogin(tel);
         if(user !=null && user.getUserPassword().equals(password)){
             session.setAttribute("user",user);
-            Map<String,Shoppingcate> shoppingcateMap = shoppingcateService.queryByUser(user.getUserId());
+            List<Shoppingcate> shoppingcateListnew = shoppingcateService.queryByUserid(user.getUserId());
 
-            session.setAttribute("shoppingcate",shoppingcateMap);
+            List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
+
+            Boolean flag = false;
+            for (Shoppingcate shoppingcate : shoppingcateList){
+                flag = false;
+                for (Shoppingcate s : shoppingcateListnew){
+                    if (s.getSpuId().equals(shoppingcate.getSpuId())){
+                        shoppingcateService.updateById(s.getShoppingId(),s.getQuantity()+shoppingcate.getQuantity());
+                        flag = true;
+                    }
+                }
+                if(!flag){
+                    shoppingcateService.insertNew(shoppingcate);
+                }
+            }
+
+            shoppingcateListnew.addAll(shoppingcateList);
+
+            session.removeAttribute("shoppingcate");
 
             return "redirect:/";
         }

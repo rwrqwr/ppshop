@@ -157,7 +157,7 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.html"><span class="glyphicon glyphicon-主页" aria-hidden="true"></span>主页</a></li>
+            <li><a href="/"><span class="glyphicon glyphicon-主页" aria-hidden="true"></span>主页</a></li>
             <li class="active">Products</li>
         </ol>
     </div>
@@ -172,10 +172,10 @@
                 <ul class="cate">
 
                 <c:forEach items="${bigcates}" var="bigcate">
-                    <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>${bigcate.bigcateName}</a></li>
+                    <li><a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i>${bigcate.bigcateName}</a></li>
                     <ul>
                         <c:forEach items="${bigcate.categoryList}" var="datil">
-                            <li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>${datil.categoryName}</a></li>
+                            <li><a href="/goods/${datil.categoryEname}"><i class="fa fa-arrow-right" aria-hidden="true"></i>${datil.categoryName}</a></li>
                         </c:forEach>
                     </ul>
                 </c:forEach>

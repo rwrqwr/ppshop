@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.fff.entity.User" %>
 <%@ page import="org.omg.CORBA.Request" %><%--
   Created by IntelliJ IDEA.
@@ -93,7 +94,7 @@
 <div class="logo_products">
     <div class="container">
         <div class="w3ls_logo_products_left">
-            <h1><a href="index.jsp">宠物商店</a></h1>
+            <h1><a href="/">宠物商店</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
@@ -123,98 +124,29 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.jsp" class="act">主页</a></li>
+                    <li class="active"><a href="/" class="act">主页</a></li>
                     <!-- Mega Menu -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">可爱的宠物<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>所有种类</h6>
-                                        <li><a href="/goods/cat">猫</a></li>
-                                        <li><a href="/goods/dog">狗</a></li>
-                                        <li><a href="groceries.html">鱼类</a></li>
-                                        <li><a href="groceries.html">两栖</a></li>
-                                        <li><a href="groceries.html">奇奇怪怪类</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">宠物用具<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>外用</h6>
-                                        <li><a href="household.html">食盆</a></li>
-                                        <li><a href="household.html">奶瓶</a></li>
-                                        <li><a href="household.html">饮水器</a></li>
-                                        <li><a href="household.html">储粮桶</a></li>
-                                        <li><a href="household.html">航空箱</a></li>
-                                        <li><a href="household.html">宠物包</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">给宠物的吃的<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>吃的</h6>
-                                        <li><a href="personalcare.html">全犬粮</a></li>
-                                        <li><a href="personalcare.html">幼犬粮</a></li>
-                                        <li><a href="personalcare.html">成犬粮</a></li>
-                                        <li><a href="personalcare.html">老犬粮</a></li>
-                                        <li><a href="personalcare.html">罐头</a></li>
-                                        <li><a href="personalcare.html">饼干</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">服饰<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>衣服</h6>
-                                        <li><a href="packagedfoods.html">御寒棉服</a></li>
-                                        <li><a href="packagedfoods.html">时尚卫衣</a></li>
-                                        <li><a href="packagedfoods.html">潮流四脚</a></li>
-                                        <li><a href="packagedfoods.html">针织毛衣</a></li>
-                                        <li><a href="packagedfoods.html">四季雨衣</a></li>
-                                    </ul>
-                                </div>
+                    <c:forEach items="${bigcates}" var="bigcate">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${bigcate.bigcateName}<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <div class="row">
+                                    <div class="multi-gd-img">
+                                        <ul class="multi-column-dropdown">
+                                            <h6>${bigcate.bigcateName}</h6>
+                                            <c:forEach items="${bigcate.categoryList}" var="cate">
+                                                <li><a href="/goods/${cate.categoryEname}">${cate.categoryName}</a></li>
+                                            </c:forEach>
 
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">窝垫<b class="caret"></b></a>
-                        <ul class="dropdown-menu multi-column columns-3">
-                            <div class="row">
-                                <div class="multi-gd-img">
-                                    <ul class="multi-column-dropdown">
-                                        <h6>住房</h6>
-                                        <li><a href="beverages.html">圆窝</a></li>
-                                        <li><a href="beverages.html">方窝</a></li>
-                                        <li><a href="beverages.html">封闭窝</a></li>
-                                        <li><a href="beverages.html">智能窝</a></li>
-                                        <li><a href="beverages.html">舒适毯子</a></li>
-                                        <li><a href="beverages.html">全可拆洗椭圆窝</a></li>
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>
+                            </ul>
+                        </li>
+                    </c:forEach>
 
-                            </div>
-                        </ul>
                     </li>
                 </ul>
             </div>

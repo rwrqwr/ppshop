@@ -12,6 +12,6 @@
         SELECT DISTINCT id_big,bigcate_name FROM goods_category ;
     </select>
     <select id="queryDeyilCategory" resultType="com.fff.entity.GoodsCategory">
-        SELECT id,category_name,category_ename FROM goods_category WHERE id_big = #{idBig};
+        SELECT id,category_name,category_ename FROM goods_category WHERE id_big = #{idBig} and id != #{idBid};
     </select>
 </mapper>

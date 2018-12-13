@@ -208,7 +208,7 @@
                 <td colspan="5">
                     <i>商品合计金额：</i>
                     <em>￥{{sum.toFixed(2)}}</em>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button>下单</button>
+                    <button v-on:click="end()">下单</button>
                 </td>
             </tr>
         </table>
@@ -310,9 +310,15 @@
                     }
                 },
                 methods: {
+                    end : function () {
+                        for (let i in this.checkeds){
+
+                        }
+                    },
                     del: function (index) {
                         $.ajax({
                             data : {
+                                index : index,
                                 temp : list[index].shoppingId
                             },
                             datatype : 'json',
@@ -325,6 +331,7 @@
                     add: function (index) {
                         $.ajax({
                             data : {
+                                index : index,
                                 temp : list[index].shoppingId
                             },
                             datatype : 'json',
@@ -336,6 +343,7 @@
                     minius: function (index) {
                         $.ajax({
                             data : {
+                                index : index,
                                 temp : list[index].shoppingId
                             },
                             datatype : 'json',
@@ -349,6 +357,7 @@
                     change: function (index) {
                         $.ajax({
                             data : {
+                                index : index,
                                 temp : list[index].shoppingId,
                                 quan : list[index].quantity
                             },
@@ -378,7 +387,7 @@
                     spuName : '${sh.goodsName}',
                     spuPrice : ${sh.price},
                     quantity : ${sh.quantity},
-                    shoppingId : ${sh.shoppingId}
+                    shoppingId : '${sh.shoppingId}'
                 },
                 </c:forEach>
             ];
