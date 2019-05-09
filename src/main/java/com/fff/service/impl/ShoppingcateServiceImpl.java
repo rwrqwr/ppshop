@@ -65,4 +65,14 @@ public class ShoppingcateServiceImpl implements ShoppingcateService {
         return shoppingcateDao.queryQuantityByUserId(userId,spuNo);
     }
 
+    @Override
+    public int updateStatus(String shoppingId) {
+        return shoppingcateDao.updateStatus(shoppingId);
+    }
+
+    @Override
+    public List<Shoppingcate> queryEndByUserid(String userId) {
+        return shoppingcateDao.queryEndByUserid(userId);
+    }
+
 }

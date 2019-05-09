@@ -28,4 +28,8 @@ public interface ShoppingcateService {
     int queryQuantity(String shoppingId);
 
     int queryQuantityByUserId(String userId, String spuNo);
+
+    int updateStatus(String shoppingId);
+
+    List<Shoppingcate> queryEndByUserid(String userId);
 }

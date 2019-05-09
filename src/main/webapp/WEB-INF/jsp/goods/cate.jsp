@@ -55,8 +55,8 @@
         %>
         <div class="agile-login">
             <ul>
-                <li><a href="registered"> 注册 </a></li>
-                <li><a href="login">登录</a></li>
+                <li><a href="/user/registered"> 注册 </a></li>
+                <li><a href="/user/login">登录</a></li>
                 <li><a href="contact.html">Help</a></li>
             </ul>
         </div>
@@ -66,7 +66,8 @@
         <div class="agile-login">
             <ul>
                 <li>欢迎,${sessionScope.user.userName}</li>
-                <li><a href="person">个人中心</a></li>
+                <li><a href="/user/person">个人中心</a></li>
+                <li><a href="/user/out">退出</a></li>
             </ul>
         </div>
         <%
@@ -311,9 +312,13 @@
                 },
                 methods: {
                     end : function () {
-                        for (let i in this.checkeds){
-
-                        }
+                        $.ajax({
+                            data: {
+                                list : this.checkeds
+                            },
+                            datatype : 'json',
+                            url : ''
+                        })
                     },
                     del: function (index) {
                         $.ajax({

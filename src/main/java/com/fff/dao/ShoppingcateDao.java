@@ -15,6 +15,8 @@ public interface ShoppingcateDao {
 
     List<Shoppingcate> queryByUserid(String userId);
 
+    List<Shoppingcate> queryEndByUserid(String userId);
+
     Shoppingcate queryOne(String userId, String spuNo);
 
     int insertNew(@Param("shoppingcate") Shoppingcate shoppingcate);
@@ -26,10 +28,13 @@ public interface ShoppingcateDao {
 
     int delete(String shoppingId);
 
-    int updateById(String shoppingId, Integer quantity);
+    int updateById(@Param("shoppingId") String shoppingId, @Param("quantity") Integer quantity);
 
     int queryQuantity(String shoppingId);
 
     int queryQuantityByUserId(String userId,String spuNo);
+
+    int updateStatus(String shoppingId);
+
 
 }

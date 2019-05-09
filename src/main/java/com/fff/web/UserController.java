@@ -62,6 +62,10 @@ public class UserController {
         model.addAttribute("bigcates",bigcates);
         System.out.println("person======");
         model.addAttribute("addressList",list);
+
+        List<Shoppingcate> shoppingcateList = shoppingcateService.queryEndByUserid(user.getUserId());
+        System.out.println(shoppingcateList+"==========");
+        model.addAttribute("shoppingendcate",shoppingcateList);
         return "user/person";
     }
 
@@ -84,20 +88,27 @@ public class UserController {
         User user = userService.checkLogin(tel);
         if(user !=null && user.getUserPassword().equals(password)){
             session.setAttribute("user",user);
+
             List<Shoppingcate> shoppingcateListnew = shoppingcateService.queryByUserid(user.getUserId());
 
             List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
 
+            System.out.println("addddd====");
+
             Boolean flag = false;
             for (Shoppingcate shoppingcate : shoppingcateList){
                 flag = false;
+                System.out.println("1231123=====");
                 for (Shoppingcate s : shoppingcateListnew){
                     if (s.getSpuId().equals(shoppingcate.getSpuId())){
-                        shoppingcateService.updateById(s.getShoppingId(),s.getQuantity()+shoppingcate.getQuantity());
+                        Integer sa = s.getQuantity()+shoppingcate.getQuantity();
+                        shoppingcateService.updateById(s.getShoppingId(),sa);
                         flag = true;
                     }
                 }
                 if(!flag){
+                    System.out.println("=========+++");
+                    shoppingcate.setUserId(user.getUserId());
                     shoppingcateService.insertNew(shoppingcate);
                 }
             }

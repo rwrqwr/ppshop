@@ -17,4 +17,5 @@ public interface GoodsSpuDao {
 
     GoodsSpu queryOneSpuByNo(String spuNo);
 
+    int insert(GoodsSpu goodsSpu);
 }

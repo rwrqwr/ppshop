@@ -2,8 +2,8 @@
 <%@ page import="com.fff.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: USER
-  Date: 2018/11/21
-  Time: 16:33
+  Date: 2018/11/6
+  Time: 14:15
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,7 +17,6 @@
     <meta name="keywords" content="" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <link rel="stylesheet" type="text/css" href="../../../static/css/user/person.css">
     <!-- //for-mobile-apps -->
     <link href="../../../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="../../../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -75,9 +74,6 @@
 
 
         <div class="product_list_header">
-            <%--<form action="#" method="post" class="last">
-                <input type="hidden" name="cmd" value="_cart">
-                <input type="hidden" name="display" value="1">--%>
             <a href="/goods/cate">
                 <button class="w3view-cart" name="submit" value="">
                     <i class="fa fa-cart-arrow-down" aria-hidden="true">
@@ -85,7 +81,6 @@
                     </i>
                 </button>
             </a>
-            <%--</form>--%>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -94,7 +89,7 @@
 <div class="logo_products">
     <div class="container">
         <div class="w3ls_logo_products_left">
-            <h1><a href="/">宠物商店</a></h1>
+            <h1><a href="../index.jsp">宠物商店</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
@@ -125,7 +120,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/" class="act">主页</a></li>
+                    <li class="active"><a href="../index.jsp" class="act">主页</a></li>
                     <!-- Mega Menu -->
                     <c:forEach items="${bigcates}" var="bigcate">
                         <li class="dropdown">
@@ -157,98 +152,47 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="/"><span class="glyphicon glyphicon-主页" aria-hidden="true"></span>主页</a></li>
-            <li class="active">Products</li>
+            <li><a href="../index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">商品</li>
         </ol>
     </div>
 </div>
 <!-- //breadcrumbs -->
-<!--- products --->
-<div class="products">
-    <div class="container" style="margin-bottom: 40px">
-        <div class="col-md-4 products-left">
-            <div class="categories">
-                <h2>Categories</h2>
-                <ul class="cate">
-
-                <c:forEach items="${bigcates}" var="bigcate">
-                    <li><a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i>${bigcate.bigcateName}</a></li>
-                    <ul>
-                        <c:forEach items="${bigcate.categoryList}" var="datil">
-                            <li><a href="/goods/${datil.categoryEname}"><i class="fa fa-arrow-right" aria-hidden="true"></i>${datil.categoryName}</a></li>
-                        </c:forEach>
-                    </ul>
+<!-- login -->
+<div class="login">
+    <div class="container">
+        <center>
+        <form action="/admin/adsp">
+            <h5>商品类别</h5>
+            <select>
+                <c:forEach items="${bigcates}" var="de">
+                    <c:forEach items="${de.categoryList}" var="da">
+                        <option value="${da.id}">${da.categoryName}</option>
+                    </c:forEach>
                 </c:forEach>
-
-            </div>
-        </div>
-        <div class="col-md-8 products-right">
-
-            <c:forEach items="${goodsSpus}" var="spu" varStatus="i">
-
-                <div class="col-md-4 top_brand_left">
-                    <div class="hover14 column">
-                        <div class="agile_top_brand_left_grid">
-                            <div class="agile_top_brand_left_grid_pos">
-                                <img src="../../../static/imgs/temp/offer.png" alt=" " class="img-responsive">
-                            </div>
-                            <div class="agile_top_brand_left_grid1">
-                                <figure>
-                                    <div class="snipcart-item block">
-                                        <div class="snipcart-thumb">
-                                            <a href="/goods/single?spuNo=${spu.spuNo}"><img title=" " alt=" " src="../../../static/imgs/temp/pf4.png"></a>
-                                            <p>${spu.goodsName}</p>
-                                            <h4>${spu.price}</h4>
-                                        </div>
-                                        <div class="snipcart-details top_brand_主页_details">
-                                            <form>
-                                                <fieldset>
-                                                    <input id="spuNo${i.index}" type="hidden" name="spuNo" value="${spu.spuNo}">
-                                                    <input type="hidden" name="item_name" value="${spu.goodsName}">
-                                                    <input type="hidden" name="amount" value="${spu.price}">
-                                                    <input id="spuQ${i.index}" type="hidden" name="spuQ" value="1">
-                                                    <input type="hidden" name="discount_amount" value="">
-                                                    <input type="hidden" name="currency_code" value="USD">
-                                                    <input type="button" name="submit" value="加入购物车" class="button" onclick="return aj(${i.index})">
-                                                </fieldset>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </c:forEach>
-
+            </select>
+            <h5>商品名称：</h5><input type="text" name="goodsName" required="required"/>
+            <h5>商家id ：</h5><input type="text" name="brandId" required="required">
+            <h5>商品库存：</h5><input type="text" name="spuQuantity" required="required">
+            <h5>商品价格:</h5><input type="text" name="price" required="required">
+            <h5>商品描述:</h5><textarea name="description"  cols="30" rows="10"></textarea>
+            <input type="submit">
+        </form>
+        </center>
     </div>
 </div>
-<!--- products --->
+<!-- //login -->
 <!-- //footer -->
 <div class="footer">
+
+
     <div class="footer-copy">
+
         <div class="container">
             <p>fsh© 10210416522 计算机1165</p>
         </div>
     </div>
 
-</div>
-<div class="footer-botm">
-    <div class="container">
-        <div class="w3layouts-foot">
-            <ul>
-                <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-            </ul>
-        </div>
-        <div class="payment-w3ls">
-            <img src="../../../static/imgs/temp/card.png" alt=" " class="img-responsive">
-        </div>
-        <div class="clearfix"> </div>
-    </div>
 </div>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
@@ -271,7 +215,18 @@
     });
 </script>
 <!-- //here ends scrolling icon -->
+<script src="../../../static/js/minicart.min.js"></script>
+<%--<script>
+    // Mini Cart
+    paypal.minicart.render({
+        action: '#'
+    });
 
+    if (~window.location.search.indexOf('reset=true')) {
+        paypal.minicart.reset();
+    }
+</script>--%>
+<!-- main slider-banner -->
 <script src="../../../static/js/skdslider.min.js"></script>
 <link href="../../../static/css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
@@ -285,26 +240,6 @@
     });
 </script>
 <!-- //main slider-banner -->
-    <script>
-        function aj(index) {
-            var spuNo =  document.getElementById("spuNo"+index).value;
-            var spuQ =  document.getElementById("spuQ"+index).value;
-            $.ajax({
-                type:'post',
-                url:"/ajax/singleadd",
-                data:{
-                    spuNo : spuNo,
-                    spuQ : spuQ
-                },
-                datatype:'json',
-                success:function(data){
-                    alert('添加成功');
-                    return false ;
-                }
-            });
-            document.getElementById("spuQ").value="";
-        }
-    </script>
-</div>
+
 </body>
 </html>

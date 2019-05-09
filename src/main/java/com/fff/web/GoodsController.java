@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,6 +56,9 @@ public class GoodsController {
         }
         List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
 
+        if (shoppingcateList == null){
+            shoppingcateList = new ArrayList<>();
+        }
         model.addAttribute(shoppingcateList);
 
         return "goods/cate";

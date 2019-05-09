@@ -175,5 +175,19 @@ public class AjaxController {
         return map;
     }
 
+    @RequestMapping("end")
+    @ResponseBody
+    public Map end (@RequestParam Map<String,Object> map,HttpSession  session){
+
+        List<Boolean> list = (List<Boolean>) map.get("list");
+        User user = (User) session.getAttribute("user");
+        List<Shoppingcate> shoppingcateList = shoppingcateService.queryByUserid(user.getUserId());
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i)){
+                shoppingcateService.updateStatus(shoppingcateList.get(i).getShoppingId());
+            }
+        }
+        return map;
+    }
 
 }

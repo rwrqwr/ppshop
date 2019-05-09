@@ -464,7 +464,8 @@
             },
             datatype:'json',
             success:function(data){
-                alert('添加成功')
+                alert('添加成功');
+                return false;
             }
         });
         document.getElementById("spuQ").value="";

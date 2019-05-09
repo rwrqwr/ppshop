@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="../../../static/css/user/person.css">
     <!-- //for-mobile-apps -->
     <link href="../../../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../../../static/css/goods/cate.css">
     <link href="../../../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- font-awesome icons -->
     <link href="../../../static/css/font-awesome.css" rel="stylesheet">
@@ -161,16 +162,16 @@
 <!-- //breadcrumbs -->
 <!-- login -->
 
-<div class="person-main container">
+<div v-block id ="app" class="person-main container" >
     <div class="row">
         <div class="per-main-ul col-md-2">
             <ul class="nav nav-pills nav-stacked">
-                <li id="li0">收货地址</li>
-                <li id="li2">订单</li>
+                <li v-on:click ="to1">收货地址</li>
+                <li v-on:click ="to2">订单</li>
             </ul>
         </div>
 
-        <div id="des0" class="per-main-display col-md-10">
+        <div v-show="flag" class="per-main-display col-md-10">
             <button type="button" class="display-btn btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">添加地址</button>
             <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
@@ -203,11 +204,33 @@
             </ul>
             </div>
         </div>
-        <div id="des1" class="per-main-display col-md-10">
+        <div v-show="flag" id="des2" class="per-main-display col-md-10">
+            <table id="goods_table" class="shoplist margincenter">
+                <tr class="trnone"></tr>
+                <tr class="toptr">
 
-        </div>
-        <div id="des2" class="per-main-display col-md-10">
+                    <td width="540">商品名称</td>
+                    <td width="100">单价</td>
+                    <td width="160">数量</td>
+                    <td width="100">小计</td>
+                </tr>
+                <tr class="trnone"></tr>
+                <c:forEach items="${shoppingendcate}" var="shop">
+                <tr >
+                    <td style="text-align:left;">
+                        <p>${shop.goodsName}</p>
+                        <p>规格：</p>
+                    </td>
+                    <td>￥${shop.price}</td>
+                    <td>${shop.quantity}</td>
+                    <td class="adddel">
 
+                        <span type="number" v-model.number="item.quantity" v-on:change="change(index)" />
+                    </td>
+                    <td>￥${shop.price}</td>
+                </tr>
+                </c:forEach>
+            </table>
         </div>
 
 
@@ -272,29 +295,144 @@
 </script>
 <!-- //main slider-banner -->
 <script>
-    jQuery(document).ready(function() {
-        $('#li0').click(
-            function () {
-               $('#des0').show();
-               $('#des1').hide();
-               $('#des2').hide();
+    function create () {
+        c = new Vue({
+            el : '#app',
+            data : {
+                flag : true
+            },
+            methods : {
+                to1 : function () {
+                    c.flag = true;
+                },
+                to2 : function () {
+                    c.flag = false;
+                }
             }
-        )
-        $('#li1').click(
-            function () {
-                $('#des0').hide();
-                $('#des1').show();
-                $('#des2').hide();
-            }
-        )
-        $('#li2').click(
-            function () {
-                $('#des0').hide();
-                $('#des1').hide();
-                $('#des2').show();
-            }
-        )
-    });
+        })
+
+    }
 </script>
+<script src="../../../static/js/vue.js"></script>
+<%--<script>
+    var cart; //Vue对象
+    function createVue(list) {
+        cart = new Vue({
+            el: '#cart',
+            data() {
+                return {
+                    list: list,
+                    checkeds: new Array(list.length)
+                }
+            },
+            computed: {
+                sum: function () {
+                    let sum = 0;
+                    for (let i in this.list) {
+                        if (this.checkeds[i])
+                            sum += this.list[i].spuPrice * this.list[i].quantity;
+                    }
+                    return sum;
+                },
+                checkNum: function () {
+                    let num = 0;
+                    for (let i in this.checkeds) {
+                        if (this.checkeds[i]) {
+                            num++;
+                        }
+                    }
+                    return num;
+                }
+            },
+            methods: {
+                end : function () {
+                    $.ajax({
+                        data: {
+                            list : this.checkeds
+                        },
+                        datatype : 'json',
+                        url : ''
+                    })
+                },
+                del: function (index) {
+                    $.ajax({
+                        data : {
+                            index : index,
+                            temp : list[index].shoppingId
+                        },
+                        datatype : 'json',
+                        method : 'post',
+                        url : '/ajax/del'
+                    });
+                    this.list.splice(index, 1);
+                    this.checkeds.splice(index,1); //同时删除对应的选中状态标识
+                },
+                add: function (index) {
+                    $.ajax({
+                        data : {
+                            index : index,
+                            temp : list[index].shoppingId
+                        },
+                        datatype : 'json',
+                        method : 'post',
+                        url : '/ajax/add'
+                    });
+                    this.list[index].quantity++;
+                },
+                minius: function (index) {
+                    $.ajax({
+                        data : {
+                            index : index,
+                            temp : list[index].shoppingId
+                        },
+                        datatype : 'json',
+                        method : 'post',
+                        url : '/ajax/reduce'
+                    });
+                    if (this.list[index].quantity > 1) {
+                        this.list[index].quantity--;
+                    }
+                },
+                change: function (index) {
+                    $.ajax({
+                        data : {
+                            index : index,
+                            temp : list[index].shoppingId,
+                            quan : list[index].quantity
+                        },
+                        datatype : 'json',
+                        method : 'post',
+                        url : '/ajax/change'
+                    });
+                },
+                checkAll: function (event) {
+                    if (event.checked) {
+                        for (let i = 0; i < this.checkeds.length; i++) {
+                            Vue.set(this.checkeds, i, true);
+                        }
+                    } else {
+                        for (let i = 0; i < this.checkeds.length; i++) {
+                            Vue.set(this.checkeds, i, false);
+                        }
+                    }
+                }
+            }
+        });
+    }
+    window.onload =	function () {
+        let list = [
+            <c:forEach items="${shoppingendcate}" var="sh">
+            {
+                spuName : '${sh.goodsName}',
+                spuPrice : ${sh.price},
+                quantity : ${sh.quantity},
+                shoppingId : '${sh.shoppingId}'
+            },
+            </c:forEach>
+        ];
+
+        createVue(list);
+    }
+</script>--%>
 </body>
 </html>

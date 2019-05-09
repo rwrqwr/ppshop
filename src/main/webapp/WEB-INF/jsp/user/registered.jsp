@@ -1,3 +1,4 @@
+<%@ page import="com.fff.entity.User" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
@@ -62,12 +63,12 @@
         }else{
         %>
         <div class="agile-login">
-            <ul>
-                <li>欢迎,${sessionScope.user.userName}</li>
-                <li><a href="/user/person">个人中心</a></li>
-                <li><a href="/user/out">退出</a></li>
-            </ul>
-        </div>
+        <ul>
+            <li>欢迎,${sessionScope.user.userName}</li>
+            <li><a href="/user/person">个人中心</a></li>
+            <li><a href="/user/out">退出</a></li>
+        </ul>
+    </div>
         <%
             }
         %>
@@ -93,7 +94,7 @@
 <div class="logo_products">
     <div class="container">
         <div class="w3ls_logo_products_left">
-            <h1><a href="../index.jsp">宠物商店</a></h1>
+            <h1><a href="/">宠物商店</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
@@ -124,7 +125,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../index.jsp" class="act">主页</a></li>
+                    <li class="active"><a href="/" class="act">主页</a></li>
                     <!-- Mega Menu -->
                     <c:forEach items="${bigcates}" var="bigcate">
                         <li class="dropdown">
@@ -177,7 +178,7 @@
             </form>
         </div>
         <div class="register-home">
-            <a href="index.html">Home</a>
+            <a href="/">Home</a>
         </div>
     </div>
 </div>

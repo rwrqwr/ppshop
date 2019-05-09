@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fff.dao.GoodsSpuDao">
+    <insert id="insert">
+        INSERT INTO goods_spu (spu_no, goods_name, price, category_id, brand_id, description, spu_quantity)
+        VALUES (#{goodsSpu.spuNo},#{goodsSpu.goodsName},#{goodsSpu.price},#{goodsSpu.categoryId},#{goodsSpu.brandId},#{goodsSpu.description},#{goodsSpu.spuQuantity})
+    </insert>
 
     <select id="queryAllSpu" resultType="com.fff.entity.GoodsSpu">
         SELECT id,spu_no,goods_name,price,category_name,brand_name FROM goods_spu;
