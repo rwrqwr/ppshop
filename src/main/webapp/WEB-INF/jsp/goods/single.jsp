@@ -17,21 +17,21 @@
     <meta name="keywords" content="" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <link rel="stylesheet" type="text/css" href="../../../static/css/user/person.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/../static/css/user/person.css">
     <!-- //for-mobile-apps -->
-    <link href="../../../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="../../../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="${pageContext.request.contextPath}/../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="${pageContext.request.contextPath}/../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- font-awesome icons -->
-    <link href="../../../static/css/font-awesome.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/../static/css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
     <!-- js -->
-    <script src="../../../static/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/../static/js/jquery.min.js"></script>
     <!-- //js -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!-- start-smoth-scrolling -->
-    <script type="text/javascript" src="../../../static/js/move-top.js"></script>
-    <script type="text/javascript" src="../../../static/js/easing.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/../static/js/move-top.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/../static/js/easing.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event){
@@ -162,7 +162,7 @@
         <div class="agileinfo_single">
 
             <div class="col-md-4 agileinfo_single_left">
-                <img id="example" src="../../../static/imgs/temp/si1.jpg" alt=" " class="img-responsive">
+                <img id="example" src="${pageContext.request.contextPath}/../static/imgs/temp/si1.jpg" alt=" " class="img-responsive">
             </div>
             <div class="col-md-8 agileinfo_single_right">
                 <h2>${spu.goodsName}</h2>
@@ -409,7 +409,7 @@
 </div>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
-<script src="../../../static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/../static/js/bootstrap.min.js"></script>
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
@@ -429,8 +429,8 @@
 </script>
 
 <!-- main slider-banner -->
-<script src="../../../static/js/skdslider.min.js"></script>
-<link href="../../../static/css/skdslider.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/../static/js/skdslider.min.js"></script>
+<link href="${pageContext.request.contextPath}/../static/css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
