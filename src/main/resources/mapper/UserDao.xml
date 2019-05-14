@@ -20,7 +20,8 @@
             user_id,
             user_name,
             user_password,
-            user_tel
+            user_tel,
+            user_pre
         FROM user_info
         WHERE user_tel = #{userTel};
     </select>

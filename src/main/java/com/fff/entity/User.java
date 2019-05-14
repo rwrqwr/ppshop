@@ -9,6 +9,7 @@ public class User {
     private String userPassword;
     private String userEmail;
     private String userTel;
+    private String userPre;
 
     public String getUserId() {
         return userId;
@@ -48,5 +49,13 @@ public class User {
 
     public void setUserTel(String userTel) {
         this.userTel = userTel;
+    }
+
+    public String getUserPre() {
+        return userPre;
+    }
+
+    public void setUserPre(String userPre) {
+        this.userPre = userPre;
     }
 }

@@ -54,8 +54,8 @@
         %>
                 <div class="agile-login">
             <ul>
-                <li><a href="/user/registered"> 注册 </a></li>
-                <li><a href="/user/login">登录</a></li>
+                <li><a href="user/registered"> 注册 </a></li>
+                <li><a href="user/login">登录</a></li>
                 <li><a href="contact.html">Help</a></li>
             </ul>
         </div>
@@ -65,8 +65,8 @@
         <div class="agile-login">
             <ul>
                 <li>欢迎,${sessionScope.user.userName}</li>
-                <li><a href="/user/person">个人中心</a></li>
-                <li><a href="/user/out">退出</a></li>
+                <li><a href="user/person">个人中心</a></li>
+                <li><a href="user/out">退出</a></li>
             </ul>
         </div>
         <%
@@ -78,7 +78,7 @@
             <%--<form action="#" method="post" class="last">
                 <input type="hidden" name="cmd" value="_cart">
                 <input type="hidden" name="display" value="1">--%>
-            <a href="/goods/cate">
+            <a href="goods/cate">
                 <button class="w3view-cart" name="submit" value="">
                     <i class="fa fa-cart-arrow-down" aria-hidden="true">
 
@@ -161,7 +161,7 @@
         <img src="${pageContext.request.contextPath}/static/imgs/temp/11.jpg" alt="" />
         <!--Slider Description example-->
         <div class="slide-desc">
-            <h3>Buy Rice Products Are Now On Line With Us</h3>
+            <h3>欢迎光临w(゜Д゜)w </h3>
         </div>
     </li>
     <li>

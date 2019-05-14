@@ -28,11 +28,12 @@
             <mvc:mapping path="/user/person/**"/>
             <bean class="com.fff.interceptor.loginInterceptor"/>
         </mvc:interceptor>
-        <!--<mvc:interceptor>
+        <mvc:interceptor>
             <mvc:mapping path="/admin/**"/>
             <bean class="com.fff.interceptor.adminInterceptor"/>
-        </mvc:interceptor>-->
+        </mvc:interceptor>
     </mvc:interceptors>
+
 
 
     <!-- 3.配置jsp 显示ViewResolver -->

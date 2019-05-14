@@ -282,7 +282,7 @@
 </script>--%>
 <!-- main slider-banner -->
 <script src="${pageContext.request.contextPath}/../static/js/skdslider.min.js"></script>
-<link href="${pageContext.request.contextPath}/../static/css/skdslider.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/static/css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
@@ -313,7 +313,7 @@
 
     }
 </script>
-<script src="${pageContext.request.contextPath}/../static/js/vue.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/vue.js"></script>
 <%--<script>
     var cart; //Vue对象
     function createVue(list) {

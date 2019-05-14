@@ -18,19 +18,19 @@
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
-    <link href="${pageContext.request.contextPath}/../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="${pageContext.request.contextPath}/../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- font-awesome icons -->
-    <link href="${pageContext.request.contextPath}/../static/css/font-awesome.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
     <!-- js -->
-    <script src="${pageContext.request.contextPath}/../static/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
     <!-- //js -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!-- start-smoth-scrolling -->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/../static/js/move-top.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/../static/js/easing.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/move-top.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/easing.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event){
@@ -89,7 +89,7 @@
 <div class="logo_products">
     <div class="container">
         <div class="w3ls_logo_products_left">
-            <h1><a href="../index.jsp">宠物商店</a></h1>
+            <h1><a href="../">宠物商店</a></h1>
         </div>
         <div class="w3l_search">
             <form action="#" method="post">
@@ -120,7 +120,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="../index.jsp" class="act">主页</a></li>
+                    <li class="active"><a href="../" class="act">主页</a></li>
                     <!-- Mega Menu -->
                     <c:forEach items="${bigcates}" var="bigcate">
                         <li class="dropdown">
@@ -196,7 +196,7 @@
 </div>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
-<script src="${pageContext.request.contextPath}/../static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
@@ -215,7 +215,7 @@
     });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="${pageContext.request.contextPath}/../static/js/minicart.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/minicart.min.js"></script>
 <%--<script>
     // Mini Cart
     paypal.minicart.render({
@@ -227,8 +227,8 @@
     }
 </script>--%>
 <!-- main slider-banner -->
-<script src="${pageContext.request.contextPath}/../static/js/skdslider.min.js"></script>
-<link href="${pageContext.request.contextPath}/../static/css/skdslider.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/static/js/skdslider.min.js"></script>
+<link href="${pageContext.request.contextPath}/static/css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
