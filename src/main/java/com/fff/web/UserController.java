@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpSession;
@@ -181,5 +182,18 @@ public class UserController {
         addressService.updateAddress(addressId, user.getUserId());
         return "redirect:/user/person";
     }
+
+    @ResponseBody
+    @RequestMapping("change")
+    public Map changePasswordTemp(@RequestParam Map<String,Object> map){
+
+        String userTel = (String) map.get("userTel");
+        System.out.println(userTel+"================");
+        map.put("flag",userService.existTel(userTel));
+
+
+        return map;
+    }
+
 
 }

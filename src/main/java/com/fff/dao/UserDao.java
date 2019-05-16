@@ -29,6 +29,7 @@ public interface UserDao {
 
     int updateByTel(User user);
 
+    int queryExist(String userTel);
 
 
 

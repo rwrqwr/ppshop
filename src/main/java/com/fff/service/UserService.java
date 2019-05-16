@@ -25,4 +25,14 @@ public interface UserService {
      **/
     int addUser(User user);
 
+    /**
+     * @Author fsh
+     * @Description //存在唯一的电话
+     * @Date 8:42 2019/5/16
+     * @Param [userTel]
+     * @return java.lang.Boolean
+     **/
+    int existTel(String userTel);
+
+
 }

@@ -1,6 +1,7 @@
 <%@ page import="com.fff.entity.User" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: USER
@@ -112,7 +113,7 @@
 <!-- //header -->
 <!-- navigation -->
 <div class="navigation-agileits">
-    <div class="container">
+    <div  class="container">
         <nav class="navbar navbar-default">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header nav_2">
@@ -165,15 +166,17 @@
 <!-- //breadcrumbs -->
 <!-- register -->
 <div class="register">
-    <div class="container">
+    <div id="aapp" class="container">
         <h2>Register Here</h2>
         <div class="login-form-grids">
-            <form action="/user/adduser" method="post" onsubmit= "return formCheck() ">
-                <input type="text" placeholder="昵称" required="required" name="userName" >
-                <input type="text" placeholder="电话号码" required=" " name="userTel">
-                <input type="email" placeholder="邮箱" required=" " name="userEmail" >
-                <input type="password" id="pass1" placeholder="密码" required=" " name="userPassword">
-                <input type="password" id="pass2" placeholder="在输入一次密码" required=" " >
+            <form action="/user/adduser" method="post" v-on:v-on:click="sublime()">
+                <input type="text" placeholder="昵称" required="required" name="userName" v-model="username" >
+                <input type="text" placeholder="电话号码" required=" " name="userTel" v-model="usertel" v-on:change="change()">
+                {{telcheck.errorText}}
+                <input type="password" id="pass1" placeholder="密码" required=" " name="userPassword" v-model="password">
+                {{passwordValidate.errorText}}
+                <input type="password" id="pass2" placeholder="在输入一次密码" required=" " v-model="password1" >
+                    {{passwordCheckValidate.errorText}}
                 <input type="submit" value="Register">
             </form>
         </div>
@@ -193,16 +196,92 @@
     </div>
 
 </div>
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/vue.js"></script>
 <script type="text/javascript">
-    function formCheck(){
-        var pwd1 = document.getElementById("pass1").value;
-        var pwd2 = document.getElementById("pass2").value;
-        if(pwd1!=pwd2){
-            alert("两次输入的密码不一致！");
-            return false;
-        }
-        return true;
-    }
+
+        var v = new Vue({
+            el: '#aapp',
+            data() {
+                return{
+                    password : '',
+                    username : '',
+                    usertel : '',
+                    password1:'',
+                    userexist : 2
+                }
+            },
+            computed :{
+                passwordValidate: function() {
+                    var errorText;
+
+                    if(!/^[0-9A-Za-z]{6,15}$/.test(this.password)) {
+                        errorText = '密码至少6位，并且只能由数字和字母组成';
+                    } else {
+                        errorText = '';
+                    }
+                    if(!this.passwordFlag) {
+                        errorText = '';
+                        this.passwordFlag = true;
+                    }
+                    return {
+                        errorText
+                    }
+                },
+                passwordCheckValidate: function() {
+                    var errorText = '';
+                    if(!/^[0-9A-Za-z]{6,15}$/.test(this.password1)) {
+                        errorText = '密码至少6位，并且只能由数字和字母组成';
+                    }else if(this.password1 !== this.password ){
+                        errorText = '两次密码不匹配';
+                    }
+                    else {
+                        errorText = '';
+                    }
+
+                    if(!this.passwordFlag) {
+                        errorText = '';
+                        this.passwordFlag = true;
+                    }
+                    return {
+                        errorText
+                    }
+                },
+                telcheck : function () {
+                    var errorText;
+                    if(!/^[0-9]{11}$/.test(this.usertel)) {
+                        errorText = '请输入正确的电话';
+                    }else if(v.userexist === 1){
+                        errorText = '用户已存在';
+                    }
+                    else{
+                        errorText = '';
+                    }
+                    return{
+                        errorText
+                    }
+                }
+
+            },
+            methods: {
+                change : function change() {
+                    $.ajax({
+                        data: {
+                            userTel : this.usertel
+                        },
+                        datatype : 'json',
+                        url : '/user/change',
+                        success: function (res) {
+                            v.userexist = res.flag;
+                        }
+                    })    
+                },
+                sublime : function () {
+                
+                }
+            }
+        });
+    
+
 </script>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->

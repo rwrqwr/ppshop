@@ -7,7 +7,7 @@ public class User {
     private String userId;
     private String userName;
     private String userPassword;
-    private String userEmail;
+
     private String userTel;
     private String userPre;
 
@@ -35,13 +35,7 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public String getUserEmail() {
-        return userEmail;
-    }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
 
     public String getUserTel() {
         return userTel;

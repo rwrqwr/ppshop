@@ -5,13 +5,13 @@
 <mapper namespace="com.fff.dao.UserDao">
     <insert id="insertUser">
         INSERT INTO user_info
-        (user_name, user_password, user_tel, user_email)
-        VALUES (#{userName}, #{userPassword}, #{userTel}, #{userEmail});
+        (user_name, user_password, user_tel)
+        VALUES (#{userName}, #{userPassword}, #{userTel});
     </insert>
 
     <update id="updateByTel">
         UPDATE user_info
-        SET user_name = #{userName}, user_email = #{userEmail}
+        SET user_name = #{userName}
         WHERE user_tel = #{userTel};
     </update>
 
@@ -24,5 +24,8 @@
             user_pre
         FROM user_info
         WHERE user_tel = #{userTel};
+    </select>
+    <select id="queryExist" resultType="java.lang.Integer">
+        SELECT count(user_tel) FROM user_info WHERE user_tel = #{userTel};
     </select>
 </mapper>

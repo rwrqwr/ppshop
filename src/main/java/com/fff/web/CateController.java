@@ -23,7 +23,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/ajax")
-public class AjaxController {
+public class CateController {
 
 
     @Autowired

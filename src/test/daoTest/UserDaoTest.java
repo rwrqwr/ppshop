@@ -32,7 +32,7 @@ public class UserDaoTest {
         u.setUserName("f6");
         u.setUserPassword("123");
         u.setUserTel("123541211");
-        u.setUserEmail("4141fas1@qq.com");
+
         int status = userDao.insertUser(u);
         System.out.println(status);
     }
@@ -43,7 +43,7 @@ public class UserDaoTest {
         u.setUserName("f6");
         u.setUserPassword("123");
         u.setUserTel("12312123441");
-        u.setUserEmail("qqqqqq@qq.com");
+
         userDao.updateByTel(u);
     }
 

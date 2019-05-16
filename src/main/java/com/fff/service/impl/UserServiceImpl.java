@@ -24,4 +24,10 @@ public class UserServiceImpl implements UserService {
     public int addUser(User user) {
         return userDao.insertUser(user);
     }
+
+    @Override
+    public int existTel(String userTel) {
+
+        return userDao.queryExist(userTel);
+    }
 }
