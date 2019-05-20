@@ -68,6 +68,7 @@ public class UserController {
         System.out.println("person======");
         model.addAttribute("addressList", list);
 
+        //订单添加
         List<Shoppingcate> shoppingcateList = shoppingcateService.queryEndByUserid(user.getUserId());
         System.out.println(shoppingcateList + "==========");
         model.addAttribute("shoppingendcate", shoppingcateList);
@@ -145,7 +146,7 @@ public class UserController {
      * @Param [user]
      **/
     @RequestMapping("/adduser")
-    public String addUser(@ModelAttribute("user") User user) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public String addUser(@ModelAttribute("user") User user,HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         String str = user.getUserPassword();
         MessageDigest md5= MessageDigest.getInstance("MD5");
         BASE64Encoder base64en = new BASE64Encoder();
@@ -153,10 +154,13 @@ public class UserController {
         String newstr=base64en.encode(md5.digest(str.getBytes("utf-8")));
         user.setUserPassword(newstr);
         int stat = userService.addUser(user);
-        System.out.println(user.getUserName()+"aaaaaaaaaaaaaaaa");
-        System.out.println(newstr+"===============");
-        if (stat == 1)
+
+        if (stat == 1){
+            session.setAttribute("user",user);
+
             return "redirect:/";
+        }
+
         return "user/registered";
     }
 
@@ -188,7 +192,7 @@ public class UserController {
     public Map changePasswordTemp(@RequestParam Map<String,Object> map){
 
         String userTel = (String) map.get("userTel");
-        System.out.println(userTel+"================");
+
         map.put("flag",userService.existTel(userTel));
 
 

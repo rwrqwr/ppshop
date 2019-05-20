@@ -190,16 +190,16 @@
                     <img :src="'路径前缀/'+item.subimage1Filename" />
                 </td>
                 <td style="text-align:left;">
-                    <p>{{item.spuName}}</p>
+                    <p>{{item.goodsName}}</p>
                     <p>规格：{{item.specifications}}</p>
                 </td>
-                <td>￥{{item.spuPrice}}</td>
+                <td>￥{{item.price}}</td>
                 <td class="adddel">
                     <em v-on:click="minius(index)">-</em>
                     <input type="number" v-model.number="item.quantity" v-on:change="change(index)" />
                     <em v-on:click="add(index)">+</em>
                 </td>
-                <td>￥{{item.spuPrice * item.quantity}}</td>
+                <td>￥{{item.price * item.quantity}}</td>
                 <td>
                     <button v-on:click="del(index)">删除</button>
                 </td>
@@ -296,7 +296,7 @@
                         let sum = 0;
                         for (let i in this.list) {
                             if (this.checkeds[i])
-                                sum += this.list[i].spuPrice * this.list[i].quantity;
+                                sum += this.list[i].price * this.list[i].quantity;
                         }
                         return sum;
                     },
@@ -312,12 +312,21 @@
                 },
                 methods: {
                     end : function () {
+                        let li = [];
+                        for (let i in this.checkeds) {
+                            if (this.checkeds[i]) {
+                                li.push(this.list[i]);
+                            }
+                        }
                         $.ajax({
                             data: {
-                                list : this.checkeds
+
+                                index : li.length
                             },
+                            contentType: "application/json",
                             datatype : 'json',
-                            url : ''
+                            method : 'post',
+                            url : '/cate/settleAccount'
                         })
                     },
                     del: function (index) {
@@ -328,7 +337,7 @@
                             },
                             datatype : 'json',
                             method : 'post',
-                            url : '/ajax/del'
+                            url : '/cate/del'
                         });
                         this.list.splice(index, 1);
                         this.checkeds.splice(index,1); //同时删除对应的选中状态标识
@@ -341,7 +350,7 @@
                             },
                             datatype : 'json',
                             method : 'post',
-                            url : '/ajax/add'
+                            url : '/cate/add'
                         });
                         this.list[index].quantity++;
                     },
@@ -353,7 +362,7 @@
                             },
                             datatype : 'json',
                             method : 'post',
-                            url : '/ajax/reduce'
+                            url : '/cate/reduce'
                         });
                         if (this.list[index].quantity > 1) {
                             this.list[index].quantity--;
@@ -368,7 +377,7 @@
                             },
                             datatype : 'json',
                             method : 'post',
-                            url : '/ajax/change'
+                            url : '/cate/change'
                         });
                     },
                     checkAll: function (event) {
@@ -389,10 +398,13 @@
             let list = [
                 <c:forEach items="${shoppingcateList}" var="sh">
                 {
-                    spuName : '${sh.goodsName}',
-                    spuPrice : ${sh.price},
+                    goodsName : '${sh.goodsName}',
+                    price : ${sh.price},
                     quantity : ${sh.quantity},
-                    shoppingId : '${sh.shoppingId}'
+                    shoppingId : '${sh.shoppingId}',
+                    userId: '${sh.userId}',
+                    spuId : '${sh.spuId}',
+                    status: '${sh.status}'
                 },
                 </c:forEach>
             ];

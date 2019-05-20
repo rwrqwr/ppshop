@@ -177,7 +177,7 @@
                 {{passwordValidate.errorText}}
                 <input type="password" id="pass2" placeholder="在输入一次密码" required=" " v-model="password1" >
                     {{passwordCheckValidate.errorText}}
-                <input type="submit" value="Register">
+                <input type="submit" value="Register" >
             </form>
         </div>
         <div class="register-home">
@@ -276,11 +276,18 @@
                     })    
                 },
                 sublime : function () {
-                
+                    $.ajax({
+                        data: {
+                            password : this.password,
+                            username : this.username,
+                            usertel : this.usertel,
+                        },
+                        datatype : 'json',
+                        url : '/user/adduser',
+                    })
                 }
             }
         });
-    
 
 </script>
 <!-- //footer -->

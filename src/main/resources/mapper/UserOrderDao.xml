@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fff.dao.UserOrderDao">
+
+    <select id="queryAll" resultType="com.fff.entity.UserOrder">
+        SELECT * FROM user_order;
+    </select>
+    <select id="queryByTime" resultType="com.fff.entity.UserOrder">
+        SELECT * FROM user_order
+        WHERE DATE_FORMAT(final_time,'%Y%m%d') &gt;= #{startTime} AND DATE_FORMAT(final_time,'%Y%m%d') &lt;= #{endTime};
+    </select>
+
+</mapper>

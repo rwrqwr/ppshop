@@ -3,14 +3,12 @@ package com.fff.web;
 import com.fff.entity.GoodsSpu;
 import com.fff.entity.Shoppingcate;
 import com.fff.entity.User;
+import com.fff.model.SettleAccountsModel;
 import com.fff.service.GoodsSpuService;
 import com.fff.service.ShoppingcateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ import java.util.Map;
  * Created by fsh on 2018/12/12.
  */
 @RestController
-@RequestMapping("/ajax")
+@RequestMapping("/cate")
 public class CateController {
 
 
@@ -175,19 +173,12 @@ public class CateController {
         return map;
     }
 
-    @RequestMapping("end")
-    @ResponseBody
-    public Map end (@RequestParam Map<String,Object> map,HttpSession  session){
 
-        List<Boolean> list = (List<Boolean>) map.get("list");
-        User user = (User) session.getAttribute("user");
-        List<Shoppingcate> shoppingcateList = shoppingcateService.queryByUserid(user.getUserId());
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i)){
-                shoppingcateService.updateStatus(shoppingcateList.get(i).getShoppingId());
-            }
-        }
-        return map;
+    @ResponseBody
+    @RequestMapping("settleAccount")
+    public String settleAccount(@RequestBody SettleAccountsModel settleAccountsModel){
+
+        return "???";
     }
 
 }

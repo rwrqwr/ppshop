@@ -34,8 +34,6 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
-
-
     <!-- 3.配置jsp 显示ViewResolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />

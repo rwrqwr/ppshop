@@ -17,7 +17,6 @@ public class GoodsSpuServiceImpl implements GoodsSpuService {
     @Autowired
     GoodsSpuDao goodsSpuDao;
 
-
     @Override
     public List<GoodsSpu> queryAll() {
         return goodsSpuDao.queryAllSpu();

@@ -17,22 +17,22 @@
     <meta name="keywords" content="" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/../static/css/user/person.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/user/person.css">
     <!-- //for-mobile-apps -->
-    <link href="${pageContext.request.contextPath}/../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/../static/css/goods/cate.css">
-    <link href="${pageContext.request.contextPath}/../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/goods/cate.css">
+    <link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- font-awesome icons -->
-    <link href="${pageContext.request.contextPath}/../static/css/font-awesome.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
     <!-- js -->
-    <script src="${pageContext.request.contextPath}/../static/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
     <!-- //js -->
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <!-- start-smoth-scrolling -->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/../static/js/move-top.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/../static/js/easing.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/move-top.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/easing.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             $(".scroll").click(function(event){
@@ -166,8 +166,8 @@
     <div class="row">
         <div class="per-main-ul col-md-2">
             <ul class="nav nav-pills nav-stacked">
-                <li v-on:click ="to1">收货地址</li>
-                <li v-on:click ="to2">订单</li>
+                <li v-on:click ="to1()">收货地址</li>
+                <li v-on:click ="to2()">订单</li>
             </ul>
         </div>
 
@@ -204,11 +204,10 @@
             </ul>
             </div>
         </div>
-        <div v-show="flag" id="des2" class="per-main-display col-md-10">
+        <div v-show="!flag" id="des2" class="per-main-display col-md-10">
             <table id="goods_table" class="shoplist margincenter">
                 <tr class="trnone"></tr>
                 <tr class="toptr">
-
                     <td width="540">商品名称</td>
                     <td width="100">单价</td>
                     <td width="160">数量</td>
@@ -223,10 +222,7 @@
                     </td>
                     <td>￥${shop.price}</td>
                     <td>${shop.quantity}</td>
-                    <td class="adddel">
 
-                        <span type="number" v-model.number="item.quantity" v-on:change="change(index)" />
-                    </td>
                     <td>￥${shop.price}</td>
                 </tr>
                 </c:forEach>
@@ -250,7 +246,7 @@
 </div>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
-<script src="${pageContext.request.contextPath}/../static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
@@ -269,7 +265,7 @@
     });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="${pageContext.request.contextPath}/../static/js/minicart.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/minicart.min.js"></script>
 <%--<script>
     // Mini Cart
     paypal.minicart.render({
@@ -281,7 +277,7 @@
     }
 </script>--%>
 <!-- main slider-banner -->
-<script src="${pageContext.request.contextPath}/../static/js/skdslider.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/skdslider.min.js"></script>
 <link href="${pageContext.request.contextPath}/static/css/skdslider.css" rel="stylesheet">
 <script type="text/javascript">
     jQuery(document).ready(function(){
@@ -294,12 +290,15 @@
     });
 </script>
 <!-- //main slider-banner -->
+<script src="${pageContext.request.contextPath}/static/js/vue.js"></script>
 <script>
-    function create () {
-        c = new Vue({
+       var c = new Vue({
             el : '#app',
-            data : {
-                flag : true
+            data () {
+                return{
+                    flag : true
+                }
+
             },
             methods : {
                 to1 : function () {
@@ -309,130 +308,9 @@
                     c.flag = false;
                 }
             }
-        })
-
-    }
-</script>
-<script src="${pageContext.request.contextPath}/static/js/vue.js"></script>
-<%--<script>
-    var cart; //Vue对象
-    function createVue(list) {
-        cart = new Vue({
-            el: '#cart',
-            data() {
-                return {
-                    list: list,
-                    checkeds: new Array(list.length)
-                }
-            },
-            computed: {
-                sum: function () {
-                    let sum = 0;
-                    for (let i in this.list) {
-                        if (this.checkeds[i])
-                            sum += this.list[i].spuPrice * this.list[i].quantity;
-                    }
-                    return sum;
-                },
-                checkNum: function () {
-                    let num = 0;
-                    for (let i in this.checkeds) {
-                        if (this.checkeds[i]) {
-                            num++;
-                        }
-                    }
-                    return num;
-                }
-            },
-            methods: {
-                end : function () {
-                    $.ajax({
-                        data: {
-                            list : this.checkeds
-                        },
-                        datatype : 'json',
-                        url : ''
-                    })
-                },
-                del: function (index) {
-                    $.ajax({
-                        data : {
-                            index : index,
-                            temp : list[index].shoppingId
-                        },
-                        datatype : 'json',
-                        method : 'post',
-                        url : '/ajax/del'
-                    });
-                    this.list.splice(index, 1);
-                    this.checkeds.splice(index,1); //同时删除对应的选中状态标识
-                },
-                add: function (index) {
-                    $.ajax({
-                        data : {
-                            index : index,
-                            temp : list[index].shoppingId
-                        },
-                        datatype : 'json',
-                        method : 'post',
-                        url : '/ajax/add'
-                    });
-                    this.list[index].quantity++;
-                },
-                minius: function (index) {
-                    $.ajax({
-                        data : {
-                            index : index,
-                            temp : list[index].shoppingId
-                        },
-                        datatype : 'json',
-                        method : 'post',
-                        url : '/ajax/reduce'
-                    });
-                    if (this.list[index].quantity > 1) {
-                        this.list[index].quantity--;
-                    }
-                },
-                change: function (index) {
-                    $.ajax({
-                        data : {
-                            index : index,
-                            temp : list[index].shoppingId,
-                            quan : list[index].quantity
-                        },
-                        datatype : 'json',
-                        method : 'post',
-                        url : '/ajax/change'
-                    });
-                },
-                checkAll: function (event) {
-                    if (event.checked) {
-                        for (let i = 0; i < this.checkeds.length; i++) {
-                            Vue.set(this.checkeds, i, true);
-                        }
-                    } else {
-                        for (let i = 0; i < this.checkeds.length; i++) {
-                            Vue.set(this.checkeds, i, false);
-                        }
-                    }
-                }
-            }
         });
-    }
-    window.onload =	function () {
-        let list = [
-            <c:forEach items="${shoppingendcate}" var="sh">
-            {
-                spuName : '${sh.goodsName}',
-                spuPrice : ${sh.price},
-                quantity : ${sh.quantity},
-                shoppingId : '${sh.shoppingId}'
-            },
-            </c:forEach>
-        ];
+</script>
 
-        createVue(list);
-    }
-</script>--%>
+
 </body>
 </html>

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 /**
  * Created by fsh on 2018/12/5.
+ * 购物车中单个商品的实体类
  */
 public class Shoppingcate {
 
