@@ -312,19 +312,15 @@
                 },
                 methods: {
                     end : function () {
-                        let li = [];
+                        let settleAccountsModel = [];
                         for (let i in this.checkeds) {
                             if (this.checkeds[i]) {
-                                li.push(this.list[i]);
+                                settleAccountsModel.push(this.list[i]);
                             }
                         }
                         $.ajax({
-                            data: {
-
-                                index : li.length
-                            },
+                            data: JSON.stringify(settleAccountsModel),
                             contentType: "application/json",
-                            datatype : 'json',
                             method : 'post',
                             url : '/cate/settleAccount'
                         })
@@ -335,7 +331,6 @@
                                 index : index,
                                 temp : list[index].shoppingId
                             },
-                            datatype : 'json',
                             method : 'post',
                             url : '/cate/del'
                         });
@@ -404,7 +399,8 @@
                     shoppingId : '${sh.shoppingId}',
                     userId: '${sh.userId}',
                     spuId : '${sh.spuId}',
-                    status: '${sh.status}'
+                    status: '${sh.status}',
+                    userId : '${sh.userId}'
                 },
                 </c:forEach>
             ];

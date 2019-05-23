@@ -1,20 +1,21 @@
 package com.fff.web;
 
+import com.fff.dao.UserOrderDao;
 import com.fff.entity.GoodsSpu;
 import com.fff.entity.Shoppingcate;
 import com.fff.entity.User;
+import com.fff.entity.UserOrder;
 import com.fff.model.SettleAccountsModel;
 import com.fff.service.GoodsSpuService;
 import com.fff.service.ShoppingcateService;
+import com.fff.service.UserOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by fsh on 2018/12/12.
@@ -30,6 +31,8 @@ public class CateController {
     @Autowired
     GoodsSpuService goodsSpuService;
 
+    @Autowired
+    UserOrderService userOrderService;
     /**
      * @Author fsh
      * @Description //点击加入购物车
@@ -174,11 +177,29 @@ public class CateController {
     }
 
 
+    /**
+     * @Author fsh
+     * @Description //购物车结算功能
+     * @Date 9:43 2019/5/21
+     * @Param [shoppingcates]
+     * @return java.lang.String
+     **/
     @ResponseBody
     @RequestMapping("settleAccount")
-    public String settleAccount(@RequestBody SettleAccountsModel settleAccountsModel){
+    public String settleAccount(@RequestBody List<Shoppingcate> shoppingcates,HttpSession session){
+        User user = (User) session.getAttribute("user");
+        String userId = user.getUserId();
+        //更改已选择的物品的状态
+        for(Shoppingcate s : shoppingcates){
+            shoppingcateService.updateStatus(s.getShoppingId());
 
-        return "???";
+            Date now = new Date();
+            now.getTime();
+            UserOrder userOrder = new UserOrder(userId,s.getSpuId(),s.getQuantity(),now,1);
+            userOrderService.insert(userOrder);
+        }
+
+        return "success";
     }
 
 }

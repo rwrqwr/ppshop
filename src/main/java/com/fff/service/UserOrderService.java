@@ -8,11 +8,12 @@ import java.util.List;
 /**
  * Created by fsh on 2019/5/20.
  */
-@Service
 public interface UserOrderService {
 
-    List<UserOrder> queryAll();
+    int insert(UserOrder userOrder);
 
-    List<UserOrder> queryByTime(String startTime,String endTime);
+    List<UserOrder> queryAll(String userId);
+
+    List<UserOrder> queryByTime(String startTime,String endTime,String userId);
 
 }

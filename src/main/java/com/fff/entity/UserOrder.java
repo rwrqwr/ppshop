@@ -1,30 +1,55 @@
 package com.fff.entity;
 
+import java.util.Date;
+
 /**
  * Created by fsh on 2019/5/20.
  */
 public class UserOrder {
 
-    private String user_id;
+    private String userId;
 
-    private String spu_id;
+    private String spuId;
 
     private int quantity;
 
-    public String getUser_id() {
-        return user_id;
+    private Date finalTime;
+
+    private int status;
+
+    public UserOrder() {
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public UserOrder(String userId, String spuId, int quantity, Date finalTime, int status) {
+        this.userId = userId;
+        this.spuId = spuId;
+        this.quantity = quantity;
+        this.finalTime = finalTime;
+        this.status = status;
     }
 
-    public String getSpu_id() {
-        return spu_id;
+    public Date getFinalTime() {
+        return finalTime;
     }
 
-    public void setSpu_id(String spu_id) {
-        this.spu_id = spu_id;
+    public void setFinalTime(Date finalTime) {
+        this.finalTime = finalTime;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getSpuId() {
+        return spuId;
+    }
+
+    public void setSpuId(String spuId) {
+        this.spuId = spuId;
     }
 
     public int getQuantity() {
@@ -33,5 +58,13 @@ public class UserOrder {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

@@ -11,22 +11,25 @@ import java.util.List;
 public interface UserOrderDao {
 
     /**
+     * @return java.util.List<com.fff.entity.UserOrder>
      * @Author fsh
      * @Description //查询所有的订单信息
      * @Date 23:01 2019/5/20
      * @Param []
-     * @return java.util.List<com.fff.entity.UserOrder>
      **/
-    List<UserOrder> queryAll();
+    List<UserOrder> queryAll(String userId);
 
     /**
+     * @return java.util.List<com.fff.entity.UserOrder>
      * @Author fsh
      * @Description //根据时间查询
      * @Date 23:22 2019/5/20
      * @Param []
-     * @return java.util.List<com.fff.entity.UserOrder>
      **/
-    List<UserOrder> queryByTime(@Param("startTime") String startTime, @Param("endTime") String endTime);
+    List<UserOrder> queryByTime(@Param("startTime") String startTime,
+                                @Param("endTime") String endTime, @Param("userId") String userId);
+
+    int insert(UserOrder userOrder);
 
 
 }

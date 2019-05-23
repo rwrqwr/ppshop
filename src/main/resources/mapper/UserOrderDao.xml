@@ -3,13 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fff.dao.UserOrderDao">
+    <insert id="insert">
+        INSERT INTO user_order VALUES (#{userId},#{spuId},#{quantity},#{finalTime},#{status});
+    </insert>
 
     <select id="queryAll" resultType="com.fff.entity.UserOrder">
-        SELECT * FROM user_order;
+        SELECT * FROM user_order WHERE user_id = #{userId};
     </select>
     <select id="queryByTime" resultType="com.fff.entity.UserOrder">
         SELECT * FROM user_order
-        WHERE DATE_FORMAT(final_time,'%Y%m%d') &gt;= #{startTime} AND DATE_FORMAT(final_time,'%Y%m%d') &lt;= #{endTime};
+        WHERE user_id = #{userId} AND
+              DATE_FORMAT(final_time,'%Y%m%d') &gt;= #{startTime} AND
+              DATE_FORMAT(final_time,'%Y%m%d') &lt;= #{endTime};
     </select>
 
 </mapper>

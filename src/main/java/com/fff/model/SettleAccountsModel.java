@@ -9,13 +9,13 @@ import java.util.List;
  */
 public class SettleAccountsModel {
 
-    private int index;
+    private List<Shoppingcate> shoppingcateList;
 
-    public int getIndex() {
-        return index;
+    public List<Shoppingcate> getShoppingcateList() {
+        return shoppingcateList;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setShoppingcateList(List<Shoppingcate> shoppingcateList) {
+        this.shoppingcateList = shoppingcateList;
     }
 }
