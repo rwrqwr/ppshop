@@ -14,30 +14,37 @@
     <title>购物车</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/goods/cate.css">
     <!-- //for-mobile-apps -->
-    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet" type="text/css"
+          media="all"/>
+    <link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- font-awesome icons -->
     <link href="${pageContext.request.contextPath}/static/css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
     <!-- js -->
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
     <!-- //js -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+          rel='stylesheet' type='text/css'>
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/move-top.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/easing.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event){
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
                 event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
             });
         });
     </script>
@@ -51,7 +58,7 @@
 
         <%
             User user = (User) request.getSession().getAttribute("user");
-            if(user == null){
+            if (user == null) {
         %>
         <div class="agile-login">
             <ul>
@@ -61,7 +68,7 @@
             </ul>
         </div>
         <%
-        }else{
+        } else {
         %>
         <div class="agile-login">
             <ul>
@@ -86,7 +93,7 @@
                 </button>
             </form>
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix"></div>
     </div>
 </div>
 
@@ -105,7 +112,7 @@
             </form>
         </div>
 
-        <div class="clearfix"> </div>
+        <div class="clearfix"></div>
     </div>
 </div>
 <!-- //header -->
@@ -115,7 +122,8 @@
         <nav class="navbar navbar-default">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header nav_2">
-                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                        data-target="#bs-megadropdown-tabs">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -129,7 +137,8 @@
 
                     <c:forEach items="${bigcates}" var="bigcate">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${bigcate.bigcateName}<b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${bigcate.bigcateName}<b
+                                    class="caret"></b></a>
                             <ul class="dropdown-menu multi-column columns-3">
                                 <div class="row">
                                     <div class="multi-gd-img">
@@ -171,7 +180,8 @@
             <tr class="trnone"></tr>
             <tr class="toptr">
                 <td width="40">
-                    <input type="checkbox" id="checkA" v-on:click="checkAll($event.currentTarget)"/><label for="checkA"></label>
+                    <input type="checkbox" id="checkA" v-on:click="checkAll($event.currentTarget)"/><label
+                        for="checkA"></label>
                 </td>
                 <td width="100">全选</td>
                 <td width="540">商品信息</td>
@@ -183,11 +193,11 @@
             <tr class="trnone"></tr>
             <tr v-for="(item,index) in list">
                 <td>
-                    <input type="checkbox" :id="'check'+index" name="checkboxs" v-model="checkeds[index]" />
+                    <input type="checkbox" :id="'check'+index" name="checkboxs" v-model="checkeds[index]"/>
                     <label :for="'check'+index"></label>
                 </td>
                 <td>
-                    <img :src="'路径前缀/'+item.subimage1Filename" />
+                    <img :src="'路径前缀/'+item.subimage1Filename"/>
                 </td>
                 <td style="text-align:left;">
                     <p>{{item.goodsName}}</p>
@@ -196,7 +206,7 @@
                 <td>￥{{item.price}}</td>
                 <td class="adddel">
                     <em v-on:click="minius(index)">-</em>
-                    <input type="number" v-model.number="item.quantity" v-on:change="change(index)" />
+                    <input type="number" v-model.number="item.quantity" v-on:change="change(index)"/>
                     <em v-on:click="add(index)">+</em>
                 </td>
                 <td>￥{{item.price * item.quantity}}</td>
@@ -214,200 +224,223 @@
             </tr>
         </table>
     </div>
-        </div>
-    </div>
-    <!--- products --->
-    <!-- //footer -->
-    <div class="footer">
-        <div class="footer-copy">
-            <div class="container">
-                <p>fsh© 10210416522 计算机1165</p>
-            </div>
-        </div>
-
-    </div>
-    <div class="footer-botm">
+</div>
+</div>
+<!--- products --->
+<!-- //footer -->
+<div class="footer">
+    <div class="footer-copy">
         <div class="container">
-            <div class="w3layouts-foot">
-                <ul>
-                    <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-            <div class="payment-w3ls">
-                <img src="${pageContext.request.contextPath}/static/imgs/temp/card.png" alt=" " class="img-responsive">
-            </div>
-            <div class="clearfix"> </div>
+            <p>fsh© 10210416522 计算机1165</p>
         </div>
     </div>
-    <!-- //footer -->
-    <!-- Bootstrap Core JavaScript -->
-    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
-    <!-- top-header and slider -->
-    <!-- here stars scrolling icon -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            /*
-             var defaults = {
-             containerID: 'toTop', // fading element id
-             containerHoverID: 'toTopHover', // fading element hover id
-             scrollSpeed: 1200,
-             easingType: 'linear'
-             };
-             */
 
-            $().UItoTop({ easingType: 'easeOutQuart' });
+</div>
+<div class="footer-botm">
+    <div class="container">
+        <div class="w3layouts-foot">
+            <ul>
+                <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+        <div class="payment-w3ls">
+            <img src="${pageContext.request.contextPath}/static/imgs/temp/card.png" alt=" " class="img-responsive">
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<!-- top-header and slider -->
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+         var defaults = {
+         containerID: 'toTop', // fading element id
+         containerHoverID: 'toTopHover', // fading element hover id
+         scrollSpeed: 1200,
+         easingType: 'linear'
+         };
+         */
 
+        $().UItoTop({easingType: 'easeOutQuart'});
+
+    });
+</script>
+<!-- //here ends scrolling icon -->
+
+<!-- main slider-banner -->
+<script src="${pageContext.request.contextPath}/static/js/skdslider.min.js"></script>
+<link href="${pageContext.request.contextPath}/static/css/skdslider.css" rel="stylesheet">
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery('#demo1').skdslider({
+            'delay': 5000,
+            'animationSpeed': 2000,
+            'showNextPrev': true,
+            'showPlayButton': true,
+            'autoSlide': true,
+            'animationType': 'fading'
         });
-    </script>
-    <!-- //here ends scrolling icon -->
 
-    <!-- main slider-banner -->
-    <script src="${pageContext.request.contextPath}/static/js/skdslider.min.js"></script>
-    <link href="${pageContext.request.contextPath}/static/css/skdslider.css" rel="stylesheet">
-    <script type="text/javascript">
-        jQuery(document).ready(function(){
-            jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
-
-            jQuery('#responsive').change(function(){
-                $('#responsive_wrapper').width(jQuery(this).val());
-            });
-
+        jQuery('#responsive').change(function () {
+            $('#responsive_wrapper').width(jQuery(this).val());
         });
-    </script>
-    <!-- //main slider-banner -->
-    <script src="${pageContext.request.contextPath}/static/js/vue.js"></script>
-    <%--<script src="${pageContext.request.contextPath}/static/js/goods/disp.js"></script>--%>
-    <script>
-        var cart; //Vue对象
-        function createVue(list) {
-            cart = new Vue({
-                el: '#cart',
-                data() {
-                    return {
-                        list: list,
-                        checkeds: new Array(list.length)
-                    }
-                },
-                computed: {
-                    sum: function () {
-                        let sum = 0;
-                        for (let i in this.list) {
-                            if (this.checkeds[i])
-                                sum += this.list[i].price * this.list[i].quantity;
-                        }
-                        return sum;
-                    },
-                    checkNum: function () {
-                        let num = 0;
-                        for (let i in this.checkeds) {
-                            if (this.checkeds[i]) {
-                                num++;
-                            }
-                        }
-                        return num;
-                    }
-                },
-                methods: {
-                    end : function () {
-                        let settleAccountsModel = [];
-                        for (let i in this.checkeds) {
-                            if (this.checkeds[i]) {
-                                settleAccountsModel.push(this.list[i]);
-                            }
-                        }
-                        $.ajax({
-                            data: JSON.stringify(settleAccountsModel),
-                            contentType: "application/json",
-                            method : 'post',
-                            url : '/cate/settleAccount'
-                        })
-                    },
-                    del: function (index) {
-                        $.ajax({
-                            data : {
-                                index : index,
-                                temp : list[index].shoppingId
-                            },
-                            method : 'post',
-                            url : '/cate/del'
-                        });
-                        this.list.splice(index, 1);
-                        this.checkeds.splice(index,1); //同时删除对应的选中状态标识
-                    },
-                    add: function (index) {
-                        $.ajax({
-                            data : {
-                                index : index,
-                                temp : list[index].shoppingId
-                            },
-                            datatype : 'json',
-                            method : 'post',
-                            url : '/cate/add'
-                        });
-                        this.list[index].quantity++;
-                    },
-                    minius: function (index) {
-                        $.ajax({
-                            data : {
-                                index : index,
-                                temp : list[index].shoppingId
-                            },
-                            datatype : 'json',
-                            method : 'post',
-                            url : '/cate/reduce'
-                        });
-                        if (this.list[index].quantity > 1) {
-                            this.list[index].quantity--;
-                        }
-                    },
-                    change: function (index) {
-                        $.ajax({
-                            data : {
-                                index : index,
-                                temp : list[index].shoppingId,
-                                quan : list[index].quantity
-                            },
-                            datatype : 'json',
-                            method : 'post',
-                            url : '/cate/change'
-                        });
-                    },
-                    checkAll: function (event) {
-                        if (event.checked) {
-                            for (let i = 0; i < this.checkeds.length; i++) {
-                                Vue.set(this.checkeds, i, true);
-                            }
-                        } else {
-                            for (let i = 0; i < this.checkeds.length; i++) {
-                                Vue.set(this.checkeds, i, false);
-                            }
-                        }
+
+    });
+</script>
+<!-- //main slider-banner -->
+<script src="${pageContext.request.contextPath}/static/js/vue.js"></script>
+<%--<script src="${pageContext.request.contextPath}/static/js/goods/disp.js"></script>--%>
+<script>
+    var cart = new Vue({
+        el: '#cart',
+        data() {
+            return {
+                list: [],
+                checkeds: []
+            }
+        },
+        wathc:{
+            list: function() {
+                this.$nextTick(function(){
+                    /*现在数据已经渲染完毕*/
+                })
+            },
+            checkeds: function() {
+                this.$nextTick(function(){
+                    /*现在数据已经渲染完毕*/
+                })
+            }
+        },
+        mounted: function () {
+            var that = this;
+            $.ajax({
+                method: 'get',
+                dataType: 'json',
+                url: '/cate/getAll',
+                success: function (date) {
+                    that.list = date;
+                    checkeds = new Array(that.list.length);
+                }
+            })
+        },
+        computed: {
+
+            sum: function () {
+                let sum = 0;
+                for (let i in this.list) {
+                    if (this.checkeds[i])
+                        sum += this.list[i].price * this.list[i].quantity;
+                }
+                return sum;
+            },
+            checkNum: function () {
+                let num = 0;
+                for (let i in this.checkeds) {
+                    if (this.checkeds[i]) {
+                        num++;
                     }
                 }
-            });
-        }
-        window.onload =	function () {
-            let list = [
-                <c:forEach items="${shoppingcateList}" var="sh">
-                {
-                    goodsName : '${sh.goodsName}',
-                    price : ${sh.price},
-                    quantity : ${sh.quantity},
-                    shoppingId : '${sh.shoppingId}',
-                    userId: '${sh.userId}',
-                    spuId : '${sh.spuId}',
-                    status: '${sh.status}',
-                    userId : '${sh.userId}'
-                },
-                </c:forEach>
-            ];
+                return num;
+            }
+        },
+        methods: {
+            end: function () {
+                var settleAccountsModel = [];
+                for (var i in this.checkeds) {
+                    if (this.checkeds[i]) {
+                        settleAccountsModel.push(this.list[i]);
+                    }
+                }
 
-            createVue(list);
+                for (var i in this.checkeds) {
+                    if (this.checkeds[i]) {
+                        delete this.list[i];
+
+                    }
+                }
+                var that = this;
+                $.ajax({
+                    data: JSON.stringify(settleAccountsModel),
+                    contentType: "application/json",
+                    method: 'post',
+                    url: '/cate/settleAccount',
+                    success : function (data) {
+                        that.list = data;
+                    }
+                })
+            },
+            del: function (index) {
+                $.ajax({
+                    data: {
+                        index: index,
+                        temp: this.list[index].shoppingId
+                    },
+                    method: 'post',
+                    url: '/cate/del'
+                });
+                this.list.splice(index, 1);
+                this.checkeds.splice(index, 1); //同时删除对应的选中状态标识
+            },
+            add: function (index) {
+                $.ajax({
+                    data: {
+                        index: index,
+                        temp: this.list[index].shoppingId
+                    },
+                    datatype: 'json',
+                    method: 'post',
+                    url: '/cate/addQuantity'
+                });
+                this.list[index].quantity++;
+            },
+            minius: function (index) {
+                $.ajax({
+                    data: {
+                        index: index,
+                        temp: this.list[index].shoppingId
+                    },
+                    datatype: 'json',
+                    method: 'post',
+                    url: '/cate/reduce'
+                });
+                if (this.list[index].quantity > 1) {
+                    this.list[index].quantity--;
+                }
+            },
+            change: function (index) {
+                $.ajax({
+                    data: {
+                        index: index,
+                        temp: this.list[index].shoppingId,
+                        quan: this.list[index].quantity
+                    },
+                    dataType: 'json',
+                    method: 'post',
+                    url: '/cate/change'
+                });
+            },
+            checkAll: function (event) {
+                if (event.checked) {
+                    for (let i = 0; i < this.checkeds.length; i++) {
+                        Vue.set(this.checkeds, i, true);
+                    }
+                } else {
+                    for (let i = 0; i < this.checkeds.length; i++) {
+                        Vue.set(this.checkeds, i, false);
+                    }
+                }
+            }
         }
-    </script>
+    });
+
+</script>
 </div>
 </body>
 </html>

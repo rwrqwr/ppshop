@@ -1,16 +1,14 @@
-package com.fff.web;
+package com.fff.controller;
 
 import com.fff.entity.Bigcate;
 import com.fff.entity.GoodsSpu;
 import com.fff.service.GoodsCategoryService;
 import com.fff.service.GoodsSpuService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
@@ -36,7 +34,7 @@ public class AdminController {
 
         List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
         model.addAttribute("bigcates",bigcates);
-
+        System.out.println("admin======================");
         return "admin/adhome";
     }
 

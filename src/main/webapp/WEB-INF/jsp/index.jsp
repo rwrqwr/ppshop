@@ -81,7 +81,6 @@
             <a href="goods/cate">
                 <button class="w3view-cart" name="submit" value="">
                     <i class="fa fa-cart-arrow-down" aria-hidden="true">
-
                     </i>
                 </button>
             </a>

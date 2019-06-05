@@ -1,4 +1,4 @@
-package com.fff.web;
+package com.fff.controller;
 
 import com.fff.entity.Shoppingcate;
 import com.fff.service.GoodsCategoryService;

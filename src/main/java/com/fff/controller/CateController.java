@@ -1,20 +1,16 @@
-package com.fff.web;
+package com.fff.controller;
 
-import com.fff.dao.UserOrderDao;
 import com.fff.entity.GoodsSpu;
 import com.fff.entity.Shoppingcate;
 import com.fff.entity.User;
 import com.fff.entity.UserOrder;
-import com.fff.model.SettleAccountsModel;
 import com.fff.service.GoodsSpuService;
 import com.fff.service.ShoppingcateService;
 import com.fff.service.UserOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -186,7 +182,7 @@ public class CateController {
      **/
     @ResponseBody
     @RequestMapping("settleAccount")
-    public String settleAccount(@RequestBody List<Shoppingcate> shoppingcates,HttpSession session){
+    public List<Shoppingcate> settleAccount(@RequestBody List<Shoppingcate> shoppingcates,HttpSession session){
         User user = (User) session.getAttribute("user");
         String userId = user.getUserId();
         //更改已选择的物品的状态
@@ -199,7 +195,26 @@ public class CateController {
             userOrderService.insert(userOrder);
         }
 
-        return "success";
+        List<Shoppingcate> list = shoppingcateService.queryByUserid(userId);
+
+        return list;
     }
+
+    @ResponseBody
+    @RequestMapping("getAll")
+    public List<Shoppingcate> getShoppingCate(HttpSession session){
+        User us = (User) session.getAttribute("user");
+        if(us != null){
+            List<Shoppingcate> list = shoppingcateService.queryByUserid(us.getUserId());
+
+            return list;
+        }
+        List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
+        if (shoppingcateList == null){
+            shoppingcateList = new ArrayList<>();
+        }
+        return shoppingcateList;
+    }
+
 
 }

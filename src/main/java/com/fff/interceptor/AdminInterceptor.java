@@ -10,20 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by fsh on 2018/12/12.
  */
-public class adminInterceptor implements HandlerInterceptor {
+public class AdminInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
 
-        String uri = httpServletRequest.getRequestURI();
-        if(uri.contains("adhome") || uri.contains("addspu")){
-            User user = (User) httpServletRequest.getSession().getAttribute("user");
-            if(user != null){
-                if (!user.getUserPre().equals("root")){
-                    httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/user/login");
-                }
-            }else {
-                httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+"/user/login");
+        User user = (User) httpServletRequest.getSession().getAttribute("user");
+        if (user != null) {
+            if (!user.getUserPre().equals("root")) {
+
+                httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/user/login");
+            } else {
+
+                return true;
             }
+        }else {
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/user/login");
         }
 
 

@@ -29,8 +29,8 @@
             <bean class="com.fff.interceptor.loginInterceptor"/>
         </mvc:interceptor>
         <mvc:interceptor>
-            <mvc:mapping path="/admin/**"/>
-            <bean class="com.fff.interceptor.adminInterceptor"/>
+            <mvc:mapping path="/admin/**/**"/>
+            <bean class="com.fff.interceptor.AdminInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
@@ -42,5 +42,5 @@
     </bean>
 
     <!-- 4.扫描web相关的bean -->
-    <context:component-scan base-package="com.fff.web" />
+    <context:component-scan base-package="com.fff.controller" />
 </beans>

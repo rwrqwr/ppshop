@@ -1,4 +1,4 @@
-package com.fff.web;
+package com.fff.controller;
 
 
 import com.fff.entity.*;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,18 +42,6 @@ public class GoodsController {
 
         List<Bigcate> bigcates = goodsCategoryService.queryBigcate();
         model.addAttribute("bigcates",bigcates);
-        User user = (User) session.getAttribute("user");
-        if(user != null){
-            List<Shoppingcate> shoppingcateList = shoppingcateService.queryByUserid(user.getUserId());
-            model.addAttribute(shoppingcateList);
-            return "goods/cate";
-        }
-        List<Shoppingcate> shoppingcateList = (List<Shoppingcate>) session.getAttribute("shoppingcate");
-
-        if (shoppingcateList == null){
-            shoppingcateList = new ArrayList<>();
-        }
-        model.addAttribute(shoppingcateList);
 
         return "goods/cate";
     }

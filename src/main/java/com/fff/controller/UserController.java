@@ -1,4 +1,4 @@
-package com.fff.web;
+package com.fff.controller;
 
 import com.fff.entity.Address;
 import com.fff.entity.Bigcate;
@@ -8,9 +8,7 @@ import com.fff.service.AddressService;
 import com.fff.service.GoodsCategoryService;
 import com.fff.service.ShoppingcateService;
 import com.fff.service.UserService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;

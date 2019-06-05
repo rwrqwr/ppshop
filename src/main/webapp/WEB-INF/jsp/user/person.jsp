@@ -162,7 +162,7 @@
 <!-- //breadcrumbs -->
 <!-- login -->
 
-<div v-block id ="app" class="person-main container" >
+<div id ="app" class="person-main container" >
     <div class="row">
         <div class="per-main-ul col-md-2">
             <ul class="nav nav-pills nav-stacked">
