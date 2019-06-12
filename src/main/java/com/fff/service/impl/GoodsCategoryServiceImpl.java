@@ -2,6 +2,7 @@ package com.fff.service.impl;
 
 import com.fff.dao.GoodsCategoryDao;
 import com.fff.entity.Bigcate;
+import com.fff.entity.GoodsCategory;
 import com.fff.service.GoodsCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,15 @@ public class GoodsCategoryServiceImpl implements GoodsCategoryService {
         return bigcates;
     }
 
+    @Override
+    public List<GoodsCategory> queryAll(int page, int nums) {
+        return goodsCategoryDao.queryAll(page,nums);
+    }
+
+    @Override
+    public int insert(GoodsCategory goodsCategory) {
+        return goodsCategoryDao.insert(goodsCategory);
+    }
 
     /**
      * @Author fsh
@@ -39,5 +49,10 @@ public class GoodsCategoryServiceImpl implements GoodsCategoryService {
             bigcate.setCategoryList(goodsCategoryDao.queryDeyilCategory(bigcate.getIdBig()));
         }
         return list;
+    }
+
+    @Override
+    public int count() {
+        return goodsCategoryDao.count();
     }
 }

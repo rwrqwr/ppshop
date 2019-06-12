@@ -11,7 +11,17 @@ public class GoodsCategory {
 
     private String categoryEname;
 
+    private String idBid;
+
     private String bigcateName;
+
+    public String getIdBid() {
+        return idBid;
+    }
+
+    public void setIdBid(String idBid) {
+        this.idBid = idBid;
+    }
 
     public String getBigcateName() {
         return bigcateName;

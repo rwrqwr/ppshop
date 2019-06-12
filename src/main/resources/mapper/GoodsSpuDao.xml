@@ -4,24 +4,49 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fff.dao.GoodsSpuDao">
     <insert id="insert">
-        INSERT INTO goods_spu (spu_no, goods_name, price, category_id, brand_id, description, spu_quantity)
-        VALUES (#{goodsSpu.spuNo},#{goodsSpu.goodsName},#{goodsSpu.price},#{goodsSpu.categoryId},#{goodsSpu.brandId},#{goodsSpu.description},#{goodsSpu.spuQuantity})
+        INSERT INTO goods_spu ( goods_name, price, category_id, brand_id, description, spu_quantity)
+        VALUES
+            ( #{goodsSpu.goodsName}, #{goodsSpu.price}, #{goodsSpu.categoryId}, #{goodsSpu.brandId},
+             #{goodsSpu.description}, #{goodsSpu.spuQuantity});
     </insert>
+    <delete id="delete">
+        DELETE FROM goods_spu WHERE spu_no = #{spuNo};
+    </delete>
 
     <select id="queryAllSpu" resultType="com.fff.entity.GoodsSpu">
-        SELECT id,spu_no,goods_name,price,category_name,brand_name FROM goods_spu;
+        SELECT
+            spu_no,
+            goods_name,
+            price,
+            category_id,
+            brand_id,
+            description,
+            spu_quantity
+        FROM goods_spu
+        WHERE goods_name LIKE #{goodsName}
+        limit #{page},#{nums};
     </select>
     <select id="queryByCategory" resultType="com.fff.entity.GoodsSpu">
-        SELECT goods_category.id,spu_no,goods_name,price FROM goods_spu
+        SELECT
+            spu_no,
+            goods_name,
+            price
+        FROM goods_spu
             RIGHT JOIN goods_category ON goods_spu.category_id = goods_category.id
         WHERE goods_category.category_ename = #{categoryName};
     </select>
 
     <select id="queryByBrand" resultType="com.fff.entity.GoodsSpu">
-        SELECT * FROM goods_spu WHERE brand_id = #{brandId}
+        SELECT *
+        FROM goods_spu
+        WHERE brand_id = #{brandId}
     </select>
     <select id="queryOneSpuByNo" resultType="com.fff.entity.GoodsSpu">
-        select *
-        from goods_spu WHERE spu_no = #{spuNo};
+        SELECT *
+        FROM goods_spu
+        WHERE spu_no = #{spuNo};
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select count(spu_no) FROM goods_spu WHERE goods_name LIKE #{goodsName};
     </select>
 </mapper>

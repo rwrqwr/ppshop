@@ -7,7 +7,12 @@ import java.util.Date;
  */
 public class UserOrder {
 
+    private String orderId;
     private String userId;
+
+    private String goodsName;
+
+    private String price;
 
     private String spuId;
 
@@ -26,6 +31,30 @@ public class UserOrder {
         this.quantity = quantity;
         this.finalTime = finalTime;
         this.status = status;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public Date getFinalTime() {

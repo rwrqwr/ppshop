@@ -3,15 +3,38 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fff.dao.GoodsCategoryDao">
+    <insert id="insert">
+        INSERT INTO goods_category (category_name, bigcate_name, id_big, category_ename)
+        VALUES (#{goodsCategory.categoryName},#{goodsCategory.bigcateName},
+                #{goodsCategory.idBig},#{goodsCategory.category_ename});
+    </insert>
 
 
     <select id="queryCategory" resultType="com.fff.entity.GoodsCategory">
-        SELECT category_name FROM goods_category;
+        SELECT category_name
+        FROM goods_category;
     </select>
     <select id="queryBigcate" resultType="com.fff.entity.Bigcate">
-        SELECT DISTINCT id_big,bigcate_name FROM goods_category ;
+        SELECT DISTINCT
+            id_big,
+            bigcate_name
+        FROM goods_category;
     </select>
     <select id="queryDeyilCategory" resultType="com.fff.entity.GoodsCategory">
-        SELECT id,category_name,category_ename FROM goods_category WHERE id_big = #{idBig} and id != #{idBid};
+        SELECT
+            id,
+            category_name,
+            category_ename
+        FROM goods_category
+        WHERE id_big = #{idBig} AND id != #{idBid};
+    </select>
+    <select id="queryAll" resultType="com.fff.entity.GoodsCategory">
+        SELECT *
+        FROM goods_category
+        LIMIT #{page}, #{nums};
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(*)
+        FROM goods_category;
     </select>
 </mapper>

@@ -14,5 +14,9 @@ public interface GoodsCategoryService {
 
     List<Bigcate> queryBigcate();
 
+    List<GoodsCategory> queryAll(int page,int nums);
 
+    int insert(GoodsCategory goodsCategory);
+
+    int count();
 }

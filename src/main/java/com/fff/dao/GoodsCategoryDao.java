@@ -2,6 +2,7 @@ package com.fff.dao;
 
 import com.fff.entity.Bigcate;
 import com.fff.entity.GoodsCategory;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,5 +15,11 @@ public interface GoodsCategoryDao {
 
     List<Bigcate> queryBigcate();
 
+    List<GoodsCategory> queryAll(@Param("page") int page,@Param("nums") int nums);
+
     List<GoodsCategory> queryDeyilCategory(String idBid);
+
+    int count();
+
+    int insert(GoodsCategory goodsCategory);
 }

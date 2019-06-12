@@ -2,10 +2,28 @@ package com.fff.service;
 
 import com.fff.entity.User;
 
+import java.util.List;
+
 /**
  * Created by USER on 2018/10/29.
  */
 public interface UserService {
+
+    int deleteUser(String userId);
+
+    /**
+     * @Author fsh
+     * @Description //查所有用户
+     * @Date 13:10 2019/6/9
+     * @Param []
+     * @return com.fff.entity.User
+     **/
+    List<User> queryUserList(int page,int num,String name);
+
+    int changePre(String userId,String userPre);
+
+    int queryCount(String userName);
+
 
     /**
      * @Author USER
@@ -34,5 +52,6 @@ public interface UserService {
      **/
     int existTel(String userTel);
 
+    int changePassword(String password,String userId);
 
 }

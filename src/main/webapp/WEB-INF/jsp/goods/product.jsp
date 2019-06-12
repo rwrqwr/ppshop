@@ -291,7 +291,7 @@
             var spuQ =  document.getElementById("spuQ"+index).value;
             $.ajax({
                 type:'post',
-                url:"/ajax/singleadd",
+                url:"/cate/singleadd",
                 data:{
                     spuNo : spuNo,
                     spuQ : spuQ

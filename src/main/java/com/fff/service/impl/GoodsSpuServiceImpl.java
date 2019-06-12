@@ -18,8 +18,8 @@ public class GoodsSpuServiceImpl implements GoodsSpuService {
     GoodsSpuDao goodsSpuDao;
 
     @Override
-    public List<GoodsSpu> queryAll() {
-        return goodsSpuDao.queryAllSpu();
+    public List<GoodsSpu> queryAll(int page,int nums,String goodsName) {
+        return goodsSpuDao.queryAllSpu(page,nums,goodsName);
     }
 
     @Override
@@ -35,5 +35,20 @@ public class GoodsSpuServiceImpl implements GoodsSpuService {
     @Override
     public GoodsSpu queryOneSpuByNo(String spuNo) {
         return goodsSpuDao.queryOneSpuByNo(spuNo);
+    }
+
+    @Override
+    public int count(String goodsName) {
+        return goodsSpuDao.count(goodsName);
+    }
+
+    @Override
+    public int deleteGoods(String spuNo) {
+        return goodsSpuDao.delete(spuNo);
+    }
+
+    @Override
+    public int insert(GoodsSpu goodsSpu) {
+        return goodsSpuDao.insert(goodsSpu);
     }
 }

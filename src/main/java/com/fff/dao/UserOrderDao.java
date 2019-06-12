@@ -3,6 +3,7 @@ package com.fff.dao;
 import com.fff.entity.UserOrder;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ public interface UserOrderDao {
     /**
      * @return java.util.List<com.fff.entity.UserOrder>
      * @Author fsh
-     * @Description //查询所有的订单信息
+     * @Description //查询所有的订单信息用户
      * @Date 23:01 2019/5/20
      * @Param []
      **/
@@ -31,5 +32,13 @@ public interface UserOrderDao {
 
     int insert(UserOrder userOrder);
 
+    int updateStatus(String orderId);
+
+    List<UserOrder> queryAllOrder(@Param("page")int page, @Param("num")int nums,
+                                  @Param("startTime")Date start,@Param("end")Date end,
+                                  @Param("status")int stat);
+
+    int count(@Param("startTime")Date start,@Param("end")Date end,
+    @Param("status")int stat);
 
 }

@@ -7,15 +7,13 @@ import java.math.BigDecimal;
  */
 public class GoodsSpu {
 
-    private String id;
-
     private String spuNo;
 
     private String goodsName;
 
     private BigDecimal price;
 
-    private String cateGoryId;
+    private String categoryId;
 
     private String brandId;
 
@@ -23,13 +21,7 @@ public class GoodsSpu {
 
     private Integer spuQuantity;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getSpuNo() {
         return spuNo;
@@ -55,12 +47,12 @@ public class GoodsSpu {
         this.price = price;
     }
 
-    public String getCateGoryId() {
-        return cateGoryId;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setCateGoryId(String cateGoryId) {
-        this.cateGoryId = cateGoryId;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getBrandId() {

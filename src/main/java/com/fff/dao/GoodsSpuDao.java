@@ -1,6 +1,7 @@
 package com.fff.dao;
 
 import com.fff.entity.GoodsSpu;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface GoodsSpuDao {
 
-    List<GoodsSpu> queryAllSpu();
+    List<GoodsSpu> queryAllSpu(@Param("page") int page,@Param("nums") int nums,@Param("goodsName") String goodsName);
 
     List<GoodsSpu> queryByCategory(String categoryName);
 
@@ -17,5 +18,9 @@ public interface GoodsSpuDao {
 
     GoodsSpu queryOneSpuByNo(String spuNo);
 
-    int insert(GoodsSpu goodsSpu);
+    int insert(@Param("goodsSpu") GoodsSpu goodsSpu);
+
+    int count(String goodsName);
+
+    int delete(String SpuNo);
 }

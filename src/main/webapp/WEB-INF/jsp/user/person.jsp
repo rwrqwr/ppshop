@@ -208,22 +208,36 @@
             <table id="goods_table" class="shoplist margincenter">
                 <tr class="trnone"></tr>
                 <tr class="toptr">
-                    <td width="540">商品名称</td>
+                    <td width="240">商品名称</td>
                     <td width="100">单价</td>
                     <td width="160">数量</td>
                     <td width="100">小计</td>
+                    <td width="100">支付状态</td>
                 </tr>
                 <tr class="trnone"></tr>
-                <c:forEach items="${shoppingendcate}" var="shop">
+                <c:forEach items="${orderList}" var="shop">
+                    
                 <tr >
                     <td style="text-align:left;">
                         <p>${shop.goodsName}</p>
-                        <p>规格：</p>
+                        <%--<p>规格：</p>--%>
                     </td>
                     <td>￥${shop.price}</td>
                     <td>${shop.quantity}</td>
-
-                    <td>￥${shop.price}</td>
+                    <td>￥${shop.price*shop.quantity}</td>
+                    <td>
+                        <c:if test="${shop.status == 1}">
+                            已支付
+                        </c:if>
+                        <c:if test="${shop.status == 0}">
+                            <label id="l${shop.orderId}">未支付</label>
+                        </c:if>
+                    </td>
+                    <c:if test="${shop.status == 0}">
+                        <td id="${shop.orderId}">
+                            <button  class="btn btn-default" v-on:click = "pay(${shop.orderId})">支付</button>
+                        </td>
+                    </c:if>
                 </tr>
                 </c:forEach>
             </table>
@@ -306,7 +320,20 @@
                 },
                 to2 : function () {
                     c.flag = false;
+                },
+                pay: function (id) {
+                    $.ajax({
+                        url : '/user/pay',
+                        data : {
+                            orderId : id
+                        },
+                        success: function () {
+                            document.getElementById(id).style.visibility= 'hidden';
+                            document.getElementById('l'+id).innerText = '已支付';
+                        }
+                    })
                 }
+
             }
         });
 </script>

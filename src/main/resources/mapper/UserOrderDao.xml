@@ -4,17 +4,73 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fff.dao.UserOrderDao">
     <insert id="insert">
-        INSERT INTO user_order VALUES (#{userId},#{spuId},#{quantity},#{finalTime},#{status});
+        INSERT INTO user_order (user_id, spu_id, quantity, final_time)
+        VALUES (#{userId}, #{spuId}, #{quantity}, #{finalTime}, #{status});
     </insert>
+    <update id="updateStatus">
+        UPDATE user_order
+        SET status = 1
+        WHERE order_id = #{orderId};
+    </update>
 
     <select id="queryAll" resultType="com.fff.entity.UserOrder">
-        SELECT * FROM user_order WHERE user_id = #{userId};
+        SELECT
+            user_order.user_id,
+            user_order.status,
+            user_order.quantity,
+            user_order.order_id,
+            goods_spu.goods_name,
+            goods_spu.price
+        FROM user_order
+            LEFT JOIN goods_spu ON user_order.spu_id = goods_spu.spu_no
+        WHERE user_id = #{userId};
     </select>
     <select id="queryByTime" resultType="com.fff.entity.UserOrder">
-        SELECT * FROM user_order
+        SELECT *
+        FROM user_order
         WHERE user_id = #{userId} AND
-              DATE_FORMAT(final_time,'%Y%m%d') &gt;= #{startTime} AND
-              DATE_FORMAT(final_time,'%Y%m%d') &lt;= #{endTime};
+              DATE_FORMAT(final_time, '%Y%m%d') &gt;= #{startTime} AND
+              DATE_FORMAT(final_time, '%Y%m%d') &lt;= #{endTime};
     </select>
+    <select id="queryAllOrder" resultType="com.fff.entity.UserOrder">
+        SELECT
+            user_order.user_id,
+            user_order.status,
+            user_order.quantity,
+            user_order.order_id,
+            goods_spu.goods_name,
+            goods_spu.price,
+            user_order.final_time
+
+        FROM user_order
+            LEFT JOIN goods_spu ON user_order.spu_id = goods_spu.spu_no
+            <where>
+                <if test="startTime != null ">
+                  user_order.final_time &gt;= #{startTime}
+                </if>
+                <if test="end != null ">
+                  and user_order.final_time &lt;= #{end}
+                </if>
+                <if test="status == 1 or status == 0">
+                    and user_order.status = #{status}
+                </if>
+            </where>
+        limit #{page},#{num};
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        SELECT count(order_id)FROM user_order
+        <where>
+            <if test="startTime != null ">
+                user_order.final_time &gt;= #{startTime}
+            </if>
+            <if test="end != null ">
+                and user_order.final_time &lt;= #{end}
+            </if>
+            <if test="status == 1 or status == 0">
+                and user_order.status = #{status}
+            </if>
+        </where>;
+    </select>
+
 
 </mapper>

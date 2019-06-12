@@ -1,16 +1,12 @@
 package com.fff.controller;
 
-import com.fff.entity.Address;
-import com.fff.entity.Bigcate;
-import com.fff.entity.Shoppingcate;
-import com.fff.entity.User;
-import com.fff.service.AddressService;
-import com.fff.service.GoodsCategoryService;
-import com.fff.service.ShoppingcateService;
-import com.fff.service.UserService;
+import com.fff.entity.*;
+
+import com.fff.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +15,10 @@ import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -33,6 +31,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    UserOrderService userOrderService;
 
     @Autowired
     AddressService addressService;
@@ -67,9 +68,10 @@ public class UserController {
         model.addAttribute("addressList", list);
 
         //订单添加
-        List<Shoppingcate> shoppingcateList = shoppingcateService.queryEndByUserid(user.getUserId());
-        System.out.println(shoppingcateList + "==========");
-        model.addAttribute("shoppingendcate", shoppingcateList);
+        List<UserOrder> userOrders = userOrderService.queryAll(user.getUserId());
+
+
+        model.addAttribute("orderList", userOrders);
         return "user/person";
     }
 
@@ -91,10 +93,10 @@ public class UserController {
     public String checklogin(@RequestParam("tel") String tel, @RequestParam("password") String password, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         System.out.println(tel + "       " + password);
         User user = userService.checkLogin(tel);
-        MessageDigest md5= MessageDigest.getInstance("MD5");
-        BASE64Encoder base64en = new BASE64Encoder();
-        //加密后的字符串
-        String newstr=base64en.encode(md5.digest(password.getBytes("utf-8")));
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(password.getBytes());
+        String newstr = new BigInteger(1, md.digest()).toString(16);
+
 
         if (user != null && user.getUserPassword().equals(newstr)) {
             session.setAttribute("user", user);
@@ -127,7 +129,7 @@ public class UserController {
 
             session.removeAttribute("shoppingcate");
 
-            if(user.getUserPre().equals("root")){
+            if (user.getUserPre().equals("root")) {
                 return "admin/adhome";
             }
 
@@ -144,17 +146,16 @@ public class UserController {
      * @Param [user]
      **/
     @RequestMapping("/adduser")
-    public String addUser(@ModelAttribute("user") User user,HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public String addUser(@ModelAttribute("user") User user, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         String str = user.getUserPassword();
-        MessageDigest md5= MessageDigest.getInstance("MD5");
-        BASE64Encoder base64en = new BASE64Encoder();
-        //加密后的字符串
-        String newstr=base64en.encode(md5.digest(str.getBytes("utf-8")));
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(str.getBytes());
+        String newstr = new BigInteger(1, md.digest()).toString(16);
         user.setUserPassword(newstr);
         int stat = userService.addUser(user);
 
-        if (stat == 1){
-            session.setAttribute("user",user);
+        if (stat == 1) {
+            session.setAttribute("user", user);
 
             return "redirect:/";
         }
@@ -187,14 +188,20 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("change")
-    public Map changePasswordTemp(@RequestParam Map<String,Object> map){
+    public Map changePasswordTemp(@RequestParam Map<String, Object> map) {
 
         String userTel = (String) map.get("userTel");
 
-        map.put("flag",userService.existTel(userTel));
+        map.put("flag", userService.existTel(userTel));
 
 
         return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("pay")
+    public void pay(@RequestParam("orderId")String orderId) {
+        userOrderService.pay(orderId);
     }
 
 

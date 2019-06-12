@@ -14,6 +14,19 @@
         SET user_name = #{userName}
         WHERE user_tel = #{userTel};
     </update>
+    <update id="changePassword">
+        UPDATE user_info
+        SET user_password = #{password}
+        where user_id = #{userId};
+    </update>
+    <update id="changePre">
+        UPDATE user_info
+        SET user_pre = #{userPre}
+        where user_id = #{userId};
+    </update>
+    <delete id="deleteUser">
+        DELETE FROM user_info WHERE user_id = #{userId};
+    </delete>
 
     <select id="queryByTel" resultType="com.fff.entity.User">
         SELECT
@@ -27,5 +40,16 @@
     </select>
     <select id="queryExist" resultType="java.lang.Integer">
         SELECT count(user_tel) FROM user_info WHERE user_tel = #{userTel};
+    </select>
+    <select id="queryUserList" resultType="com.fff.entity.User">
+        SELECT user_id,
+            user_name,
+            user_password,
+            user_tel,
+            user_pre
+        FROM user_info WHERE user_name LIKE #{name} limit #{page},#{num};
+    </select>
+    <select id="queryCount" resultType="java.lang.Integer">
+        SELECT count(user_id) FROM user_info WHERE user_name LIKE #{userName};
     </select>
 </mapper>

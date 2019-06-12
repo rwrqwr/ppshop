@@ -60,6 +60,17 @@
             </ul>
         </div>
         <%
+            }else if(user.getUserPre().equals("root")){
+        %>
+        <div class="agile-login">
+            <ul>
+                <li>欢迎,${sessionScope.user.userName}</li>
+                <li><a href="user/person">个人中心</a></li>
+                <li><a href="/admin/adhome">管理</a></li>
+                <li><a href="user/out">退出</a></li>
+            </ul>
+        </div>
+        <%
             }else{
         %>
         <div class="agile-login">

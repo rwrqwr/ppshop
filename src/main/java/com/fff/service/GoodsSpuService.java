@@ -10,12 +10,18 @@ import java.util.List;
 public interface GoodsSpuService {
 
 
-    List<GoodsSpu> queryAll();
+    List<GoodsSpu> queryAll(int page,int num,String goodsName);
 
     List<GoodsSpu> queryByCategory(String categoryName);
 
     List<GoodsSpu> queryByBrand(String brandName);
 
     GoodsSpu queryOneSpuByNo(String spuNo);
+
+    int count(String goodsName);
+
+    int deleteGoods(String spuNo);
+
+    int insert(GoodsSpu goodsSpu);
 
 }
